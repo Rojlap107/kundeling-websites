@@ -68,6 +68,14 @@ body {
     transition: opacity 0.4s;
 }
 
+.nav-name img.nav-logo {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    will-change: transform;
+    transition: opacity 0.4s;
+}
+
 .nav-links {
     display: flex;
     list-style: none;

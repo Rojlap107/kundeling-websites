@@ -15,12 +15,28 @@ const fadeObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 fadeEls.forEach(el => fadeObserver.observe(el));
 
-// ── Nav scroll detection (only for hero nav) ──
+// ── Nav scroll detection (only for hero nav) + logo spin ──
 const nav = document.getElementById('mainNav');
-if (nav && nav.classList.contains('nav-hero')) {
+const navLogo = document.querySelector('.nav-logo');
+
+if (nav) {
+    let lastScroll = 0;
+    let logoRotation = 0;
+
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+        // Hero nav: toggle solid background
+        if (nav.classList.contains('nav-hero')) {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        }
+
+        // Scroll-linked logo spin
+        if (navLogo) {
+            const delta = window.scrollY - lastScroll;
+            logoRotation += delta * 0.3;
+            navLogo.style.transform = 'rotate(' + logoRotation + 'deg)';
+            lastScroll = window.scrollY;
+        }
+    }, { passive: true });
 }
 
 // ── Mobile menu functions ──
