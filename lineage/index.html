@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The lineage of Kundeling Tatsak Jedrung Hutoktu Nomun Khan — thirteen incarnations spanning over six centuries of profound Buddhist leadership.">
+    <title>Lineage — Kundeling Tatsak Rinpoche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <style>
+        /* ── PAGE-SPECIFIC: Tabbed Lineage Layout ── */
+        .lineage-intro {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 64px 48px 48px;
+        }
+
+        .lineage-intro p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--stone-600);
+            margin-bottom: 16px;
+        }
+
+        .lineage-intro p strong {
+            color: var(--stone-800);
+        }
+
+        .lineage-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px 120px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 48px;
+        }
+
+        /* Sidebar tabs */
+        .lineage-sidebar {
+            position: sticky;
+            top: calc(var(--nav-h) + 24px);
+            align-self: start;
+            max-height: calc(100vh - var(--nav-h) - 48px);
+            overflow-y: auto;
+        }
+
+        .lineage-tab {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            color: var(--stone-500);
+            line-height: 1.4;
+            border-left: 2px solid var(--stone-150);
+            transition: all 0.25s ease;
+        }
+
+        .lineage-tab:hover {
+            color: var(--stone-700);
+            background: var(--stone-50);
+        }
+
+        .lineage-tab.active {
+            color: var(--warm);
+            border-left-color: var(--warm);
+            background: rgba(139, 109, 71, 0.04);
+            font-weight: 500;
+        }
+
+        .lineage-tab .tab-ordinal {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--stone-400);
+            margin-bottom: 2px;
+        }
+
+        .lineage-tab.active .tab-ordinal {
+            color: var(--warm-light);
+        }
+
+        /* Content panel */
+        .lineage-panel {
+            display: none;
+        }
+
+        .lineage-panel.active {
+            display: block;
+        }
+
+        .panel-header {
+            margin-bottom: 32px;
+        }
+
+        .panel-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .panel-header .panel-dates {
+            font-family: 'Cormorant', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--warm);
+        }
+
+        .panel-image {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto 32px;
+            display: block;
+            border-radius: 8px;
+            background: var(--stone-100);
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .panel-image-placeholder {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: var(--stone-100);
+            aspect-ratio: 3/4;
+            color: var(--stone-300);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .panel-content p {
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--stone-600);
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--stone-200);
+            margin: 48px 0 32px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .lineage-container {
+                grid-template-columns: 240px 1fr;
+                gap: 32px;
+                padding: 0 32px 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lineage-intro {
+                padding: 48px 24px 32px;
+            }
+
+            .lineage-container {
+                grid-template-columns: 1fr;
+                padding: 0 24px 80px;
+                gap: 24px;
+            }
+
+            .lineage-sidebar {
+                position: static;
+                max-height: none;
+                overflow-y: visible;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid var(--stone-150);
+            }
+
+            .lineage-tab {
+                border-left: none;
+                border-bottom: 2px solid var(--stone-150);
+                padding: 8px 14px;
+                font-size: 0.75rem;
+                flex: 0 0 auto;
+            }
+
+            .lineage-tab.active {
+                border-bottom-color: var(--warm);
+                border-left: none;
+            }
+
+            .lineage-tab .tab-ordinal {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .panel-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .panel-content p {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav">
+    <a href="../index.html" class="nav-name"><img src="../assets/images/logo_main.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
+    <div class="nav-center-line"></div>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li class="nav-close"><button onclick="closeMenu()" aria-label="Close menu">&times;</button></li>
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown">
+            <a href="#" class="active">About</a>
+            <ul class="dropdown">
+                <li><a href="../about/about-rinpoche.html">About Kundeling Tatsak Rinpoche</a></li>
+                <li><a href="../about/buddhism.html">Buddhism</a></li>
+                <li><a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a></li>
+                <li><a href="../about/gelugpa.html">Gelugpa Sect</a></li>
+                <li><a href="index.html" class="active">Lineage</a></li>
+            </ul>
+        </li>
+        <li><a href="../teachings/index.html">Teachings</a></li>
+        <li><a href="../schedule.html">Schedule</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+        <li><a href="../news/index.html">News</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a> / <a href="#">About</a> / Lineage
+    </div>
+    <h1>Lineage</h1>
+    <p class="subtitle">The Kundeling Tatsak Jedrung Hutoktu Nomun Khan</p>
+    <div class="header-rule"></div>
+</header>
+
+<!-- ── INTRODUCTION ── -->
+<section class="lineage-intro fade-in">
+    <p>His Eminence the Kundeling Tatsak Jedrung Hutoktu Nomun Khan represents a revered lineage of Lamas, distinguished for their profound influence and storied legacies. Widely celebrated across Tibet, India, China, and Mongolia, they are known for their pivotal contributions to Buddhism and their dual roles as spiritual leaders and political figures. The lineage of Kundeling Tatsak Rinpoche, spanning from the era of Trichen Baso Choekyi Gyaltsen to the present day, serves as an enduring testament to their universally acclaimed virtuous deeds. Each generation has left an indelible mark characterized by extraordinary accomplishments, unwavering dedication to His Holiness the Dalai Lama, and an unwavering commitment to the dissemination of Buddha Dharma alongside political leadership.</p>
+
+    <p>The great Buddhist Master Baso Choekyi Gyaltsen, who was the first incarnation in the lineage of H.E. the Kundeling Tatsak Jedrung Hutoktu Nomun Khan was born in 1402. Baso Chokyi Gyaltsen remains an eminent figure in Tibetan Buddhist history, revered for his profound teachings, unwavering commitment to the Dharma, and his significant contributions to both spiritual and secular realms.</p>
+
+    <p>The 1st Dalai Lama, Gedun Drup, the 1st Panchen Lama, Khedrub Je, and the 1st Kundeling Tatsak Baso Choekyi Gyaltsen were all principal disciples of Je Tsongkhapa, the founder of the Gelugpa sect. They have significant relationship among them that, When Fifth Gaden Tripa, Je Lodoe Choekyong requested the First Dalai Lama to be the Sixth Ganden Tripa. However, Gendun Drup declined the offer and instead recommended that Baso Choekyi Gyaltsen to take his place praising his enormous contribution to Buddha Dharma and his authoritative learning, realization, wisdom, and fame. Therefore, at the request of Gendun Drup, Choeje Lodoe Choekyong and many others, Baso became the Sixth Ganden Tripa or the Holder of the Ganden Throne. And also, Baso Choekyi Gyaltsen was the younger brother of the 1st Panchen Lama, Khedrup Je from whom Je Baso received many sacred teachings.</p>
+
+    <p>In accordance with a prophecy from Manjushri to Tokden Jampel Gyatso, he gave the secret Ear-Whispered teachings to Baso Choeje alone with a strict instruction to keep the teaching confidential. And Khedrup Je also gave the secret oral transmission to Baso Choeje alone. Henceforth Baso Choeje became a custodian of this secret oral transmission. He is also a significant holder in the line of oral transmission of Gedhen Chod emanated from Manjushri, given to him by Tokden Jampel Gyatso. He passed away in 1473. Not only did he leave a great legacy at that time but later also, throughout his successive reincarnations, served as unparalleled Regent of Tibet twice at different times, recognized the Ninth and Thirteenth H.H. the Dalai Lamas without the need for Golden Urn Method, and played the crucial role of tutor to the Eleventh and Thirteenth Dalai Lamas.</p>
+
+    <p>The influence of His Eminence Kundeling Tatsak Rinpoche's lineage extended way beyond Tibet, as the lineage has even served as Chief Spiritual Advisor to the emperor of China and a king of Mongol at times. And has also held the prestigious position of abbot of the Yonghe Gong (Palace of Eternal Peace, built in 1694) in Beijing. Even today, H. E. 13th Kundeling Tatsak Rinpoche travels wide across the globe giving teachings and promoting ethical values.</p>
+
+    <p>Throughout many centuries, the Lamas within the lineage of Baso Choekyi Gyaltsen/Tatsak Jedrungs Hutoktu have dedicated themselves tirelessly promoting the teachings of Buddha. They have not only served sentient beings but have also demonstrated exceptional leadership in diverse political contexts, earning a place of unwavering faith within the hearts of the people.</p>
+
+    <p><strong>Secondly, the short historical transmission of the lineage as follows;</strong></p>
+</section>
+
+<!-- ── TABBED LINEAGE ── -->
+<div class="lineage-container fade-in">
+
+    <!-- Sidebar Tabs -->
+    <aside class="lineage-sidebar">
+        <button class="lineage-tab active" data-tab="1">
+            <span class="tab-ordinal">First</span>
+            Baso Choekyi Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="2">
+            <span class="tab-ordinal">Second</span>
+            Phakwon Lhakyab
+        </button>
+        <button class="lineage-tab" data-tab="3">
+            <span class="tab-ordinal">Third</span>
+            Choekyi Gyalpo of Khotan
+        </button>
+        <button class="lineage-tab" data-tab="4">
+            <span class="tab-ordinal">Fourth</span>
+            Lhawang Choeyi Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="5">
+            <span class="tab-ordinal">Fifth</span>
+            Ngawang Choekyi Wangchuk
+        </button>
+        <button class="lineage-tab" data-tab="6">
+            <span class="tab-ordinal">Sixth</span>
+            Ngawang Konchok Tenpai Nyima
+        </button>
+        <button class="lineage-tab" data-tab="7">
+            <span class="tab-ordinal">Seventh</span>
+            Lobsang Palden Tenpai Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="8">
+            <span class="tab-ordinal">Eighth</span>
+            Regent Yeshi Lobsang Tenpai Gonpo
+        </button>
+        <button class="lineage-tab" data-tab="9">
+            <span class="tab-ordinal">Ninth</span>
+            Ngawang Lobsang Tenpai Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="10">
+            <span class="tab-ordinal">Tenth</span>
+            Ngawang Palden Choekyi Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="11">
+            <span class="tab-ordinal">Eleventh</span>
+            Ngawang Thupten Kalsang Tenpai Dronmey
+        </button>
+        <button class="lineage-tab" data-tab="12">
+            <span class="tab-ordinal">Twelfth</span>
+            Lobsang Thubten Jigme Gyaltsen
+        </button>
+        <button class="lineage-tab" data-tab="13">
+            <span class="tab-ordinal">Thirteenth</span>
+            Jetsun Tenzin Choekyi Gyaltsen Palzangpo
+        </button>
+    </aside>
+
+    <!-- Content Panels -->
+    <div class="lineage-panels">
+
+        <!-- 1st Reincarnation -->
+        <article class="lineage-panel active" data-panel="1">
+            <div class="panel-header">
+                <h2>Baso Choekyi Gyaltsen</h2>
+                <span class="panel-dates">First Reincarnation — 1402–1473</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/1.%20Baso%20Choekyi%20Gyaltsen.jpg" alt="Baso Choekyi Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>H.H. the 1st Kundeling Tatsak Rinpoche, Trichen (The Great Gaden Throne Holder) Baso Choekyi Gyaltsen, was born in 1402 and was the younger brother of the First Panchen Lama. At a young age he became a novice monk and then a disciple of JeYabse mainly Tsongkhapa Lobsang Dakpa and Khedrub Rinpoche. After receiving all the teachings from these masters, Choekyi Gyaltsen went to meditate at a place called Baso in Tsang region, where he attained a high level of experience and realization. Therefore, he eventually came to be known as Baso Choeje.</p>
+
+                <p>Manjushri gave the deep and secret oral transmission of Guru Yoga, which enables one to attain enlightenment in a short lifetime to Je Tsongkhapa who passed it down to Tokden Jampel Gyatso and Khedrup Je. In accordance with a prophecy from Manjushri to Tokden Jampel Gyatso, he gave the secret oral transmission to Baso Choeje alone with a strict instruction to keep the teaching confidential. And Khedrup Je also gave the secret oral transmission to Baso Choeje alone. Henceforth Baso Choeje became a custodian of this secret oral transmission. He is also a significant holder in the line of oral transmission of Gedhen Chod emanated from Manjushri, given to him by Tokden Jampel Gyatso.</p>
+
+                <p>Avoiding the worldly activities, Baso Choeje engaged in a single-minded meditation on this sacred teaching when JeTsong khapa and Dorje Neljorma gave a prophesy in which they said that it would be hugely beneficial for the buddha dharma if Baso Choeje became the Gaden Tripa. At this point of time, the Fifth Gaden Tripa, Je Lodoe Choekyong, had just retired and Gendun Drup, the First H.H. Dalai Lama, was invited to be the Sixth GandenTripa. However, Gendun Drup declined the offer and instead recommended that Baso Choeje, who was the younger brother of Khedrup Je (the first Panchen Lama) to take his place praising his enormous contribution to Buddha Dharma and his authoritative learning, realization, wisdom, and fame. Therefore, at the request of Gendun Drup, Choeje Lodoe Choekyong and many others, Baso became the Sixth Ganden Tripa or the Holder of the Gaden Throne. He was invited to Tashi Lhunpo, where Gendun Drup said, "Since you are now going to occupy the seat of Je Tsongkhapa, I am going to offer you prostrations, but please do not reciprocate." Gyalwa Gendun Drup and others offered Baso Choeje their prostrations.</p>
+
+                <p>In 1463, he took the throne at Gaden Monastery. In the next eleven years he took novice and gelong vows from countless monks and nuns, and gave extensive teachings, particularly on various aspects of the Stages of the Path. He thus came to be known as the Panchen Choekyi Gyalpo or the great scholar and king of the buddha dharma. Yongzin Yeshi Gyaltsen commended, "May all who aspire to train their minds in Stages of the Path pray to Baso Choekyi Gyaltsen, who is the holder of the secret oral transmission."</p>
+
+                <p>According to a prophecy from Manjushri, Baso Choekyi Gyaltsen confidentially gave the secret oral transmission to his principal disciple Drupchen Choe Dorje, who engaged in meditation and practice on the transmission and attained enlightenment. Drupchen Choe Dorje gave the secret transmission to Gyalwa Wensapa Lobsang Dhondup, who gave it to Khedrup Sangye Yeshi, who in turn passed it down to Panchen Lobsang Choegyen. Fearing that such a highly potential transmission may decline and get broken in future, Panchen Lobsang Choegyen composed Guru Puja (Lama Choepa): the Inseparability of Bliss and Emptiness and the root text and commentary of the Gelug Mahamudra.</p>
+
+                <p>Baso Choekyi Gyaltsen passed away in 1473 with a great many auspicious and wonderous signs. He left behind a great body of work, including on Madhyamaka or the Middle Way View.</p>
+            </div>
+        </article>
+
+        <!-- 2nd Reincarnation -->
+        <article class="lineage-panel" data-panel="2">
+            <div class="panel-header">
+                <h2>Phakwon Lhakyab</h2>
+                <span class="panel-dates">Second Reincarnation — 1474–1508</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/2.%20Phakwon%20Lhakyab.jpg" alt="Phakwon Lhakyab" class="panel-image">
+            <div class="panel-content">
+                <p>Phakwon Lhakyab entered into the spiritual practice from a very tender age and has listened to the profound Dharma from many great spiritual masters like Drung Jamyang Zhonnu, Master Phakpa Lha, and Master Khenchen Dazang etc. He stayed in Drepung Monastery and has completely studied the Collected Topics on Prime Cognitions and Buddhist Philosophies under spiritual guidance of various great masters like Master Jamyang Loga and then became a great scholar. He spent a long time in solitary meditation at White House in Olkha.</p>
+            </div>
+        </article>
+
+        <!-- 3rd Reincarnation -->
+        <article class="lineage-panel" data-panel="3">
+            <div class="panel-header">
+                <h2>Choekyi Gyalpo of Khotan</h2>
+                <span class="panel-dates">Third Reincarnation — 1509–1526</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/3.%20Choekyi%20Gyalpo%20of%20Khotan.jpg" alt="Choekyi Gyalpo of Khotan" class="panel-image">
+            <div class="panel-content">
+                <p>Choekyi Gyalpo of Khotan was appreciated by everyone for his virtuous qualities of personality including his logic, appearance and wisdom. He was proficient in various fields of studies including literature, mathematics, arts and science and he also used to engage in generosity and righteous works selflessly. He possessed great qualities of an excellent personality including being very faithful to parents and devoted to Triple Gems. Thus, he was authorized as the regent or crown prince of father in the country. In due course, he effectively achieved the Stage of the Enlightenment of Union or Yuganaddha through realizing the Great Secret Vehicle Path.</p>
+            </div>
+        </article>
+
+        <!-- 4th Reincarnation -->
+        <article class="lineage-panel" data-panel="4">
+            <div class="panel-header">
+                <h2>Lhawang Choeyi Gyaltsen</h2>
+                <span class="panel-dates">Fourth Reincarnation — 1537–1604</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/4.%20Lhawang%20Choeyi%20Gyaltsen.jpg" alt="Lhawang Choeyi Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>Lhawang Choekyi Gyaltsen entered into the path of spiritual practice at a very young age and has studied under the great spiritual teachers like His Holiness the third Dalai Lama Gyalwa Sonam Gyatso, master Khedrup Tendharpa, Master Kunchen Choekyi Jungnay of Gomang etc and received and reflected completely in the fields of the Give Great Fundamental Scriptural Systems of Buddha Dharma.</p>
+
+                <p>He was appointed as Academic Visiting Debater. He taught Madhyamika or the School of Middle Way, Transcending perfections, Abhidharma or Phenomenolgy and Vinaya or monastic Discipline at japhud Monastery in Kham Province. He innovatively established a variety of gracious systems of tradition such as Intensive Sadhana or Rites and Offerings Practices of Secret Teaching Masters including Guhyasamaja, Cakrasamvara and Bhairava, Shri Kalachakra or the Wheel of Time and Sarvavidhya Vairocana and composed melodious offering songs of Chanting for Chanting for ritual practices of Nakpo Korsum.</p>
+
+                <p>He also regularly used to give the teaching of Profound Transmission with four different commentaries. The illustrious commentary known as Annotation of Ivory (Basoi Chen) from the Stages of Path to Enlightenment with Four Footnotes was also compiled by this great master. Moreover, he perfectly put the rules and regulations of Spiritual Community in practice in accordance with the Monastic Disciplinary Doctrine of Buddha and thus, he became an ornament of eyes to the Buddhist world. There are many literary works.</p>
+            </div>
+        </article>
+
+        <!-- 5th Reincarnation -->
+        <article class="lineage-panel" data-panel="5">
+            <div class="panel-header">
+                <h2>Ngawang Choekyi Wangchuk</h2>
+                <span class="panel-dates">Fifth Reincarnation — 1606–1652</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/5.%20Ngawang%20Choekyi%20Wangchuk.jpg" alt="Ngawang Choekyi Wangchuk" class="panel-image">
+            <div class="panel-content">
+                <p>Ngawang Choekyi Wangchuk unexpectedly recited the mantras of Mani, Arapatsa and Vajra Pani even before reaching the age of one. Later, he even instinctively chanted the prayers including the Boundless Compassion, All Wishes Originator and Vast Merit for many a time without being taught.</p>
+
+                <p>He offered his first haircut to His Holiness the fourth Dalai Lama Yonten Gyatso. He was given the vows of the full ordination of Bhikshu order by Panchen Choekyi Gyaltsen. He then became the spiritual as well as temporal leader of more than thirty monasteries including Japhud, Tatsak, Lhundhe with more than two thousands monks and nuns and seven thousand lay people.</p>
+
+                <p>There were numerous mastery works of painting and carving of Buddha or Bodhisattvas' images and statues designed by this master with his own fingers and intellect. There are many literary works as well.</p>
+            </div>
+        </article>
+
+        <!-- 6th Reincarnation -->
+        <article class="lineage-panel" data-panel="6">
+            <div class="panel-header">
+                <h2>Ngawang Konchok Tenpai Nyima</h2>
+                <span class="panel-dates">Sixth Reincarnation — 1653–1703</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/6.%20Ngawang%20Konchok%20Tenpai%20Nyima.jpg" alt="Ngawang Konchok Tenpai Nyima" class="panel-image">
+            <div class="panel-content">
+                <p>Ngawang Konchok Tenpai Nyima offered his first haircut to His Holiness the fifth Dalai Lama Ngawang Lobsang Gyatso and took the vows of the novice monk. With the great guidance of his holiness the Dalai Lama Lobsang Gyatso, he completely studied the Fundamental Scriptural Systems of Buddhism in Sera Je Monastery and became the Academic Visiting Debater of the Prayer Festival.</p>
+
+                <p>He received and infinite secret instructions, empowerments and oral transmissions from His Holiness the Dalai Lama. And also he seriously learned the higher Tibetan Studies. Thus, His Holiness bestowed him rewards like Spinning Parasol as an indication of great honour and also conferred more than eight hundred tittles and seals including Pashod Monastic Community, its followers and Youth Eight Parties (Zhonnu Shokgyad).</p>
+
+                <p>He visited the great Mongolian kingdoms as the representative of His Holiness the Dalai Lama and effectively made reconciliation between ethnic disputes between Khalkha and Oirat tribes and hence for the thanksgiving service for the resettlement and resolving of the conflicts and riots, he was invited to the Palace of the Emperor. He was awarded the prize of silver seal and designation.</p>
+
+                <p>He then built the glorious Ganden Namgyal Palace which is beautifully well structured in Pashod. Again, he set out for journey to Mongolia and China and extended the enlightened activities. There are number of teachings and literary works as well.</p>
+            </div>
+        </article>
+
+        <!-- 7th Reincarnation -->
+        <article class="lineage-panel" data-panel="7">
+            <div class="panel-header">
+                <h2>Lobsang Palden Tenpai Gyaltsen</h2>
+                <span class="panel-dates">Seventh Reincarnation — 1708–1758</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/7.%20Lobsang%20Palden%20Tenpai%20Gyaltsen.jpg" alt="Lobsang Palden Tenpai Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>Lobsang Palden Tenpai Gyaltsen was recognized and enthroned as the previous reincarnation of Tatsak Rinpoche at the age of five. He stayed in Gomang Monastic College and studied the scriptural Systems of Buddhist Philosophy. He received numerous empowerments and secret instructions from many great masters like Master Dorje Chang Dhonyoe Drubpa and Master Ngari Lobsang Jinpa.</p>
+
+                <p>He was offered the territories of Yulshi Kyaril as Monastic estate by Chief Miwang (Pholhanas). And also the whole of Chakzam Monastery was returned as before. The ownership of Shodho Monastery was also offered to him. In sum, subject of more than five hundred households were given as monastery estate.</p>
+
+                <p>As His Holiness recommended him to make a spiritual visit to China as per its emperor's aspiration, he asked His Holiness himself to visit for the betterment of Priest and Patron relationship, but His Holiness laid great emphasis on him to visit. Thus, he officially visited Chinese Emperor and became the abbot of the Yonghe Peace and Harmony Palace Lama Temple (Peking Yongho Gon Ganden Jingchak Ling) in Peking and enhanced the great teaching of Buddha in the country.</p>
+
+                <p>Thereby, he was honoured the title of the Abbot of Perfect Wisdom Meditation with seal, Yellow Table, Yellow Reins in recognition of his unconditionally constant noble service.</p>
+            </div>
+        </article>
+
+        <!-- 8th Reincarnation -->
+        <article class="lineage-panel" data-panel="8">
+            <div class="panel-header">
+                <h2>Regent Yeshi Lobsang Tenpai Gonpo</h2>
+                <span class="panel-dates">Eighth Reincarnation — 1760–1810</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/8.%20Regent%20Yeshi%20Lobsang%20Tenpai%20Gonpo.jpg" alt="Regent Yeshi Lobsang Tenpai Gonpo" class="panel-image">
+            <div class="panel-content">
+                <p>Gyaltsen Yeshi Lobsang Tenpai Gonpo was enthroned as the reincarnation of previous master in Pashod and then engaged in studies and practiced for many years. Later, he sat out for China and had meeting with Chinese Emperor Xei Hor. He received many teachings and empowerments from Spiritual Master Changkya Rinpoche.</p>
+
+                <p>Then he returned to Tibet and had special audience with His Holiness and received the ordained vows and trainings. Then he carried out the studies of the Buddhist teachings in Gomang monastic College of Drepung University. He also received many secrets teachings from masters like Master Kunkhyen Jigme Wangpo.</p>
+
+                <p>Then Rinpoche newly formed the Kundeling Community. He also built more than thousand images and statues of the Buddhist Spiritual Masters including Jowo Dhokham Zegyen. He also produced numerous sacred texts like writing of the translated word of Buddha in gold.</p>
+
+                <p>During the twenty years of his regency of Tibet, though China was at the peak of its power, he served Tibet effectively in terms of spirituality and Sovereignty accordingly with the vision of His Holiness the Dalai Lama by maintaining a stably steady diplomatic relationship with China.</p>
+
+                <p>Therefore, for the acknowledgment and recognizing the graduate, he was granted the settlements of Dhemdho Drungshog and three division of Tsadrong Community as monastic estate to sustain and support the old monastic seat seeing that the manpower of the subjects was weak.</p>
+
+                <p>There are three volumes of literary work.</p>
+            </div>
+        </article>
+
+        <!-- 9th Reincarnation -->
+        <article class="lineage-panel" data-panel="9">
+            <div class="panel-header">
+                <h2>Ngawang Lobsang Tenpai Gyaltsen</h2>
+                <span class="panel-dates">Ninth Reincarnation — 1811–1854</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/9.%20Ngawang%20Lobsang%20Tenpai%20Gyaltsen.jpg" alt="Ngawang Lobsang Tenpai Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>Ngawang Lobsang Tenpai Gyaltsen was consecrated on the throne of former regent in Pashod Monastery. Soon, he made a trip to Lhasa and had a meeting with Regent Tengye Ling. He then studied the major scriptural systems of Buddhism under the spiritual guidance of Master Jangtse Choeje in Gomang Monastic College.</p>
+
+                <p>Later, he received the spiritual objects of Bhikshu from Panchen Tenpai Nyima. He received the empowerments and instructions of Kalachakra, Guhyasamaja, Cakrasamvara and Vajra Bhairava from the great master Trichen Dorje Chang. He has been to Kham regions and gave numerous teachings and empowerments to the devotees. He wrote the book of the rules and regulations of Drophenling Monastery.</p>
+
+                <p>Then he went to central Tibet and became the tutor of His Holiness the 11 Dalai Lama Khedup Gyatso. Every year, he recites Padma Kathang once and he quite often says, "I wish I could be a noble Master like this in my next life".</p>
+
+                <p>There are number of literary works.</p>
+            </div>
+        </article>
+
+        <!-- 10th Reincarnation -->
+        <article class="lineage-panel" data-panel="10">
+            <div class="panel-header">
+                <h2>Ngawang Palden Choekyi Gyaltsen</h2>
+                <span class="panel-dates">Tenth Reincarnation — 1886</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/10.%20Ngawang%20Palden%20Choekyi%20Gyaltsen.jpg" alt="Ngawang Palden Choekyi Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>Ngawang Palden Choekyi Gyaltsen was openly proclaimed as the living Padma Sambhava for many times by Mahayaksha in the mass gatherings.</p>
+
+                <p>In a book called "White Tara Guru Yoga" written by this master, he accepts the claim by writing Mandi Monk Padma Sambhava as the authors name in the end. He told many remembrances about the previous life.</p>
+
+                <p>In Gomang Monastic College, he fully studied and practiced the five major Buddhist scriptural systems under the special guidance of Gedun Gyatso and has got Geshe Lharampa Degree (which is equivalent to doctorate of Buddhist Philosophy). He stayed in retreat to complete the visualization of Shri Vajra Bhairava.</p>
+
+                <p>He recognized and declared the reincarnation of thirteen Dalai Lama unmistakably without relying upon China. He also became the tutor of His Holiness the thirteen Dalai Lama.</p>
+
+                <p>He successfully ceased the epidemic known as Smallpox (Dorje Tsernae) through rites and ritual practices and services.</p>
+
+                <p>When an epidemic disease known as Smallpox or Dorje Tsenad spread and killed many people, he ceased completely and averted the unfortunate events by practicing ritual ceremonies. During the period, due to too much inflation of grains, he decided to solve the problem through reducing the price of food by issuing all the grains from the storehouse of his private residence. As a result, he was particularly well-known as the King of Five Zho or the Taksak White Smallpox in the public.</p>
+
+                <p>While performing the rites of the destructive Charms of Arten at Samye Monastery in order to overcome the Gorkha warfare, the Deity (Noejin Chenpo) appeared in real form and insistently prophesied that the safeguard of regent was seriously in danger. However, leaving every risk of own life behind, he tried all the best to save the religion and politics of the state by every means including performing the black magic and other rites without listening to the prophecy, thus becoming an invincible regents. There are also many teachings and literary works written by the master.</p>
+            </div>
+        </article>
+
+        <!-- 11th Reincarnation -->
+        <article class="lineage-panel" data-panel="11">
+            <div class="panel-header">
+                <h2>Ngawang Thupten Kalsang Tenpai Dronmey</h2>
+                <span class="panel-dates">Eleventh Reincarnation — 1888–1918</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/11.%20Ngawang%20Thupten%20Kalsang%20Tenpai%20Dronmey.jpg" alt="Ngawang Thupten Kalsang Tenpai Dronmey" class="panel-image">
+            <div class="panel-content">
+                <p>Ngawang Thupten Kalsang Tenpai Dronmey offered the first haircut to His Holiness the Dalai Lama. He has studied completely all the fundamental philosophical scriptures and got the first position in Geshe Lharampa Degree in Gomang College in Drepung Monastic University. It was conventionally apparent to everyone that his surroundings were full of fragrance acquired out of his body because of his good ethics.</p>
+
+                <p>He received numerous empowerments, oral instructions, manual guidance and authorizations of teaching from more than a dozen great tutors. He went to Kham region of eastern Tibet. To overcome the Chinese armies of Phingda, in accordance with the appeal from Kalon Lama, a governor general in Amdo sent by Central Government in Lhasa, he perfectly practiced the rites of east deity Keshtrapala and effectively averted the Chinese military force. Thus his great magical power was seen noticeably by everyone.</p>
+
+                <p>Later his fame reached far beyond mainly for the reason that the water in Dhem Watak Monastery has fully dried for many years but with his supernatural power, he restored the water and bestowed happy and joyful lives to all the creatures in the community.</p>
+            </div>
+        </article>
+
+        <!-- 12th Reincarnation -->
+        <article class="lineage-panel" data-panel="12">
+            <div class="panel-header">
+                <h2>Lobsang Thubten Jigme Gyaltsen</h2>
+                <span class="panel-dates">Twelfth Reincarnation — 1924–1956</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/12.%20Lobsang%20Thubten%20Jigme%20Gyaltsen.jpg" alt="Lobsang Thubten Jigme Gyaltsen" class="panel-image">
+            <div class="panel-content">
+                <p>Lobsang Thubten Jigme Gyaltsen offered his first hair cut ceremony to His Holiness the fourteenth Dalai Lama and received the vows one after another and undertook the full responsibilities to complete learning of all the five major fundamental scriptural systems from Buddhist epistemology and logics of Abhidharmakosa and Vinaya. He then became the Academic Visiting Debater for the Great Prayer Festival of Lhasa City. He won the first position in the Doctorate Degree of Buddhist Philosophy (Geshe Lharampa degree). He received many initiations and secret transmissions of sutra and tantric traditions from Lhatsun Dorje Chang. He completed all the stages of mantras one after another.</p>
+
+                <p>When he initiated the long life Empowerment of White Tara in the Drepa Mountain (Senior Mt.) in Lokha, every devotee gathered there has clearly seen the nectars produce from the body of Dolma Gyangthimma, the Tara who submerged on the wall. Nearby the mountain, as he dug under the rock with hands to draw puja water and got enough water for offering which is seen and available even today.</p>
+
+                <p>During his stay in retreat in Gephel Mountain, he asked "to whom should we offer the secret offering tonight; Dhachen or Nechung?" and as per suggestion from the ritual attendees, the blue smoke of burning incense of Kundeling and Nechung rose up vividly like this dharma protector who were subdued by Lobpon Rinpoche.</p>
+
+                <p>He went to China as the representative of His Holiness the fourteenth Dalai Lama for a religious conference. He received empowerments and secret instructions from Dzongsar Kyentse Rinpoche in Gerge in Tibet. He imparts many prophecies to the officials in Pashod. He also distributed public notice to decrease the debts and taxes. Sending special messenger from Central Tibet and commanded earnestly whether Dong Phakwonkhapa should be invited to Pashod Region or not. He built a marvelous statue of Wish-granting White Tara as high as a house.</p>
+            </div>
+        </article>
+
+        <!-- 13th Reincarnation -->
+        <article class="lineage-panel" data-panel="13">
+            <div class="panel-header">
+                <h2>Jetsun Tenzin Choekyi Gyaltsen Palzangpo</h2>
+                <span class="panel-dates">Thirteenth Reincarnation — Present</span>
+            </div>
+            <img src="../assets/images/gallery/previous%20Tatsak%20Rinpoche/13.%20Jetsun%20Tenzin%20Choekyi%20Gyaltsen%20Palzangpo.jpg" alt="Jetsun Tenzin Choekyi Gyaltsen Palzangpo" class="panel-image">
+            <div class="panel-content">
+                <p>The Kundeling Tatsak Jedrung Rinpoche Jetsun Tenzin Choekyi Gyaltsen Palzangpo was born as the son of Mr. Lobsang Dhodup and Mrs Chime Youdon with many miraculous signs in Lhasa in Central Tibet in 1983. He was recognized as the reincarnation of the previous Tatsak Jedrung Rinpoche as a result of perfectly matching the holy opinions of Nechung Choegyal Chenpo, the great state oracle, Lamo Tsangpa Dungthoechen and series of examinations especially carried by His Holiness the fourteenth Dalai Lama, the spiritual and temporal head of Tibet.</p>
+
+                <p>With a great confidentiality in Lhasa about the escape, Rinpoche came to India safely. By offering the first haircut to His Holiness the fourteenth Dalai Lama and blessed the name as Tenzin Choekyi Gyaltsen Palzanpo. He also composed a Long Life Prayer to His Holiness who gave him the ordination vows thus completing the initial ceremony successfully. Presenting the ceremonial welcome with burning of incense by Gomang abbot, the reincarnation candidate of Panchen Rinpoche, senior lamas and senior members of families, the enthronement function was held in the Main Prayer Hall of Nechung Drayang Dorje Ling Monastery with the presence of Ministers, secretaries, civil servants of Tibetan government in exile and offered scarf and scared articles and bestowed hand blessing and holy knots to the devotees.</p>
+
+                <p>Then he went to Rajpur to avoid summer heat for a few months during which he carried out Tibetan and English studies. He got the great honor and fortune to visit His Holiness the Dalai Lama on the function of new admission to the spiritual life in Drepung and Gomang Monastery in South India. Under the great spiritual tutor Lobsang Tsurltrim Palzangpo, he devoted attentively, persistently and courteously to study the Collected Topics (Duedra), Awareness and Knowledge (Lorig), Signs and Logics (Takrig), Ground and Path (Salam), Seventy Points (Don Dhunchu), Philosophical Tenets (Drubtha), Perfections (Parchin) and became the Academics Visiting Debator of Perfections Discourse (Parchin). During the fourth batch of Perfection Discourse, he became the Core Debator (Tsoklang) with His Holiness the fourteenth Dalai Lama's tutor Ling Rinpoche reincarnation in the middle of the great congregation of monks at Drepung Monastic University. Then Rinpoche studied the Buddhist Scriptural Systems including Madyamika, the Middle Way School of thought, Abhidharmakosa, the Phenomenology and Vinaya, the monastic Discipline.</p>
+
+                <p>Even during the routine prayer sessions and ceremonies in the morning and evening, Rinpoche sits completely well with great discipline. He sits in the meditation form like a statue without moving his head and body here and there. He often comes to debate hall as an ordinary monk without any arrogance except during the important religious activities. During short breaks, he studies the Tibetan Literature including root text of poetry and grammar under Lhu Lharampa Geshe Khechok. He is also studying the modern education steadfastly and very hard with master Passang.</p>
+
+                <p>Acting on the valuable guidance and advice of His Holiness, he has joined many seminars and summits on science and religion. Likewise, he addressed many governmental meetings and gave excellent talks to Tibetan people to follow the Middle Way Approach which is the sole policy of our government and also gave remarkable guidance to Tibetan public to stay harmoniously and stand in unity without any bias based on religious sects and region.</p>
+
+                <p>He has also listened and received infinite teachings and instructions of Sutra and Tantric Tradition including the initiations of the great empowerment of Kalachakra, Guhuasamjha, Cakrasamvara and Bhairava and the Sixteen Spheres of Kadhampa Lineage from His Holiness the fourteenth Dalai Lama, the spiritual and temporal head of Tibet and Champion of world peace. He restored successfully the lineage of the Hundred Empowerments of the Rosary of Gems (Wangua Norbu Trengwa), which has vanished in Gelug Tradition, by receiving the complete empowerments from His Holiness the Sakya Trinzin Rinpoche, the pillar of the Khon Lineage Holder of Tibetan Buddhist Tradition. Besides, he also promoted importance of practicing the religious harmony within sects.</p>
+
+                <p>He is now promoting the precious teaching of Buddha by raising the ever rising Victorious Banner of Buddhist World while he is fully engaged in the listening and receiving of the ceaseless empowerments, secret instructions and teachings from many great spiritual masters like His Eminence Ganden Trichen Dorje Chang Ridzon Rinpoche, Master Tenpa Tenzin, the chief Abbot of Drepung Monastic University, Dakpa Tritull Rinpoche, the Former Abbot of Sermey Monastery and Spiritual Master Dhenma Lochoe Rinpoche.</p>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="f-name"><img src="../assets/images/logo.png" alt="Kundeling Tatsak Rinpoche"></span>
+                <p>Preserving and transmitting the precious Dharma teachings for the benefit of all sentient beings throughout the world.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="index.html">Lineage</a></li>
+                    <li><a href="../teachings/index.html">Teachings</a></li>
+                    <li><a href="../schedule.html">Schedule</a></li>
+                    <li><a href="../gallery/index.html">Gallery</a></li>
+                    <li><a href="../news/index.html">News</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <div class="footer-about-item">
+                    <a href="../about/about-rinpoche.html">Kundeling Tatsak Rinpoche</a>
+                    <p class="about-desc">Biography of Baso Chokyi Gyaltsen, the First Kundeling Tatsak</p>
+                </div>
+                <div class="footer-about-item">
+                    <a href="../about/buddhism.html">Buddhism</a>
+                    <p class="about-desc">The path to enlightenment through ethical living and wisdom</p>
+                </div>
+                <div class="footer-about-item">
+                    <a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a>
+                    <p class="about-desc">A living tradition woven into the heart of Tibetan life</p>
+                </div>
+                <div class="footer-about-item">
+                    <a href="../about/gelugpa.html">Gelugpa Sect</a>
+                    <p class="about-desc">The Way of Virtue founded by Je Tsongkhapa</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Dharma</h4>
+                <ul>
+                    <li><a href="#">Video Teachings</a></li>
+                    <li><a href="#">Publications</a></li>
+                    <li><a href="#">Study Programs</a></li>
+                    <li><a href="#">Meditation Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <address>
+                    Kundeling Ladrang<br>
+                    Dre Gomang Lama Camp No. 2<br>
+                    Mundgod, Karnataka<br>
+                    India<br><br>
+                    <a href="mailto:kundelingladrang@gmail.com">kundelingladrang@gmail.com</a>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kundeling Tatsak Rinpoche. All rights reserved.</p>
+            <span class="mantra">Om Mani Padme Hum</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/global.js"></script>
+<script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.lineage-tab');
+    const panels = document.querySelectorAll('.lineage-panel');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.tab;
+
+            // Update tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update panels
+            panels.forEach(p => p.classList.remove('active'));
+            document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
