@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Participation in one of the world's largest spiritual gatherings.">
+    <title>Kumbh Mela — Photo Gallery — Kundeling Tatsak Rinpoche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <style>
+        .collection-header {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 80px 48px 0;
+        }
+        .collection-meta {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--warm);
+            margin-bottom: 8px;
+        }
+        .collection-header h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+        .collection-header p {
+            font-size: 0.9rem;
+            color: var(--stone-500);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .collection-count {
+            font-size: 0.75rem;
+            color: var(--stone-400);
+            font-weight: 500;
+        }
+        .collection-rule {
+            width: 40px;
+            height: 2px;
+            background: var(--warm);
+            margin-top: 24px;
+            opacity: 0.6;
+        }
+        .collection-grid {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 48px 48px 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .collection-item {
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            display: block;
+            box-shadow: 0 2px 10px rgba(28,25,23,0.06);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .collection-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(28,25,23,0.14);
+        }
+        .collection-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .collection-back {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 48px 100px;
+        }
+        .collection-back a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--stone-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .collection-back a:hover {
+            color: var(--warm);
+        }
+        .collection-back .arrow {
+            transition: transform 0.3s ease;
+        }
+        .collection-back a:hover .arrow {
+            transform: translateX(-4px);
+        }
+        @media (max-width: 1024px) {
+            .collection-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .collection-header { padding: 64px 24px 0; }
+            .collection-grid { padding: 32px 24px 32px; gap: 16px; }
+            .collection-back { padding: 0 24px 80px; }
+            .collection-header h1 { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .collection-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a href="../index.html" class="nav-name"><img src="../assets/images/logo_main.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+        <li class="nav-close"><button onclick="closeMenu()" aria-label="Close menu">&times;</button></li>
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="#">About</a><ul class="dropdown"><li><a href="../about/about-rinpoche.html">About Kundeling Tatsak Rinpoche</a></li><li><a href="../about/buddhism.html">Buddhism</a></li><li><a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a></li><li><a href="../about/gelugpa.html">Gelugpa Sect</a></li><li><a href="../lineage/index.html">Lineage</a></li></ul></li>
+        <li><a href="../teachings/index.html">Teachings</a></li>
+        <li><a href="../schedule.html">Schedule</a></li>
+        <li><a href="index.html" class="active">Gallery</a></li>
+        <li><a href="../news/index.html">News</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<header class="page-header">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="index.html">Gallery</a><span>/</span>Kumbh Mela</div>
+    <h1>Photo Gallery</h1>
+    <p class="subtitle">Moments from the life and travels of His Eminence Kundeling Tatsak Rinpoche</p>
+    <div class="header-rule"></div>
+</header>
+
+<div class="collection-header fade-in">
+    <div class="collection-meta">India</div>
+    <h1>Kumbh Mela</h1>
+    <p>Participation in one of the world's largest spiritual gatherings.</p>
+    <span class="collection-count">7 photos</span>
+    <div class="collection-rule"></div>
+</div>
+
+<div class="collection-grid">
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/42a984ae-2e62-4301-9b45-11607fb1d9ce-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/42a984ae-2e62-4301-9b45-11607fb1d9ce-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/703bf20b-8ee8-4c7d-b3dc-5d30098c5216-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/703bf20b-8ee8-4c7d-b3dc-5d30098c5216-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/754ce69f-b5a2-4272-9aab-a9793ae5019f-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/754ce69f-b5a2-4272-9aab-a9793ae5019f-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/d5d3242b-68a6-4fc2-9e33-15c67dcdbff6-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/d5d3242b-68a6-4fc2-9e33-15c67dcdbff6-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/ed340466-fe3b-49b0-a4f9-7df5c9f78e26-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/ed340466-fe3b-49b0-a4f9-7df5c9f78e26-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/f24c5292-7569-4b5b-b352-463110c05663-1-scaled-e1757487582400.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/f24c5292-7569-4b5b-b352-463110c05663-1-scaled-e1757487582400.jpg" alt="Kumbh Mela" loading="lazy"></a>
+        <a class="collection-item" href="../assets/images/gallery/Kumbmela/f24c5292-7569-4b5b-b352-463110c05663-scaled.jpg" target="_blank"><img src="../assets/images/gallery/Kumbmela/f24c5292-7569-4b5b-b352-463110c05663-scaled.jpg" alt="Kumbh Mela" loading="lazy"></a>
+</div>
+
+<div class="collection-back fade-in">
+    <a href="index.html"><span class="arrow">&larr;</span> Back to Gallery</a>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="f-name"><img src="../assets/images/logo.png" alt="Kundeling Tatsak Rinpoche"></span>
+                <p>Preserving and transmitting the precious Dharma teachings for the benefit of all sentient beings throughout the world.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/kundeling_tatsak_rinpoche/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.facebook.com/p/Kundeling-Tatsak-Rinpoche-100063684593364/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.youtube.com/@kundelingtatsakrinpoche6907" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul><li><a href="../index.html">Home</a></li><li><a href="../lineage/index.html">Lineage</a></li><li><a href="../teachings/index.html">Teachings</a></li><li><a href="../schedule.html">Schedule</a></li><li><a href="../gallery/index.html">Gallery</a></li><li><a href="../news/index.html">News</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>About</h4><div class="footer-about-item"><a href="../about/about-rinpoche.html">Kundeling Tatsak Rinpoche</a><p class="about-desc">Biography of Baso Chokyi Gyaltsen, the First Kundeling Tatsak</p></div><div class="footer-about-item"><a href="../about/buddhism.html">Buddhism</a><p class="about-desc">The path to enlightenment through ethical living and wisdom</p></div><div class="footer-about-item"><a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a><p class="about-desc">A living tradition woven into the heart of Tibetan life</p></div><div class="footer-about-item"><a href="../about/gelugpa.html">Gelugpa Sect</a><p class="about-desc">The Way of Virtue founded by Je Tsongkhapa</p></div></div>

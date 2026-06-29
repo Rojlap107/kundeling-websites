@@ -59,12 +59,21 @@ function toggleMenu() {
     }
 }
 
-// ── Mobile dropdown toggle ──
+// ── Dropdown toggle (click-to-open on all screen sizes) ──
 document.querySelectorAll('.has-dropdown > a').forEach(link => {
     link.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            this.parentElement.classList.toggle('dropdown-open');
+        e.preventDefault();
+        const parent = this.parentElement;
+        const wasOpen = parent.classList.contains('dropdown-open');
+        resetDropdowns();
+        if (!wasOpen) {
+            parent.classList.add('dropdown-open');
         }
     });
+});
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.has-dropdown')) {
+        resetDropdowns();
+    }
 });

@@ -1,0 +1,66 @@
+[
+    {
+        "month": "Apr",
+        "day": "12",
+        "title": "Lamrim Weekend Teaching",
+        "location": "Kundeling Monastery",
+        "tag": "teaching",
+        "description": "A comprehensive two-day teaching on the Stages of the Path to Enlightenment, covering the practices of the three scopes."
+    },
+    {
+        "month": "Apr",
+        "day": "28",
+        "title": "Vesak Celebration & Blessing",
+        "location": "Kundeling Monastery",
+        "tag": "ceremony",
+        "description": "Annual celebration commemorating the birth, enlightenment, and parinirvana of Lord Buddha, with special prayers and blessings."
+    },
+    {
+        "month": "May",
+        "day": "10",
+        "title": "Seven-Day Meditation Retreat",
+        "location": "Dharma Retreat Centre",
+        "tag": "retreat",
+        "description": "An immersive week-long retreat combining shamatha and vipashyana meditation practices under the guidance of His Eminence."
+    },
+    {
+        "month": "Jun",
+        "day": "5",
+        "title": "Avalokiteshvara Empowerment",
+        "location": "European Dharma Centre",
+        "tag": "ceremony",
+        "description": "Initiation into the practice of Avalokiteshvara, the Buddha of Compassion, including transmission of the six-syllable mantra."
+    },
+    {
+        "month": "Jul",
+        "day": "20",
+        "title": "Summer Philosophy Intensive",
+        "location": "Kundeling Monastery",
+        "tag": "teaching",
+        "description": "An intensive study program covering Madhyamaka philosophy and the Middle Way view, suitable for intermediate and advanced students."
+    },
+    {
+        "month": "Aug",
+        "day": "15",
+        "title": "Nagarjuna's Fundamental Wisdom Teaching",
+        "location": "Kundeling Monastery",
+        "tag": "teaching",
+        "description": "A detailed commentary on Nagarjuna's Mulamadhyamakakarika, exploring the profound view of emptiness and dependent origination."
+    },
+    {
+        "month": "Sep",
+        "day": "1-7",
+        "title": "Autumn Retreat & Silent Meditation",
+        "location": "Dharma Retreat Centre",
+        "tag": "retreat",
+        "description": "A silent retreat combining structured meditation sessions, contemplation, and personal practice in a supportive environment."
+    },
+    {
+        "month": "Oct",
+        "day": "15",
+        "title": "Lama Chopa Ceremony",
+        "location": "Kundeling Monastery",
+        "tag": "ceremony",
+        "description": "The Guru Puja offering ceremony, a profound practice of devotion and accumulation of merit within the Gelugpa tradition."
+    }
+]

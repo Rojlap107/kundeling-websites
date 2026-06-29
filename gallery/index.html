@@ -9,6 +9,98 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/global.css">
     <style>
+        /* ── PAGE-SPECIFIC: Portrait horizontal strip ── */
+        .portrait-strip {
+            margin: 40px 0 72px;
+            position: relative;
+        }
+
+        .photo-row {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 32px 48px;
+            scroll-snap-type: x proximity;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .photo-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .strip-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--stone-200);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            transition: all 0.3s ease;
+            color: var(--stone-600);
+        }
+
+        .strip-arrow:hover {
+            background: white;
+            box-shadow: 0 4px 16px rgba(28, 25, 23, 0.12);
+            color: var(--stone-800);
+        }
+
+        .strip-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .strip-arrow-left {
+            left: 10px;
+        }
+
+        .strip-arrow-right {
+            right: 10px;
+        }
+
+        .strip-arrow.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .photo-item {
+            flex: 0 0 auto;
+            height: 360px;
+            border-radius: 12px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 16px rgba(28, 25, 23, 0.08);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.45s ease;
+            transform-origin: center center;
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            height: 100%;
+            width: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.07);
+            box-shadow: 0 18px 44px rgba(28, 25, 23, 0.2);
+            z-index: 2;
+            position: relative;
+        }
+
         /* ── PAGE-SPECIFIC: Gallery grid ── */
         .gallery-section {
             max-width: 1080px;
@@ -128,11 +220,36 @@
             .gallery-note {
                 padding: 0 24px 80px;
             }
+
+            .portrait-strip {
+                margin: 24px 0 56px;
+            }
+
+            .photo-row {
+                padding: 24px;
+                gap: 16px;
+            }
+
+            .photo-item {
+                height: 260px;
+            }
+
+            .photo-item:hover {
+                transform: scale(1.04);
+            }
+
+            .strip-arrow {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
             .gallery-card {
                 padding: 22px 20px;
+            }
+
+            .photo-item {
+                height: 220px;
             }
         }
     </style>
@@ -142,7 +259,6 @@
 <!-- ── NAVIGATION ── -->
 <nav id="mainNav">
     <a href="../index.html" class="nav-name"><img src="../assets/images/logo_main.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
-    <div class="nav-center-line"></div>
     <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
@@ -179,6 +295,27 @@
     <div class="header-rule"></div>
 </header>
 
+<!-- ── PORTRAIT STRIP (horizontal scroll, no heading) ── -->
+<section class="portrait-strip fade-in">
+    <button class="strip-arrow strip-arrow-left hidden" aria-label="Scroll left" onclick="scrollStrip(-1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="strip-arrow strip-arrow-right" aria-label="Scroll right" onclick="scrollStrip(1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+    <div class="photo-row">
+        <a class="photo-item" href="../assets/images/gallery/portrait/13-scaled.jpg" target="_blank"><img src="../assets/images/gallery/portrait/13-scaled.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/DSC01108-scaled.jpg" target="_blank"><img src="../assets/images/gallery/portrait/DSC01108-scaled.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/2025-08-16-Leh12_SR57814.jpg" target="_blank"><img src="../assets/images/gallery/portrait/2025-08-16-Leh12_SR57814.jpg" alt="His Eminence Kundeling Tatsak Rinpoche in Leh" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/IMG_9484-scaled-e1759744601670.jpg" target="_blank"><img src="../assets/images/gallery/portrait/IMG_9484-scaled-e1759744601670.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/bf3c971d-d1f9-40c2-9211-456b0e094d7a-scaled-e1758350572300.jpg" target="_blank"><img src="../assets/images/gallery/portrait/bf3c971d-d1f9-40c2-9211-456b0e094d7a-scaled-e1758350572300.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/bcabe649-b26b-4cbf-9e8d-18bfb6b6ee9f-scaled-e1757916556891.jpg" target="_blank"><img src="../assets/images/gallery/portrait/bcabe649-b26b-4cbf-9e8d-18bfb6b6ee9f-scaled-e1757916556891.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/mmexport1587457493084-scaled.jpg" target="_blank"><img src="../assets/images/gallery/portrait/mmexport1587457493084-scaled.jpg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/image00011-scaled.jpeg" target="_blank"><img src="../assets/images/gallery/portrait/image00011-scaled.jpeg" alt="Portrait of His Eminence Kundeling Tatsak Rinpoche" loading="lazy"></a>
+        <a class="photo-item" href="../assets/images/gallery/portrait/13th-kunling.jpg" target="_blank"><img src="../assets/images/gallery/portrait/13th-kunling.jpg" alt="His Eminence the 13th Kundeling Tatsak Rinpoche" loading="lazy"></a>
+    </div>
+</section>
+
 <!-- ── GALLERY CONTENT ── -->
 <section class="gallery-section">
 
@@ -187,109 +324,109 @@
         <h2 class="category-title">Travels &amp; Teachings</h2>
         <div class="category-rule"></div>
         <div class="gallery-grid">
-            <a href="#" class="gallery-card">
+            <a href="andorra.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Andorra</h3>
                 <p class="card-desc">Diplomatic and spiritual engagements in the Principality of Andorra.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="boston-us.html" class="gallery-card">
                 <span class="card-category">United States</span>
                 <h3>Boston, US</h3>
                 <p class="card-desc">Teachings and community visits in Boston, Massachusetts.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="california-us.html" class="gallery-card">
                 <span class="card-category">United States</span>
                 <h3>California, US</h3>
                 <p class="card-desc">Dharma activities and meetings on the West Coast.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="connecticut-us.html" class="gallery-card">
                 <span class="card-category">United States</span>
                 <h3>Connecticut, US</h3>
                 <p class="card-desc">Teachings and blessings in Connecticut.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="czech-republic.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Czech Republic</h3>
                 <p class="card-desc">Dharma teachings and cultural engagements in the Czech Republic.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="germany.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Germany</h3>
                 <p class="card-desc">Teachings and community gatherings across Germany.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="italy.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Italy</h3>
                 <p class="card-desc">Interfaith dialogue and meeting with His Holiness the Pope.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="kumbh-mela.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Kumbh Mela</h3>
                 <p class="card-desc">Participation in one of the world's largest spiritual gatherings.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="mon-tawang.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Mon Tawang</h3>
                 <p class="card-desc">Visit to the historic Tawang Monastery in Arunachal Pradesh.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="mongolia.html" class="gallery-card">
                 <span class="card-category">Asia</span>
                 <h3>Mongolia</h3>
                 <p class="card-desc">Reviving Buddhist connections in the land of Chinggis Khan.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="nepal.html" class="gallery-card">
                 <span class="card-category">Asia</span>
                 <h3>Nepal</h3>
                 <p class="card-desc">Pilgrimages and teachings in the birthplace of the Buddha.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="new-york.html" class="gallery-card">
                 <span class="card-category">United States</span>
                 <h3>New York</h3>
                 <p class="card-desc">Dharma events and community engagements in New York.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="russia.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Russia</h3>
                 <p class="card-desc">Teachings and Buddhist revival activities in Russia.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="spain.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Spain</h3>
                 <p class="card-desc">Dharma teachings and cultural exchanges in Spain.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="sri-lanka.html" class="gallery-card">
                 <span class="card-category">Asia</span>
                 <h3>Sri Lanka</h3>
                 <p class="card-desc">Inter-tradition Buddhist dialogue in Sri Lanka.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="switzerland.html" class="gallery-card">
                 <span class="card-category">Europe</span>
                 <h3>Switzerland</h3>
                 <p class="card-desc">Teachings and community visits in Switzerland.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="ladakh.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Ladakh</h3>
                 <p class="card-desc">Spiritual activities in the high-altitude Buddhist heartland.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="gaya.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Gaya</h3>
                 <p class="card-desc">Pilgrimage to Bodh Gaya, the site of the Buddha's enlightenment.</p>
@@ -303,31 +440,31 @@
         <h2 class="category-title">With Dignitaries</h2>
         <div class="category-rule"></div>
         <div class="gallery-grid">
-            <a href="#" class="gallery-card">
+            <a href="with-his-holiness-the-dalai-lama.html" class="gallery-card">
                 <span class="card-category">Spiritual Leaders</span>
                 <h3>With His Holiness the Dalai Lama</h3>
                 <p class="card-desc">Meetings and audiences with His Holiness the 14th Dalai Lama.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="with-prime-minister-modi.html" class="gallery-card">
                 <span class="card-category">Political Leaders</span>
                 <h3>With Prime Minister Modi</h3>
                 <p class="card-desc">Engagements with the Prime Minister of India.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="politicians-and-people.html" class="gallery-card">
                 <span class="card-category">Dignitaries</span>
                 <h3>Politicians &amp; People</h3>
                 <p class="card-desc">Meetings with political figures and community leaders.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="taiwan-embassy-delhi.html" class="gallery-card">
                 <span class="card-category">Diplomacy</span>
                 <h3>Taiwan Embassy, Delhi</h3>
                 <p class="card-desc">Diplomatic engagements at the Taiwan Embassy in New Delhi.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="tyc-meeting.html" class="gallery-card">
                 <span class="card-category">Community</span>
                 <h3>TYC Meeting</h3>
                 <p class="card-desc">Engagements with the Tibetan Youth Congress.</p>
@@ -341,19 +478,19 @@
         <h2 class="category-title">Community</h2>
         <div class="category-rule"></div>
         <div class="gallery-grid">
-            <a href="#" class="gallery-card">
+            <a href="mundgod-india.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Mundgod, India</h3>
                 <p class="card-desc">Life and activities at the Tibetan settlement in Mundgod, Karnataka.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="tcv.html" class="gallery-card">
                 <span class="card-category">Education</span>
                 <h3>TCV</h3>
                 <p class="card-desc">Visits and events at Tibetan Children's Village schools.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="chauntra.html" class="gallery-card">
                 <span class="card-category">India</span>
                 <h3>Chauntra</h3>
                 <p class="card-desc">Community activities at the Chauntra settlement in Himachal Pradesh.</p>
@@ -367,13 +504,13 @@
         <h2 class="category-title">Portraits &amp; Heritage</h2>
         <div class="category-rule"></div>
         <div class="gallery-grid">
-            <a href="#" class="gallery-card">
+            <a href="portrait.html" class="gallery-card">
                 <span class="card-category">Portraits</span>
                 <h3>Portrait</h3>
                 <p class="card-desc">Formal and informal portraits of His Eminence Kundeling Tatsak Rinpoche.</p>
                 <span class="card-meta">Photo Collection</span>
             </a>
-            <a href="#" class="gallery-card">
+            <a href="previous-tatsak-rinpoche.html" class="gallery-card">
                 <span class="card-category">Heritage</span>
                 <h3>Previous Tatsak Rinpoche</h3>
                 <p class="card-desc">Historical photographs of previous incarnations of Tatsak Rinpoche.</p>
@@ -384,11 +521,6 @@
 
 </section>
 
-<!-- ── GALLERY NOTE ── -->
-<div class="gallery-note fade-in">
-    <p>Individual gallery pages with full photo collections are being prepared.</p>
-</div>
-
 <!-- ── FOOTER ── -->
 <footer>
     <div class="footer-inner">
@@ -397,20 +529,14 @@
                 <span class="f-name"><img src="../assets/images/logo.png" alt="Kundeling Tatsak Rinpoche"></span>
                 <p>Preserving and transmitting the precious Dharma teachings for the benefit of all sentient beings throughout the world.</p>
                 <div class="footer-socials">
-                    <a href="#" aria-label="X (Twitter)">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
+                    <a href="https://www.instagram.com/kundeling_tatsak_rinpoche/" target="_blank" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
-                    <a href="#" aria-label="Facebook">
+                    <a href="https://www.facebook.com/p/Kundeling-Tatsak-Rinpoche-100063684593364/" target="_blank" aria-label="Facebook">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
-                    <a href="#" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@kundelingtatsakrinpoche6907" target="_blank" aria-label="YouTube">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Telegram">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     </a>
                 </div>
             </div>
@@ -446,13 +572,6 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Dharma</h4>
-                <ul>
-                    <li><a href="#">Video Teachings</a></li>
-                    <li><a href="#">Publications</a></li>
-                    <li><a href="#">Study Programs</a></li>
-                    <li><a href="#">Meditation Guide</a></li>
-                </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
@@ -473,6 +592,26 @@
 </footer>
 
 <script src="../assets/js/global.js"></script>
+<script>
+(function() {
+    var row = document.querySelector('.photo-row');
+    var leftBtn = document.querySelector('.strip-arrow-left');
+    var rightBtn = document.querySelector('.strip-arrow-right');
+
+    function updateArrows() {
+        leftBtn.classList.toggle('hidden', row.scrollLeft <= 10);
+        rightBtn.classList.toggle('hidden', row.scrollLeft + row.clientWidth >= row.scrollWidth - 10);
+    }
+
+    row.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+
+    window.scrollStrip = function(dir) {
+        row.scrollBy({ left: dir * row.clientWidth * 0.7, behavior: 'smooth' });
+    };
+})();
+</script>
 
 </body>
 </html>
