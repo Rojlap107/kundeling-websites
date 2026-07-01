@@ -248,6 +248,19 @@
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
         .lightbox-nav.hidden { opacity: 0; pointer-events: none; }
+        .lightbox-caption {
+            position: fixed;
+            bottom: 52px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            padding: 0 24px;
+            line-height: 1.5;
+        }
         .lightbox-counter {
             position: fixed;
             bottom: 24px;
@@ -337,6 +350,7 @@
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
+    <div class="lightbox-caption" id="lbCaption"></div>
     <div class="lightbox-counter" id="lbCounter"></div>
 </div>
 
@@ -377,12 +391,21 @@
         '../assets/images/gallery/Andora/DSC01343-2-scaled.jpg',
         '../assets/images/gallery/Andora/DSC01373-scaled.jpg',
     ];
+    const captions = [
+        'His Eminence during a diplomatic spiritual engagement in the Principality of Andorra.',
+        'A moment of contemplation and connection during the Andorra visit.',
+        'Rinpoche meeting with dignitaries and well-wishers in Andorra.',
+        'Spreading the message of compassion and wisdom in Andorra.',
+        'A historic visit bridging Tibetan Buddhism and European culture.',
+        'His Eminence sharing Dharma teachings with the Andorran community.',
+    ];
     let current = 0;
-    const lb      = document.getElementById('lightbox');
-    const lbImg   = document.getElementById('lightboxImg');
-    const lbPrev  = document.getElementById('lbPrev');
-    const lbNext  = document.getElementById('lbNext');
-    const lbCount = document.getElementById('lbCounter');
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightboxImg');
+    const lbPrev   = document.getElementById('lbPrev');
+    const lbNext   = document.getElementById('lbNext');
+    const lbCount  = document.getElementById('lbCounter');
+    const lbCaption = document.getElementById('lbCaption');
 
     function openLightbox(index) {
         current = index;
@@ -416,6 +439,7 @@
 
     function updateLightbox() {
         lbCount.textContent = (current + 1) + ' / ' + images.length;
+        lbCaption.textContent = captions[current] || '';
         lbPrev.classList.toggle('hidden', current === 0);
         lbNext.classList.toggle('hidden', current === images.length - 1);
     }
