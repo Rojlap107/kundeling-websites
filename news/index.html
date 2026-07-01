@@ -138,10 +138,117 @@
             transform: translateX(4px);
         }
 
+        /* ── Filter bar ── */
+        .news-filters {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 48px 40px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-search {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .filter-search svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--stone-400);
+            pointer-events: none;
+        }
+
+        .filter-search input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-search input::placeholder { color: var(--stone-400); }
+
+        .filter-search input:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-select {
+            padding: 11px 36px 11px 14px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+            backdrop-filter: blur(8px);
+            -webkit-appearance: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-select:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-clear {
+            padding: 11px 18px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            color: var(--stone-500);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .filter-clear.visible { display: block; }
+        .filter-clear:hover { background: var(--stone-100); color: var(--stone-700); }
+
+        .news-empty {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--stone-400);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .news-empty.visible { display: block; }
+
+        .news-count {
+            font-size: 0.78rem;
+            color: var(--stone-400);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 0 4px;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .news-listing {
-                padding: 64px 24px 80px;
+                padding: 48px 24px 80px;
+            }
+
+            .news-filters {
+                padding: 0 24px 32px;
             }
 
             .news-article {
@@ -163,6 +270,8 @@
             .news-article h2 {
                 font-size: 1rem;
             }
+
+            .filter-search { min-width: 100%; }
         }
     </style>
 </head>
@@ -170,7 +279,7 @@
 
 <!-- ── NAVIGATION ── -->
 <nav id="mainNav">
-    <a href="../index.html" class="nav-name"><img src="../assets/images/logo_main.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
+    <a href="../index.html" class="nav-name"><img src="../assets/images/Kundeling Tatsak Rinpoche Logo.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
     <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
@@ -189,7 +298,7 @@
         </li>
         <li><a href="../teachings/index.html">Teachings</a></li>
         <li><a href="../schedule.html">Schedule</a></li>
-        <li><a href="../gallery/index.html">Gallery</a></li>
+        <li class="has-dropdown"><a href="#">Gallery</a><ul class="dropdown"><li><a href="../gallery/index.html">Photo Gallery</a></li><li><a href="../gallery/videos.html">Video Gallery</a></li></ul></li>
         <li><a href="index.html" class="active">News</a></li>
         <li><a href="../contact.html">Contact</a></li>
     </ul>
@@ -207,10 +316,32 @@
     <div class="header-rule"></div>
 </header>
 
-<!-- ── NEWS LISTING ── -->
-<section class="news-listing">
+<!-- ── FILTERS ── -->
+<div class="news-filters">
+    <div class="filter-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="newsSearch" placeholder="Search news…" autocomplete="off">
+    </div>
+    <select class="filter-select" id="yearFilter">
+        <option value="">All Years</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+    </select>
+    <select class="filter-select" id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="teaching">Teaching</option>
+        <option value="ceremony">Ceremony</option>
+        <option value="diplomatic">Diplomatic</option>
+        <option value="events">Events</option>
+    </select>
+    <button class="filter-clear" id="filterClear" onclick="clearFilters()">Clear filters</button>
+    <span class="news-count" id="newsCount"></span>
+</div>
 
-    <article class="news-article fade-in">
+<!-- ── NEWS LISTING ── -->
+<section class="news-listing" id="newsListing">
+
+    <article class="news-article fade-in" data-year="2025" data-category="ceremony" data-text="mundgod tibetan settlement commemorates 36th anniversary nobel peace prize dalai lama india">
         <a href="mundgod-nobel-peace-prize-anniversary.html" class="news-article-image"><img src="../assets/images/gallery/Mundgod, India/Screenshot-2026-03-13-at-11.53.46-AM-scaled-e1773386031227.png" alt="Nobel Peace Prize Anniversary commemoration at Mundgod" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">December 10, 2025</span>
@@ -220,7 +351,7 @@
         </div>
     </article>
 
-    <article class="news-article fade-in">
+    <article class="news-article fade-in" data-year="2025" data-category="events" data-text="tcv chauntra 21st founding anniversary tibetan children village school men tsee khang pharmaceutical">
         <a href="tcv-chauntra-anniversary-men-tsee-khang.html" class="news-article-image"><img src="../assets/images/gallery/Chaundara/TCV/IMG_0966-scaled-e1773298881295.jpg" alt="TCV Chauntra 21st anniversary" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">November 21, 2025</span>
@@ -230,7 +361,7 @@
         </div>
     </article>
 
-    <article class="news-article fade-in">
+    <article class="news-article fade-in" data-year="2025" data-category="diplomatic" data-text="meritxell basilica andorra health minister rector diplomatic meeting">
         <a href="meritxell-basilica-andorran-health-minister.html" class="news-article-image"><img src="../assets/images/gallery/Andora/DSC01305-scaled.jpg" alt="Meeting at Meritxell Basilica, Andorra" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">November 2025</span>
@@ -240,7 +371,7 @@
         </div>
     </article>
 
-    <article class="news-article fade-in">
+    <article class="news-article fade-in" data-year="2025" data-category="teaching" data-text="european dharma centres teaching tour lamrim stages path europe">
         <a href="european-dharma-centres-teaching-tour.html" class="news-article-image"><img src="../assets/images/gallery/Spain/Barcelona/DSC09706-scaled-e1768890541582.jpg" alt="Teaching at European Dharma Centre" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">October 2025</span>
@@ -250,7 +381,7 @@
         </div>
     </article>
 
-    <article class="news-article fade-in">
+    <article class="news-article fade-in" data-year="2025" data-category="ceremony" data-text="annual prayers kundeling monastery mundgod monks ceremony">
         <a href="annual-prayers-kundeling-monastery.html" class="news-article-image"><img src="../assets/images/gallery/Mundgod, India/Screenshot-2026-03-13-at-11.44.21-AM-scaled.png" alt="Annual prayers at Kundeling Monastery" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">September 2025</span>
@@ -260,7 +391,7 @@
         </div>
     </article>
 
-    <article class="news-article fade-in">
+    <article class="news-article fade-in" data-year="2025" data-category="teaching" data-text="ladakh teaching engagements blessing ceremonies communities visit">
         <a href="ladakh-teaching-engagements.html" class="news-article-image"><img src="../assets/images/gallery/ladakh/404021ce-37ff-4229-8418-5519b3d5c037-scaled.jpg" alt="Teaching engagements in Ladakh" loading="lazy"></a>
         <div class="news-article-body">
             <span class="news-article-date">August 2025</span>
@@ -270,79 +401,64 @@
         </div>
     </article>
 
+    <div class="news-empty" id="newsEmpty">No articles match your search.</div>
+
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <span class="f-name"><img src="../assets/images/logo.png" alt="Kundeling Tatsak Rinpoche"></span>
-                <p>Preserving and transmitting the precious Dharma teachings for the benefit of all sentient beings throughout the world.</p>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/kundeling_tatsak_rinpoche/" target="_blank" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/p/Kundeling-Tatsak-Rinpoche-100063684593364/" target="_blank" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@kundelingtatsakrinpoche6907" target="_blank" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Navigate</h4>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../lineage/index.html">Lineage</a></li>
-                    <li><a href="../teachings/index.html">Teachings</a></li>
-                    <li><a href="../schedule.html">Schedule</a></li>
-                    <li><a href="../gallery/index.html">Gallery</a></li>
-                    <li><a href="../news/index.html">News</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>About</h4>
-                <div class="footer-about-item">
-                    <a href="../about/about-rinpoche.html">Kundeling Tatsak Rinpoche</a>
-                    <p class="about-desc">Biography of Baso Chokyi Gyaltsen, the First Kundeling Tatsak</p>
-                </div>
-                <div class="footer-about-item">
-                    <a href="../about/buddhism.html">Buddhism</a>
-                    <p class="about-desc">The path to enlightenment through ethical living and wisdom</p>
-                </div>
-                <div class="footer-about-item">
-                    <a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a>
-                    <p class="about-desc">A living tradition woven into the heart of Tibetan life</p>
-                </div>
-                <div class="footer-about-item">
-                    <a href="../about/gelugpa.html">Gelugpa Sect</a>
-                    <p class="about-desc">The Way of Virtue founded by Je Tsongkhapa</p>
-                </div>
-            </div>
-            <div class="footer-col">
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <address>
-                    Kundeling Ladrang<br>
-                    Dre Gomang Lama Camp No. 2<br>
-                    Mundgod, Karnataka<br>
-                    India<br><br>
-                    <a href="mailto:kundelingladrang@gmail.com">kundelingladrang@gmail.com</a>
-                </address>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Kundeling Tatsak Rinpoche. All rights reserved.</p>
-            <span class="mantra">Om Mani Padme Hum</span>
-        </div>
+    <div class="footer-social-only">
+        <a href="https://www.instagram.com/kundeling_tatsak_rinpoche/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.facebook.com/p/Kundeling-Tatsak-Rinpoche-100063684593364/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.youtube.com/@kundelingtatsakrinpoche6907" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
     </div>
+    <div class="footer-copyright">&copy; 2026 Kundeling Tatsak Rinpoche. All rights reserved.</div>
 </footer>
 
 <script src="../assets/js/global.js"></script>
+<script>
+    const articles = Array.from(document.querySelectorAll('.news-article'));
+    const searchInput = document.getElementById('newsSearch');
+    const yearSelect = document.getElementById('yearFilter');
+    const categorySelect = document.getElementById('categoryFilter');
+    const clearBtn = document.getElementById('filterClear');
+    const countEl = document.getElementById('newsCount');
+    const emptyEl = document.getElementById('newsEmpty');
+
+    function filterNews() {
+        const query = searchInput.value.toLowerCase().trim();
+        const year = yearSelect.value;
+        const category = categorySelect.value;
+        let visible = 0;
+
+        articles.forEach(a => {
+            const matchText = !query || a.dataset.text.includes(query)
+                || a.querySelector('h2').textContent.toLowerCase().includes(query)
+                || a.querySelector('p').textContent.toLowerCase().includes(query);
+            const matchYear = !year || a.dataset.year === year;
+            const matchCat = !category || a.dataset.category === category;
+            const show = matchText && matchYear && matchCat;
+            a.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        const isFiltered = query || year || category;
+        clearBtn.classList.toggle('visible', !!isFiltered);
+        countEl.textContent = isFiltered ? `${visible} result${visible !== 1 ? 's' : ''}` : '';
+        emptyEl.classList.toggle('visible', visible === 0);
+    }
+
+    function clearFilters() {
+        searchInput.value = '';
+        yearSelect.value = '';
+        categorySelect.value = '';
+        filterNews();
+    }
+
+    searchInput.addEventListener('input', filterNews);
+    yearSelect.addEventListener('change', filterNews);
+    categorySelect.addEventListener('change', filterNews);
+</script>
 
 </body>
 </html>

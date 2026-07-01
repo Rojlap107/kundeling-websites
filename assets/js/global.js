@@ -15,27 +15,31 @@ const fadeObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 fadeEls.forEach(el => fadeObserver.observe(el));
 
-// ── Nav scroll detection (only for hero nav) + logo spin ──
+// ── Nav hide-on-scroll-down, show-on-scroll-up ──
 const nav = document.getElementById('mainNav');
-const navLogo = document.querySelector('.nav-logo');
 
 if (nav) {
     let lastScroll = 0;
-    let logoRotation = 0;
 
     window.addEventListener('scroll', () => {
-        // Hero nav: toggle solid background
-        if (nav.classList.contains('nav-hero')) {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
+        const current = window.scrollY;
+        const delta = current - lastScroll;
+
+        // Scrolled state (for logo colour switch on hero pages)
+        if (current > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
 
-        // Scroll-linked logo spin
-        if (navLogo) {
-            const delta = window.scrollY - lastScroll;
-            logoRotation += delta * 0.3;
-            navLogo.style.transform = 'rotate(' + logoRotation + 'deg)';
-            lastScroll = window.scrollY;
+        // Hide when scrolling down past 120px, show when scrolling up
+        if (current > 120 && delta > 0) {
+            nav.classList.add('nav-hidden');
+        } else if (delta < 0) {
+            nav.classList.remove('nav-hidden');
         }
+
+        lastScroll = current <= 0 ? 0 : current;
     }, { passive: true });
 }
 
