@@ -56,7 +56,24 @@
             transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease; cursor: pointer;
         }
         .photo-item img { height: 100%; width: auto; display: block; object-fit: cover; pointer-events: none; }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item:hover { box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item { position: relative; overflow: hidden; }
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+            padding: 28px 16px 14px;
+            transform: translateY(100%);
+            transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+        }
+        .photo-item:hover .photo-caption { transform: translateY(0); }
+        .photo-caption p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.45;
+            margin: 0;
+        }
         .collection-back { max-width: 1080px; margin: 0 auto; padding: 0 48px 100px; }
         .collection-back a {
             display: inline-flex; align-items: center; gap: 8px;
@@ -142,28 +159,28 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <div class="photo-row" id="photoRow">
-        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09706-scaled-e1768890541582.jpg" alt="Spain — Photo 1" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09750-scaled.jpg" alt="Spain — Photo 2" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09775-scaled.jpg" alt="Spain — Photo 3" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09808-2-scaled.jpg" alt="Spain — Photo 4" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09833-scaled.jpg" alt="Spain — Photo 5" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09872-scaled.jpg" alt="Spain — Photo 6" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09875-scaled.jpg" alt="Spain — Photo 7" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09902-scaled.jpg" alt="Spain — Photo 8" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09908-scaled.jpg" alt="Spain — Photo 9" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09922-scaled.jpg" alt="Spain — Photo 10" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/Spain/DSC00085-scaled.jpg" alt="Spain — Photo 11" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/Spain/DSC00183-scaled.jpg" alt="Spain — Photo 12" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/Spain/DSC00322-scaled.jpg" alt="Spain — Photo 13" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/Spain/DSC00388-scaled.jpg" alt="Spain — Photo 14" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/Spain/DSC00484-scaled.jpg" alt="Spain — Photo 15" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/Spain/DSC00639-scaled.jpg" alt="Spain — Photo 16" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/Spain/DSC00709-scaled.jpg" alt="Spain — Photo 17" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/Spain/DSC00728-scaled.jpg" alt="Spain — Photo 18" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/Spain/DSC01000-scaled.jpg" alt="Spain — Photo 19" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/Spain/DSC01154-scaled.jpg" alt="Spain — Photo 20" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/Spain/DSC01270-scaled.jpg" alt="Spain — Photo 21" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/Spain/IMG_0360-scaled.jpg" alt="Spain — Photo 22" loading="lazy"></div>
+        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09706-scaled-e1768890541582.jpg" alt="Spain — Photo 1" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Spain and Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09750-scaled.jpg" alt="Spain — Photo 2" loading="lazy"><div class="photo-caption"><p>A Dharma teaching at a Buddhist centre in Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09775-scaled.jpg" alt="Spain — Photo 3" loading="lazy"><div class="photo-caption"><p>Rinpoche sharing wisdom with practitioners in Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09808-2-scaled.jpg" alt="Spain — Photo 4" loading="lazy"><div class="photo-caption"><p>Moments of connection and Dharma in the vibrant city of Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09833-scaled.jpg" alt="Spain — Photo 5" loading="lazy"><div class="photo-caption"><p>His Eminence engaging with the Spanish Dharma community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09872-scaled.jpg" alt="Spain — Photo 6" loading="lazy"><div class="photo-caption"><p>A cherished visit to Dharma centres across Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09875-scaled.jpg" alt="Spain — Photo 7" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Spain and Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09902-scaled.jpg" alt="Spain — Photo 8" loading="lazy"><div class="photo-caption"><p>A Dharma teaching at a Buddhist centre in Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09908-scaled.jpg" alt="Spain — Photo 9" loading="lazy"><div class="photo-caption"><p>Rinpoche sharing wisdom with practitioners in Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/Spain/Barcelona/DSC09922-scaled.jpg" alt="Spain — Photo 10" loading="lazy"><div class="photo-caption"><p>Moments of connection and Dharma in the vibrant city of Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/Spain/DSC00085-scaled.jpg" alt="Spain — Photo 11" loading="lazy"><div class="photo-caption"><p>His Eminence engaging with the Spanish Dharma community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/Spain/DSC00183-scaled.jpg" alt="Spain — Photo 12" loading="lazy"><div class="photo-caption"><p>A cherished visit to Dharma centres across Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/Spain/DSC00322-scaled.jpg" alt="Spain — Photo 13" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Spain and Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/Spain/DSC00388-scaled.jpg" alt="Spain — Photo 14" loading="lazy"><div class="photo-caption"><p>A Dharma teaching at a Buddhist centre in Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/Spain/DSC00484-scaled.jpg" alt="Spain — Photo 15" loading="lazy"><div class="photo-caption"><p>Rinpoche sharing wisdom with practitioners in Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/Spain/DSC00639-scaled.jpg" alt="Spain — Photo 16" loading="lazy"><div class="photo-caption"><p>Moments of connection and Dharma in the vibrant city of Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/Spain/DSC00709-scaled.jpg" alt="Spain — Photo 17" loading="lazy"><div class="photo-caption"><p>His Eminence engaging with the Spanish Dharma community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/Spain/DSC00728-scaled.jpg" alt="Spain — Photo 18" loading="lazy"><div class="photo-caption"><p>A cherished visit to Dharma centres across Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/Spain/DSC01000-scaled.jpg" alt="Spain — Photo 19" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Spain and Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/Spain/DSC01154-scaled.jpg" alt="Spain — Photo 20" loading="lazy"><div class="photo-caption"><p>A Dharma teaching at a Buddhist centre in Barcelona.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/Spain/DSC01270-scaled.jpg" alt="Spain — Photo 21" loading="lazy"><div class="photo-caption"><p>Rinpoche sharing wisdom with practitioners in Spain.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/Spain/IMG_0360-scaled.jpg" alt="Spain — Photo 22" loading="lazy"><div class="photo-caption"><p>Moments of connection and Dharma in the vibrant city of Barcelona.</p></div></div>
     </div>
     <button class="strip-arrow strip-arrow-right" id="arrowRight" onclick="scrollStrip(1)" aria-label="Scroll right">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -179,7 +196,7 @@
     <button class="lightbox-nav lightbox-prev" id="lbPrev" onclick="lightboxNav(-1)" aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""></div>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""><div class="photo-caption"><p>His Eminence engaging with the Spanish Dharma community.</p></div></div>
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>

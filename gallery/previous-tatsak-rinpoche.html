@@ -56,7 +56,24 @@
             transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease; cursor: pointer;
         }
         .photo-item img { height: 100%; width: auto; display: block; object-fit: cover; pointer-events: none; }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item:hover { box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item { position: relative; overflow: hidden; }
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+            padding: 28px 16px 14px;
+            transform: translateY(100%);
+            transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+        }
+        .photo-item:hover .photo-caption { transform: translateY(0); }
+        .photo-caption p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.45;
+            margin: 0;
+        }
         .collection-back { max-width: 1080px; margin: 0 auto; padding: 0 48px 100px; }
         .collection-back a {
             display: inline-flex; align-items: center; gap: 8px;
@@ -142,31 +159,31 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <div class="photo-row" id="photoRow">
-        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/1. Baso Choekyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 1" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/10. Ngawang Palden Choekyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 2" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/11. Ngawang Thupten Kalsang Tenpai Dronmey.jpg" alt="Previous Tatsak Rinpoches — Photo 3" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/12. Lobsang Thubten Jigme Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 4" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/13. Jetsun Tenzin Choekyi Gyaltsen Palzangpo.jpg" alt="Previous Tatsak Rinpoches — Photo 5" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/2. Phakwon Lhakyab.jpg" alt="Previous Tatsak Rinpoches — Photo 6" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/3. Choekyi Gyalpo of Khotan.jpg" alt="Previous Tatsak Rinpoches — Photo 7" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/4. Lhawang Choeyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 8" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/5. Ngawang Choekyi Wangchuk.jpg" alt="Previous Tatsak Rinpoches — Photo 9" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/6. Ngawang Konchok Tenpai Nyima.jpg" alt="Previous Tatsak Rinpoches — Photo 10" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/7. Lobsang Palden Tenpai Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 11" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/8. Regent Yeshi Lobsang Tenpai Gonpo.jpg" alt="Previous Tatsak Rinpoches — Photo 12" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/9. Ngawang Lobsang Tenpai Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 13" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/Thatsak-Jedung-11th.jpg" alt="Previous Tatsak Rinpoches — Photo 14" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/kundeling-rinpoche-12th.jpg" alt="Previous Tatsak Rinpoches — Photo 15" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/10540556_860028247361379_5758553525479266667_n.jpeg" alt="Previous Tatsak Rinpoches — Photo 16" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Baso-Chokyi-Gyaltsen-1st-Tatsag.png" alt="Previous Tatsak Rinpoches — Photo 17" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Gyaltsab-Yeshe-Lobzang-Tenpai-Gonpo.png" alt="Previous Tatsak Rinpoches — Photo 18" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/IMG_9912-scaled.jpg" alt="Previous Tatsak Rinpoches — Photo 19" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/IMG_9912-scaled0.jpg" alt="Previous Tatsak Rinpoches — Photo 20" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Jetsun-Lhakyab-2nd-Tatsag.png" alt="Previous Tatsak Rinpoches — Photo 21" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Lhawang-Chokyi-Gyaltsen.png" alt="Previous Tatsak Rinpoches — Photo 22" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(22)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Liyul-Chokyi-Gyalpo.png" alt="Previous Tatsak Rinpoches — Photo 23" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(23)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Lobzang-Palden-Gyaltsen.png" alt="Previous Tatsak Rinpoches — Photo 24" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(24)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Ngagwang-Konchog-Nyima.png" alt="Previous Tatsak Rinpoches — Photo 25" loading="lazy"></div>
+        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/1. Baso Choekyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 1" loading="lazy"><div class="photo-caption"><p>A sacred thangka depicting one of the Kundeling Tatsak incarnations.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/10. Ngawang Palden Choekyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 2" loading="lazy"><div class="photo-caption"><p>A representation of the illustrious Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/11. Ngawang Thupten Kalsang Tenpai Dronmey.jpg" alt="Previous Tatsak Rinpoches — Photo 3" loading="lazy"><div class="photo-caption"><p>One of the thirteen incarnations of Kundeling Tatsak Rinpoche.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/12. Lobsang Thubten Jigme Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 4" loading="lazy"><div class="photo-caption"><p>A precious image from the six-century Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/13. Jetsun Tenzin Choekyi Gyaltsen Palzangpo.jpg" alt="Previous Tatsak Rinpoches — Photo 5" loading="lazy"><div class="photo-caption"><p>A historical depiction of a past Kundeling Tatsak Jedrung.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/2. Phakwon Lhakyab.jpg" alt="Previous Tatsak Rinpoches — Photo 6" loading="lazy"><div class="photo-caption"><p>An artistic rendering of a revered Kundeling Tatsak incarnation.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/3. Choekyi Gyalpo of Khotan.jpg" alt="Previous Tatsak Rinpoches — Photo 7" loading="lazy"><div class="photo-caption"><p>A sacred thangka depicting one of the Kundeling Tatsak incarnations.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/4. Lhawang Choeyi Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 8" loading="lazy"><div class="photo-caption"><p>A representation of the illustrious Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/5. Ngawang Choekyi Wangchuk.jpg" alt="Previous Tatsak Rinpoches — Photo 9" loading="lazy"><div class="photo-caption"><p>One of the thirteen incarnations of Kundeling Tatsak Rinpoche.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/6. Ngawang Konchok Tenpai Nyima.jpg" alt="Previous Tatsak Rinpoches — Photo 10" loading="lazy"><div class="photo-caption"><p>A precious image from the six-century Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/7. Lobsang Palden Tenpai Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 11" loading="lazy"><div class="photo-caption"><p>A historical depiction of a past Kundeling Tatsak Jedrung.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/8. Regent Yeshi Lobsang Tenpai Gonpo.jpg" alt="Previous Tatsak Rinpoches — Photo 12" loading="lazy"><div class="photo-caption"><p>An artistic rendering of a revered Kundeling Tatsak incarnation.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/9. Ngawang Lobsang Tenpai Gyaltsen.jpg" alt="Previous Tatsak Rinpoches — Photo 13" loading="lazy"><div class="photo-caption"><p>A sacred thangka depicting one of the Kundeling Tatsak incarnations.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/Thatsak-Jedung-11th.jpg" alt="Previous Tatsak Rinpoches — Photo 14" loading="lazy"><div class="photo-caption"><p>A representation of the illustrious Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/kundeling-rinpoche-12th.jpg" alt="Previous Tatsak Rinpoches — Photo 15" loading="lazy"><div class="photo-caption"><p>One of the thirteen incarnations of Kundeling Tatsak Rinpoche.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/10540556_860028247361379_5758553525479266667_n.jpeg" alt="Previous Tatsak Rinpoches — Photo 16" loading="lazy"><div class="photo-caption"><p>A precious image from the six-century Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Baso-Chokyi-Gyaltsen-1st-Tatsag.png" alt="Previous Tatsak Rinpoches — Photo 17" loading="lazy"><div class="photo-caption"><p>A historical depiction of a past Kundeling Tatsak Jedrung.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Gyaltsab-Yeshe-Lobzang-Tenpai-Gonpo.png" alt="Previous Tatsak Rinpoches — Photo 18" loading="lazy"><div class="photo-caption"><p>An artistic rendering of a revered Kundeling Tatsak incarnation.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/IMG_9912-scaled.jpg" alt="Previous Tatsak Rinpoches — Photo 19" loading="lazy"><div class="photo-caption"><p>A sacred thangka depicting one of the Kundeling Tatsak incarnations.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/IMG_9912-scaled0.jpg" alt="Previous Tatsak Rinpoches — Photo 20" loading="lazy"><div class="photo-caption"><p>A representation of the illustrious Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Jetsun-Lhakyab-2nd-Tatsag.png" alt="Previous Tatsak Rinpoches — Photo 21" loading="lazy"><div class="photo-caption"><p>One of the thirteen incarnations of Kundeling Tatsak Rinpoche.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Lhawang-Chokyi-Gyaltsen.png" alt="Previous Tatsak Rinpoches — Photo 22" loading="lazy"><div class="photo-caption"><p>A precious image from the six-century Kundeling Tatsak lineage.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(22)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Liyul-Chokyi-Gyalpo.png" alt="Previous Tatsak Rinpoches — Photo 23" loading="lazy"><div class="photo-caption"><p>A historical depiction of a past Kundeling Tatsak Jedrung.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(23)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Lobzang-Palden-Gyaltsen.png" alt="Previous Tatsak Rinpoches — Photo 24" loading="lazy"><div class="photo-caption"><p>An artistic rendering of a revered Kundeling Tatsak incarnation.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(24)"><img src="../assets/images/gallery/previous Tatsak Rinpoche/thangka/Ngagwang-Konchog-Nyima.png" alt="Previous Tatsak Rinpoches — Photo 25" loading="lazy"><div class="photo-caption"><p>A sacred thangka depicting one of the Kundeling Tatsak incarnations.</p></div></div>
     </div>
     <button class="strip-arrow strip-arrow-right" id="arrowRight" onclick="scrollStrip(1)" aria-label="Scroll right">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -182,7 +199,7 @@
     <button class="lightbox-nav lightbox-prev" id="lbPrev" onclick="lightboxNav(-1)" aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""></div>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""><div class="photo-caption"><p>A representation of the illustrious Kundeling Tatsak lineage.</p></div></div>
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>

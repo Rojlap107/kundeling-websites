@@ -56,7 +56,24 @@
             transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease; cursor: pointer;
         }
         .photo-item img { height: 100%; width: auto; display: block; object-fit: cover; pointer-events: none; }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item:hover { box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item { position: relative; overflow: hidden; }
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+            padding: 28px 16px 14px;
+            transform: translateY(100%);
+            transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+        }
+        .photo-item:hover .photo-caption { transform: translateY(0); }
+        .photo-caption p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.45;
+            margin: 0;
+        }
         .collection-back { max-width: 1080px; margin: 0 auto; padding: 0 48px 100px; }
         .collection-back a {
             display: inline-flex; align-items: center; gap: 8px;
@@ -142,13 +159,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <div class="photo-row" id="photoRow">
-        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Russia/Kalmykia/b1e052d9-3369-4bae-8de7-67e7d19bd79f-scaled.jpg" alt="Russia — Photo 1" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Russia/Kalmykia/db8c05e5-2080-4ede-bc1c-af368112638b-scaled.jpg" alt="Russia — Photo 2" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Russia/Kalmykia/f958729e-3b35-4fe3-83fe-ccc4f7515bd4-scaled.jpg" alt="Russia — Photo 3" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Russia/Tuva Republic/2428336f-bc03-4bdb-80ef-76d090b524a2-scaled.jpg" alt="Russia — Photo 4" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Russia/Tuva Republic/5a14a340-0603-4b64-ad3a-d0b38c4276d1-scaled.jpg" alt="Russia — Photo 5" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Russia/Tuva Republic/fade98eb-9446-40d0-85e4-d809a022f2f0-scaled.jpg" alt="Russia — Photo 6" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Russia/Tuva Republic/kundenling-rinpoche-news1.jpg" alt="Russia — Photo 7" loading="lazy"></div>
+        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Russia/Kalmykia/b1e052d9-3369-4bae-8de7-67e7d19bd79f-scaled.jpg" alt="Russia — Photo 1" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Russia and the Kalmykia region.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Russia/Kalmykia/db8c05e5-2080-4ede-bc1c-af368112638b-scaled.jpg" alt="Russia — Photo 2" loading="lazy"><div class="photo-caption"><p>A Dharma teaching offered to the Buddhist community in Russia.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Russia/Kalmykia/f958729e-3b35-4fe3-83fe-ccc4f7515bd4-scaled.jpg" alt="Russia — Photo 3" loading="lazy"><div class="photo-caption"><p>Rinpoche with devoted practitioners in the Russian Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Russia/Tuva Republic/2428336f-bc03-4bdb-80ef-76d090b524a2-scaled.jpg" alt="Russia — Photo 4" loading="lazy"><div class="photo-caption"><p>Moments of Dharma revival and blessings in Russia.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Russia/Tuva Republic/5a14a340-0603-4b64-ad3a-d0b38c4276d1-scaled.jpg" alt="Russia — Photo 5" loading="lazy"><div class="photo-caption"><p>His Eminence engaging with the ancient Buddhist tradition of Kalmykia.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Russia/Tuva Republic/fade98eb-9446-40d0-85e4-d809a022f2f0-scaled.jpg" alt="Russia — Photo 6" loading="lazy"><div class="photo-caption"><p>A warm reception from the devoted Buddhist community of Russia.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Russia/Tuva Republic/kundenling-rinpoche-news1.jpg" alt="Russia — Photo 7" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Russia and the Kalmykia region.</p></div></div>
     </div>
     <button class="strip-arrow strip-arrow-right" id="arrowRight" onclick="scrollStrip(1)" aria-label="Scroll right">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -164,7 +181,7 @@
     <button class="lightbox-nav lightbox-prev" id="lbPrev" onclick="lightboxNav(-1)" aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""></div>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""><div class="photo-caption"><p>A Dharma teaching offered to the Buddhist community in Russia.</p></div></div>
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>

@@ -56,7 +56,24 @@
             transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease; cursor: pointer;
         }
         .photo-item img { height: 100%; width: auto; display: block; object-fit: cover; pointer-events: none; }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item:hover { box-shadow: 0 18px 44px rgba(28,25,23,0.18); }
+        .photo-item { position: relative; overflow: hidden; }
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+            padding: 28px 16px 14px;
+            transform: translateY(100%);
+            transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+        }
+        .photo-item:hover .photo-caption { transform: translateY(0); }
+        .photo-caption p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.45;
+            margin: 0;
+        }
         .collection-back { max-width: 1080px; margin: 0 auto; padding: 0 48px 100px; }
         .collection-back a {
             display: inline-flex; align-items: center; gap: 8px;
@@ -142,55 +159,55 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <div class="photo-row" id="photoRow">
-        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Swiss/DSC07004-scaled.jpg" alt="Switzerland — Photo 1" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Swiss/DSC07013-scaled.jpg" alt="Switzerland — Photo 2" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Swiss/DSC07131-scaled.jpg" alt="Switzerland — Photo 3" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Swiss/DSC07278-scaled.jpg" alt="Switzerland — Photo 4" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Swiss/DSC07297-scaled.jpg" alt="Switzerland — Photo 5" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Swiss/DSC07650-scaled.jpg" alt="Switzerland — Photo 6" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Swiss/DSC07663-scaled.jpg" alt="Switzerland — Photo 7" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/Swiss/DSC07666-scaled.jpg" alt="Switzerland — Photo 8" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/Swiss/DSC07669-scaled.jpg" alt="Switzerland — Photo 9" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/Swiss/DSC07681-scaled.jpg" alt="Switzerland — Photo 10" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/Swiss/DSC07691-scaled.jpg" alt="Switzerland — Photo 11" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/Swiss/DSC07696-scaled.jpg" alt="Switzerland — Photo 12" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/Swiss/DSC07707-scaled.jpg" alt="Switzerland — Photo 13" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/Swiss/DSC07715-scaled.jpg" alt="Switzerland — Photo 14" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/Swiss/DSC07720-scaled.jpg" alt="Switzerland — Photo 15" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/Swiss/DSC07745-scaled.jpg" alt="Switzerland — Photo 16" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/Swiss/DSC07748-scaled.jpg" alt="Switzerland — Photo 17" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/Swiss/DSC07755-scaled.jpg" alt="Switzerland — Photo 18" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/Swiss/DSC07767-scaled.jpg" alt="Switzerland — Photo 19" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/Swiss/DSC07788-scaled.jpg" alt="Switzerland — Photo 20" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/Swiss/DSC07795-scaled.jpg" alt="Switzerland — Photo 21" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/Swiss/DSC07809-scaled.jpg" alt="Switzerland — Photo 22" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(22)"><img src="../assets/images/gallery/Swiss/DSC07820-scaled.jpg" alt="Switzerland — Photo 23" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(23)"><img src="../assets/images/gallery/Swiss/DSC07848-scaled.jpg" alt="Switzerland — Photo 24" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(24)"><img src="../assets/images/gallery/Swiss/DSC07928-scaled.jpg" alt="Switzerland — Photo 25" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(25)"><img src="../assets/images/gallery/Swiss/DSC07945-scaled.jpg" alt="Switzerland — Photo 26" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(26)"><img src="../assets/images/gallery/Swiss/DSC07962-scaled.jpg" alt="Switzerland — Photo 27" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(27)"><img src="../assets/images/gallery/Swiss/DSC07974-scaled.jpg" alt="Switzerland — Photo 28" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(28)"><img src="../assets/images/gallery/Swiss/DSC08083-scaled.jpg" alt="Switzerland — Photo 29" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(29)"><img src="../assets/images/gallery/Swiss/DSC08098-scaled.jpg" alt="Switzerland — Photo 30" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(30)"><img src="../assets/images/gallery/Swiss/DSC08160-scaled.jpg" alt="Switzerland — Photo 31" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(31)"><img src="../assets/images/gallery/Swiss/DSC08231-scaled.jpg" alt="Switzerland — Photo 32" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(32)"><img src="../assets/images/gallery/Swiss/DSC08255-scaled.jpg" alt="Switzerland — Photo 33" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(33)"><img src="../assets/images/gallery/Swiss/DSC08335-scaled.jpg" alt="Switzerland — Photo 34" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(34)"><img src="../assets/images/gallery/Swiss/DSC08362-scaled.jpg" alt="Switzerland — Photo 35" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(35)"><img src="../assets/images/gallery/Swiss/DSC08393-scaled-e1768805113961.jpg" alt="Switzerland — Photo 36" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(36)"><img src="../assets/images/gallery/Swiss/DSC08451-scaled.jpg" alt="Switzerland — Photo 37" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(37)"><img src="../assets/images/gallery/Swiss/DSC08551-scaled.jpg" alt="Switzerland — Photo 38" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(38)"><img src="../assets/images/gallery/Swiss/DSC08567-scaled.jpg" alt="Switzerland — Photo 39" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(39)"><img src="../assets/images/gallery/Swiss/DSC08829-scaled.jpg" alt="Switzerland — Photo 40" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(40)"><img src="../assets/images/gallery/Swiss/DSC08870-scaled.jpg" alt="Switzerland — Photo 41" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(41)"><img src="../assets/images/gallery/Swiss/DSC08980-scaled.jpg" alt="Switzerland — Photo 42" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(42)"><img src="../assets/images/gallery/Swiss/DSC09068-1-scaled.jpg" alt="Switzerland — Photo 43" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(43)"><img src="../assets/images/gallery/Swiss/DSC09068-scaled.jpg" alt="Switzerland — Photo 44" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(44)"><img src="../assets/images/gallery/Swiss/IMG_0045-scaled.jpg" alt="Switzerland — Photo 45" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(45)"><img src="../assets/images/gallery/Swiss/IMG_0047-scaled.jpg" alt="Switzerland — Photo 46" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(46)"><img src="../assets/images/gallery/Swiss/IMG_0060-scaled-e1767852980772.jpg" alt="Switzerland — Photo 47" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(47)"><img src="../assets/images/gallery/Swiss/IMG_0062-scaled.jpg" alt="Switzerland — Photo 48" loading="lazy"></div>
-        <div class="photo-item" onclick="openLightbox(48)"><img src="../assets/images/gallery/Swiss/IMG_0065-scaled.jpg" alt="Switzerland — Photo 49" loading="lazy"></div>
+        <div class="photo-item" onclick="openLightbox(0)"><img src="../assets/images/gallery/Swiss/DSC07004-scaled.jpg" alt="Switzerland — Photo 1" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(1)"><img src="../assets/images/gallery/Swiss/DSC07013-scaled.jpg" alt="Switzerland — Photo 2" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(2)"><img src="../assets/images/gallery/Swiss/DSC07131-scaled.jpg" alt="Switzerland — Photo 3" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(3)"><img src="../assets/images/gallery/Swiss/DSC07278-scaled.jpg" alt="Switzerland — Photo 4" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(4)"><img src="../assets/images/gallery/Swiss/DSC07297-scaled.jpg" alt="Switzerland — Photo 5" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(5)"><img src="../assets/images/gallery/Swiss/DSC07650-scaled.jpg" alt="Switzerland — Photo 6" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(6)"><img src="../assets/images/gallery/Swiss/DSC07663-scaled.jpg" alt="Switzerland — Photo 7" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(7)"><img src="../assets/images/gallery/Swiss/DSC07666-scaled.jpg" alt="Switzerland — Photo 8" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(8)"><img src="../assets/images/gallery/Swiss/DSC07669-scaled.jpg" alt="Switzerland — Photo 9" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(9)"><img src="../assets/images/gallery/Swiss/DSC07681-scaled.jpg" alt="Switzerland — Photo 10" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(10)"><img src="../assets/images/gallery/Swiss/DSC07691-scaled.jpg" alt="Switzerland — Photo 11" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(11)"><img src="../assets/images/gallery/Swiss/DSC07696-scaled.jpg" alt="Switzerland — Photo 12" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(12)"><img src="../assets/images/gallery/Swiss/DSC07707-scaled.jpg" alt="Switzerland — Photo 13" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(13)"><img src="../assets/images/gallery/Swiss/DSC07715-scaled.jpg" alt="Switzerland — Photo 14" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(14)"><img src="../assets/images/gallery/Swiss/DSC07720-scaled.jpg" alt="Switzerland — Photo 15" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(15)"><img src="../assets/images/gallery/Swiss/DSC07745-scaled.jpg" alt="Switzerland — Photo 16" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(16)"><img src="../assets/images/gallery/Swiss/DSC07748-scaled.jpg" alt="Switzerland — Photo 17" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(17)"><img src="../assets/images/gallery/Swiss/DSC07755-scaled.jpg" alt="Switzerland — Photo 18" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(18)"><img src="../assets/images/gallery/Swiss/DSC07767-scaled.jpg" alt="Switzerland — Photo 19" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(19)"><img src="../assets/images/gallery/Swiss/DSC07788-scaled.jpg" alt="Switzerland — Photo 20" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(20)"><img src="../assets/images/gallery/Swiss/DSC07795-scaled.jpg" alt="Switzerland — Photo 21" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(21)"><img src="../assets/images/gallery/Swiss/DSC07809-scaled.jpg" alt="Switzerland — Photo 22" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(22)"><img src="../assets/images/gallery/Swiss/DSC07820-scaled.jpg" alt="Switzerland — Photo 23" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(23)"><img src="../assets/images/gallery/Swiss/DSC07848-scaled.jpg" alt="Switzerland — Photo 24" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(24)"><img src="../assets/images/gallery/Swiss/DSC07928-scaled.jpg" alt="Switzerland — Photo 25" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(25)"><img src="../assets/images/gallery/Swiss/DSC07945-scaled.jpg" alt="Switzerland — Photo 26" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(26)"><img src="../assets/images/gallery/Swiss/DSC07962-scaled.jpg" alt="Switzerland — Photo 27" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(27)"><img src="../assets/images/gallery/Swiss/DSC07974-scaled.jpg" alt="Switzerland — Photo 28" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(28)"><img src="../assets/images/gallery/Swiss/DSC08083-scaled.jpg" alt="Switzerland — Photo 29" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(29)"><img src="../assets/images/gallery/Swiss/DSC08098-scaled.jpg" alt="Switzerland — Photo 30" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(30)"><img src="../assets/images/gallery/Swiss/DSC08160-scaled.jpg" alt="Switzerland — Photo 31" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(31)"><img src="../assets/images/gallery/Swiss/DSC08231-scaled.jpg" alt="Switzerland — Photo 32" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(32)"><img src="../assets/images/gallery/Swiss/DSC08255-scaled.jpg" alt="Switzerland — Photo 33" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(33)"><img src="../assets/images/gallery/Swiss/DSC08335-scaled.jpg" alt="Switzerland — Photo 34" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(34)"><img src="../assets/images/gallery/Swiss/DSC08362-scaled.jpg" alt="Switzerland — Photo 35" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(35)"><img src="../assets/images/gallery/Swiss/DSC08393-scaled-e1768805113961.jpg" alt="Switzerland — Photo 36" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(36)"><img src="../assets/images/gallery/Swiss/DSC08451-scaled.jpg" alt="Switzerland — Photo 37" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(37)"><img src="../assets/images/gallery/Swiss/DSC08551-scaled.jpg" alt="Switzerland — Photo 38" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(38)"><img src="../assets/images/gallery/Swiss/DSC08567-scaled.jpg" alt="Switzerland — Photo 39" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(39)"><img src="../assets/images/gallery/Swiss/DSC08829-scaled.jpg" alt="Switzerland — Photo 40" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(40)"><img src="../assets/images/gallery/Swiss/DSC08870-scaled.jpg" alt="Switzerland — Photo 41" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(41)"><img src="../assets/images/gallery/Swiss/DSC08980-scaled.jpg" alt="Switzerland — Photo 42" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(42)"><img src="../assets/images/gallery/Swiss/DSC09068-1-scaled.jpg" alt="Switzerland — Photo 43" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(43)"><img src="../assets/images/gallery/Swiss/DSC09068-scaled.jpg" alt="Switzerland — Photo 44" loading="lazy"><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(44)"><img src="../assets/images/gallery/Swiss/IMG_0045-scaled.jpg" alt="Switzerland — Photo 45" loading="lazy"><div class="photo-caption"><p>Rinpoche engaging with the Swiss Buddhist community.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(45)"><img src="../assets/images/gallery/Swiss/IMG_0047-scaled.jpg" alt="Switzerland — Photo 46" loading="lazy"><div class="photo-caption"><p>Moments of Dharma and devotion amid the Alps of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(46)"><img src="../assets/images/gallery/Swiss/IMG_0060-scaled-e1767852980772.jpg" alt="Switzerland — Photo 47" loading="lazy"><div class="photo-caption"><p>His Eminence spreading the Gelugpa teachings in Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(47)"><img src="../assets/images/gallery/Swiss/IMG_0062-scaled.jpg" alt="Switzerland — Photo 48" loading="lazy"><div class="photo-caption"><p>A cherished gathering with the Dharma community of Switzerland.</p></div></div>
+        <div class="photo-item" onclick="openLightbox(48)"><img src="../assets/images/gallery/Swiss/IMG_0065-scaled.jpg" alt="Switzerland — Photo 49" loading="lazy"><div class="photo-caption"><p>His Eminence during his visit to Switzerland.</p></div></div>
     </div>
     <button class="strip-arrow strip-arrow-right" id="arrowRight" onclick="scrollStrip(1)" aria-label="Scroll right">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -206,7 +223,7 @@
     <button class="lightbox-nav lightbox-prev" id="lbPrev" onclick="lightboxNav(-1)" aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""></div>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""><div class="photo-caption"><p>A Dharma teaching shared with practitioners in Switzerland.</p></div></div>
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
