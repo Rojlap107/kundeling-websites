@@ -14,21 +14,116 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/global.css">
     <style>
-        /* ── Page background image ── */
-        .page-header::before { display: none; }
-        .page-header { background: transparent; }
-        .page-header .subtitle { color: var(--stone-600); }
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: url('schedule-background.jpg') center / cover no-repeat;
-            opacity: 0.2;
-            z-index: -1;
+        /* ── Filter bar ── */
+        .schedule-filters {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 48px 36px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-search {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .filter-search svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--stone-400);
             pointer-events: none;
         }
 
-        /* ── PAGE-SPECIFIC: Schedule Layout ── */
+        .filter-search input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-search input::placeholder { color: var(--stone-400); }
+        .filter-search input:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-select {
+            padding: 11px 36px 11px 14px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+            backdrop-filter: blur(8px);
+            -webkit-appearance: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-select:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-clear {
+            padding: 11px 18px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            color: var(--stone-500);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .filter-clear.visible { display: block; }
+        .filter-clear:hover { background: var(--stone-100); color: var(--stone-700); }
+
+        .schedule-count {
+            font-size: 0.78rem;
+            color: var(--stone-400);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 0 4px;
+        }
+
+        .schedule-empty {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--stone-400);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .schedule-empty.visible { display: block; }
+
+        @media (max-width: 768px) {
+            .schedule-filters {
+                padding: 0 24px 28px;
+            }
+            .filter-search { min-width: 100%; }
+        }
+
+/* ── PAGE-SPECIFIC: Schedule Layout ── */
         .schedule-container {
             max-width: 1080px;
             margin: 0 auto;
@@ -288,13 +383,34 @@
     <div class="header-rule"></div>
 </header>
 
+<!-- ── FILTERS ── -->
+<div class="schedule-filters">
+    <div class="filter-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="scheduleSearch" placeholder="Search events…" autocomplete="off">
+    </div>
+    <select class="filter-select" id="scheduleYear">
+        <option value="">All Years</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+    </select>
+    <select class="filter-select" id="scheduleCategory">
+        <option value="">All Categories</option>
+        <option value="teaching">Teaching</option>
+        <option value="ceremony">Ceremony</option>
+        <option value="retreat">Retreat</option>
+    </select>
+    <button class="filter-clear" id="scheduleClear" onclick="clearScheduleFilters()">Clear filters</button>
+    <span class="schedule-count" id="scheduleCount"></span>
+</div>
+
 <!-- ── SCHEDULE CONTENT ── -->
 <section class="schedule-container">
     <h2 class="schedule-year-heading">2025 Schedule</h2>
     <p class="schedule-year-sub">All dates are subject to change. Please check back regularly for updates and additional events.</p>
 
-    <ul class="schedule-list">
-        <li class="schedule-entry fade-in">
+    <ul class="schedule-list" id="scheduleList">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="teaching" data-text="lamrim weekend teaching kundeling monastery stages of the path enlightenment">
             <div class="schedule-entry-date">
                 <span class="month">Apr</span>
                 <span class="day">12</span>
@@ -307,7 +423,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="ceremony" data-text="vesak celebration blessing kundeling monastery buddha birth enlightenment parinirvana prayers">
             <div class="schedule-entry-date">
                 <span class="month">Apr</span>
                 <span class="day">28</span>
@@ -320,7 +436,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="retreat" data-text="seven day meditation retreat dharma shamatha vipashyana silent">
             <div class="schedule-entry-date">
                 <span class="month">May</span>
                 <span class="day">10</span>
@@ -333,7 +449,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="ceremony" data-text="avalokiteshvara empowerment european dharma centre compassion mantra initiation">
             <div class="schedule-entry-date">
                 <span class="month">Jun</span>
                 <span class="day">5</span>
@@ -346,7 +462,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="teaching" data-text="summer philosophy intensive kundeling monastery madhyamaka middle way">
             <div class="schedule-entry-date">
                 <span class="month">Jul</span>
                 <span class="day">20</span>
@@ -359,7 +475,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="teaching" data-text="nagarjuna fundamental wisdom teaching kundeling monastery emptiness dependent origination">
             <div class="schedule-entry-date">
                 <span class="month">Aug</span>
                 <span class="day">15</span>
@@ -372,7 +488,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="retreat" data-text="autumn retreat silent meditation dharma contemplation personal practice">
             <div class="schedule-entry-date">
                 <span class="month">Sep</span>
                 <span class="day">1-7</span>
@@ -385,7 +501,7 @@
             </div>
         </li>
 
-        <li class="schedule-entry fade-in">
+        <li class="schedule-entry fade-in" data-year="2025" data-category="ceremony" data-text="lama chopa ceremony kundeling monastery guru puja devotion merit gelugpa">
             <div class="schedule-entry-date">
                 <span class="month">Oct</span>
                 <span class="day">15</span>
@@ -397,6 +513,8 @@
                 <span class="schedule-tag tag-ceremony">Ceremony</span>
             </div>
         </li>
+
+        <li class="schedule-empty" id="scheduleEmpty">No events match your search.</li>
     </ul>
 </section>
 
@@ -412,6 +530,50 @@
 </footer>
 
 <script src="assets/js/global.js"></script>
+<script>
+    const entries = Array.from(document.querySelectorAll('.schedule-entry[data-year]'));
+    const searchEl = document.getElementById('scheduleSearch');
+    const yearEl = document.getElementById('scheduleYear');
+    const catEl = document.getElementById('scheduleCategory');
+    const clearBtn = document.getElementById('scheduleClear');
+    const countEl = document.getElementById('scheduleCount');
+    const emptyEl = document.getElementById('scheduleEmpty');
+
+    function filterSchedule() {
+        const query = searchEl.value.toLowerCase().trim();
+        const year = yearEl.value;
+        const cat = catEl.value;
+        let visible = 0;
+
+        entries.forEach(e => {
+            const matchText = !query ||
+                e.dataset.text.includes(query) ||
+                e.querySelector('h3').textContent.toLowerCase().includes(query) ||
+                e.querySelector('.location').textContent.toLowerCase().includes(query);
+            const matchYear = !year || e.dataset.year === year;
+            const matchCat = !cat || e.dataset.category === cat;
+            const show = matchText && matchYear && matchCat;
+            e.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        const isFiltered = query || year || cat;
+        clearBtn.classList.toggle('visible', !!isFiltered);
+        countEl.textContent = isFiltered ? `${visible} event${visible !== 1 ? 's' : ''}` : '';
+        emptyEl.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    function clearScheduleFilters() {
+        searchEl.value = '';
+        yearEl.value = '';
+        catEl.value = '';
+        filterSchedule();
+    }
+
+    searchEl.addEventListener('input', filterSchedule);
+    yearEl.addEventListener('change', filterSchedule);
+    catEl.addEventListener('change', filterSchedule);
+</script>
 
 </body>
 </html>
