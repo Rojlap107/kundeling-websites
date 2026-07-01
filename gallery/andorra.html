@@ -249,16 +249,15 @@
         .lightbox-next { right: 20px; }
         .lightbox-nav.hidden { opacity: 0; pointer-events: none; }
         .lightbox-caption {
-            position: fixed;
-            bottom: 52px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(100%);
             font-family: 'DM Sans', sans-serif;
             font-size: 0.78rem;
             color: rgba(255,255,255,0.75);
-            max-width: 600px;
-            padding: 0 24px;
+            padding: 10px 4px 0;
             line-height: 1.5;
         }
         .lightbox-counter {
@@ -346,11 +345,11 @@
     </button>
     <div class="lightbox-img-wrap">
         <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lbCaption"></div>
     </div>
     <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-    <div class="lightbox-caption" id="lbCaption"></div>
     <div class="lightbox-counter" id="lbCounter"></div>
 </div>
 
