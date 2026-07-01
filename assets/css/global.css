@@ -524,6 +524,14 @@ footer {
     text-align: center;
     font-size: 0.7rem;
     color: var(--stone-300);
+    padding-bottom: 4px;
+    letter-spacing: 0.03em;
+}
+
+.footer-credit {
+    text-align: center;
+    font-size: 0.68rem;
+    color: var(--stone-400);
     padding-bottom: 20px;
     letter-spacing: 0.03em;
 }
