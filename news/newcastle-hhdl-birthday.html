@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="His Eminence Kundeling Tatsak Rinpoche attended the 91st birthday celebrations of His Holiness the Dalai Lama in Newcastle as Chief Guest, delivering a heartfelt guidance speech to the Tibetan community.">
+    <title>Rinpoche Celebrated HHDL Birthday in Newcastle — Kundeling Tatsak Rinpoche</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon/favicon-96x96.png">
+    <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <style>
+        /* ── NEWS ARTICLE PAGE ── */
+        .news-single {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 48px 60px;
+        }
+
+        .news-meta {
+            margin-bottom: 32px;
+        }
+
+        .news-date {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--warm);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .news-category {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--stone-400);
+        }
+
+        .news-single h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            line-height: 1.35;
+            margin-bottom: 32px;
+        }
+
+        .news-body p {
+            font-size: 0.95rem;
+            color: var(--stone-600);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .news-body img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 32px 0;
+        }
+
+        .news-tibetan {
+            font-family: 'Cormorant', serif;
+            font-size: 1rem;
+            color: var(--stone-500);
+            line-height: 2;
+            margin-bottom: 32px;
+            padding: 24px 28px;
+            border-left: 3px solid var(--warm-light);
+            background: var(--stone-50);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .news-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 48px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--stone-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .news-back:hover { color: var(--warm); }
+        .news-back:hover .arrow { transform: translateX(-4px); }
+        .news-back .arrow { transition: transform 0.3s ease; }
+
+        /* ── Photo Gallery Strip ── */
+        .news-gallery {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 48px 100px;
+        }
+
+        .news-gallery h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--stone-700);
+            margin-bottom: 20px;
+        }
+
+        .gallery-strip-wrap {
+            position: relative;
+        }
+
+        .gallery-strip {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+
+        .gallery-strip::-webkit-scrollbar { display: none; }
+
+        .gallery-strip-item {
+            flex: 0 0 260px;
+            scroll-snap-align: start;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-strip-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+
+        .gallery-strip-item:hover img { transform: scale(1.05); }
+
+        .strip-arrows {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            justify-content: flex-end;
+        }
+
+        .strip-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--stone-200);
+            background: var(--stone-50);
+            color: var(--stone-600);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .strip-arrow:hover { background: var(--stone-100); color: var(--warm); border-color: var(--warm); }
+        .strip-arrow svg { width: 16px; height: 16px; }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 9000;
+            background: rgba(10,8,6,0.96);
+            backdrop-filter: blur(24px) saturate(0.6);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.open { opacity: 1; pointer-events: auto; }
+        .lightbox-img-wrap {
+            position: relative; max-width: 90vw; max-height: 88vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lightbox-img {
+            max-width: 90vw; max-height: 88vh;
+            object-fit: contain; border-radius: 8px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+            transition: opacity 0.2s ease;
+        }
+        .lightbox-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            transform: translateY(100%);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem; color: rgba(255,255,255,0.75);
+            padding: 10px 4px 0; line-height: 1.5;
+        }
+        .lightbox-close {
+            position: fixed; top: 20px; right: 24px;
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.85);
+            font-size: 1.4rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s ease; line-height: 1;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.18); color: white; }
+        .lightbox-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            width: 52px; height: 52px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.85); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s ease; z-index: 9001;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.18); color: white; }
+        .lightbox-nav svg { width: 22px; height: 22px; }
+        .lightbox-prev { left: 20px; } .lightbox-next { right: 20px; }
+        .lightbox-nav.hidden { opacity: 0; pointer-events: none; }
+        .lightbox-counter {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            font-size: 0.72rem; font-weight: 500; letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.45); text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .news-single, .news-gallery { padding: 0 24px 80px; }
+            .news-single h1 { font-size: 1.4rem; }
+            .gallery-strip-item { flex: 0 0 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav">
+    <a href="../index.html" class="nav-name"><img src="../assets/images/Kundeling Tatsak Rinpoche Logo.png" alt="Kundeling Tatsak Rinpoche" class="nav-logo"></a>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li class="nav-close"><button onclick="closeMenu()" aria-label="Close menu">&times;</button></li>
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown">
+            <a href="#">About</a>
+            <ul class="dropdown">
+                <li><a href="../about/about-rinpoche.html">About Kundeling Tatsak Rinpoche</a></li>
+                <li><a href="../about/buddhism.html">Buddhism</a></li>
+                <li><a href="../about/tibetan-buddhism.html">Tibetan Buddhism</a></li>
+                <li><a href="../about/gelugpa.html">Gelugpa Sect</a></li>
+                <li><a href="../lineage/index.html">Lineage</a></li>
+            </ul>
+        </li>
+        <li><a href="../teachings/index.html">Teachings</a></li>
+        <li><a href="../schedule.html">Schedule</a></li>
+        <li class="has-dropdown"><a href="#">Gallery</a><ul class="dropdown"><li><a href="../gallery/index.html">Photo Gallery</a></li><li><a href="../gallery/videos.html">Video Gallery</a></li></ul></li>
+        <li><a href="index.html" class="active">News</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="page-header" style="padding-bottom: 0;">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="index.html">News</a></div>
+</div>
+
+<!-- ── ARTICLE ── -->
+<article class="news-single">
+    <div class="news-meta">
+        <span class="news-date">July 6, 2026</span>
+        <span class="news-category">Community · Events</span>
+    </div>
+    <h1>Rinpoche Celebrated the HHDL Birthday in Newcastle</h1>
+
+    <div class="news-body">
+        <img src="../gallery/News/1/8.jpg" alt="His Eminence Kundeling Tatsak Rinpoche at the HHDL 91st Birthday celebrations in Newcastle">
+
+        <p class="news-tibetan">༄༅།།གནས་མཁར་གསར་བོད་རིགས་མཐུན་ཚོགས་ནས་༧སྐྱབས་རྗེ་ཀུན་བདེ་གླིང་རྟ་ཚག་རྗེ་དྲུང་དཔལ་བཟང་པོ་མཆོག་ལ་གསོལ་བ་བཏབ་པ་བཞིན་ཕྱི་ལོ་༢༠༢༦  ཟླ་ ༧ ཚེས་ ༥ ཉིན་གནས་མཁར་གསར་གནམ་ཐང་ལ་ཞབས་སོར་འཁོད་སྐབས་ས་གནས་བོད་རིགས་མཐུན་ཚོགས་ཀྱི་ཚོགས་གཙོ་གཙོས་རྒྱུན་ལས་དང་། མང་ཚོགས་བཅས་ནས་ཕེབས་བསུ་ཞུས། ཕྱི་ཚེས་ ༦ ཉིན་སྤྱི་ནོར་༸གོང་ས་༸སྐྱབས་མགོན་ཆེན་པོ་མཆོག་དགུང་གྲངས་༩༡ ལ་ཕེབས་པའི་སྐུའི་འཁྲུངས་སྐར་གྱི་སྐུ་མགྲོན་གཙོ་བོར་གདན་ཞུས་ལྟར་མཛད་སྒོའི་ཐོག་སྤྱི་ནོར་༸གོང་ས་༸སྐྱབས་མགོན་ཆེན་པོ་མཆོག་གི་ཐུགས་རྗེ་དང་བཀའ་དྲིན་མ་བརྗེད་པར་བོད་མི་ཚོར་ལམ་སྟོན་བཀའ་སློབ་ཅི་གསུང་ལ་ཐེ་ཚོམ་མེད་པར་ཤར་བསྐྱོད་དགོས་པ་ཧ་ཅང་གལ་ཆེ་ཡིན་པའི་སྐོར་འདི་ཕྱི་ཀུན་ཏུ་དགེ་བའི་བཀའ་སློབ་བསྩལ་གནང་མཛད།</p>
+
+        <p>Following an invitation from the Newcastle Tibetan Association, His Eminence Kundeling Tatsak Rinpoche arrived at Newcastle Airport on July 5, 2026, where he was warmly received by the association's president, executive members, and the local Tibetan community.</p>
+
+        <p>On July 6, His Eminence attended as the Chief Guest for the 91st birthday celebrations of His Holiness the Dalai Lama. During the auspicious occasion, His Eminence delivered a deeply meaningful guidance speech to the assembled gathering.</p>
+
+        <p>He urged the Tibetan people to never forget His Holiness's profound kindness and compassion, emphasizing the critical importance of following his advice and instructions with unwavering dedication for their ultimate well-being. His Eminence's words carried a timely and heartfelt reminder that unity, devotion, and adherence to His Holiness's vision remain the cornerstone of the Tibetan people's path forward.</p>
+
+        <a href="index.html" class="news-back"><span class="arrow">&larr;</span> Back to News</a>
+    </div>
+</article>
+
+<!-- ── PHOTO GALLERY ── -->
+<div class="news-gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-strip-wrap">
+        <div class="gallery-strip" id="galleryStrip">
+            <div class="gallery-strip-item" onclick="openLightbox(0)"><img src="../gallery/News/1/1.jpg" alt="Newcastle HHDL Birthday — Photo 1" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(1)"><img src="../gallery/News/1/2.jpg" alt="Newcastle HHDL Birthday — Photo 2" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(2)"><img src="../gallery/News/1/3.jpg" alt="Newcastle HHDL Birthday — Photo 3" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(3)"><img src="../gallery/News/1/3-1.jpg" alt="Newcastle HHDL Birthday — Photo 4" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(4)"><img src="../gallery/News/1/4.jpg" alt="Newcastle HHDL Birthday — Photo 5" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(5)"><img src="../gallery/News/1/5.jpg" alt="Newcastle HHDL Birthday — Photo 6" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(6)"><img src="../gallery/News/1/6.jpg" alt="Newcastle HHDL Birthday — Photo 7" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(7)"><img src="../gallery/News/1/6-1.jpg" alt="Newcastle HHDL Birthday — Photo 8" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(8)"><img src="../gallery/News/1/6-2.jpg" alt="Newcastle HHDL Birthday — Photo 9" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(9)"><img src="../gallery/News/1/7.jpg" alt="Newcastle HHDL Birthday — Photo 10" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(10)"><img src="../gallery/News/1/8.jpg" alt="Newcastle HHDL Birthday — Photo 11" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(11)"><img src="../gallery/News/1/9.jpg" alt="Newcastle HHDL Birthday — Photo 12" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(12)"><img src="../gallery/News/1/10.jpg" alt="Newcastle HHDL Birthday — Photo 13" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(13)"><img src="../gallery/News/1/11.jpg" alt="Newcastle HHDL Birthday — Photo 14" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(14)"><img src="../gallery/News/1/12.jpg" alt="Newcastle HHDL Birthday — Photo 15" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(15)"><img src="../gallery/News/1/13.jpg" alt="Newcastle HHDL Birthday — Photo 16" loading="lazy"></div>
+            <div class="gallery-strip-item" onclick="openLightbox(16)"><img src="../gallery/News/1/14.jpg" alt="Newcastle HHDL Birthday — Photo 17" loading="lazy"></div>
+        </div>
+        <div class="strip-arrows">
+            <button class="strip-arrow" onclick="scrollStrip(-1)" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="strip-arrow" onclick="scrollStrip(1)" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev" onclick="lightboxNav(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="lightbox-img-wrap">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lbCaption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lbNext" onclick="lightboxNav(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-social-only">
+        <a href="https://www.instagram.com/kundeling_tatsak_rinpoche/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.facebook.com/p/Kundeling-Tatsak-Rinpoche-100063684593364/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.youtube.com/@kundelingtatsakrinpoche6907" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    </div>
+    <div class="footer-copyright">&copy; 2026 Kundeling Tatsak Rinpoche. All rights reserved.</div>
+    <div class="footer-credit">Website developed by Norzin Consultancy</div>
+</footer>
+
+<script src="../assets/js/global.js"></script>
+<script>
+    // ── Gallery strip scroll ──
+    const strip = document.getElementById('galleryStrip');
+    function scrollStrip(dir) {
+        strip.scrollBy({ left: dir * 560, behavior: 'smooth' });
+    }
+
+    // ── Lightbox ──
+    const images = [
+        '../gallery/News/1/1.jpg',
+        '../gallery/News/1/2.jpg',
+        '../gallery/News/1/3.jpg',
+        '../gallery/News/1/3-1.jpg',
+        '../gallery/News/1/4.jpg',
+        '../gallery/News/1/5.jpg',
+        '../gallery/News/1/6.jpg',
+        '../gallery/News/1/6-1.jpg',
+        '../gallery/News/1/6-2.jpg',
+        '../gallery/News/1/7.jpg',
+        '../gallery/News/1/8.jpg',
+        '../gallery/News/1/9.jpg',
+        '../gallery/News/1/10.jpg',
+        '../gallery/News/1/11.jpg',
+        '../gallery/News/1/12.jpg',
+        '../gallery/News/1/13.jpg',
+        '../gallery/News/1/14.jpg',
+    ];
+    let current = 0;
+    const lb        = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lightboxImg');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
+    const lbCount   = document.getElementById('lbCounter');
+    const lbCaption = document.getElementById('lbCaption');
+
+    function openLightbox(index) {
+        current = index;
+        lbImg.src = images[current];
+        lbImg.alt = 'Newcastle HHDL Birthday — Photo ' + (current + 1);
+        updateLightbox();
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+
+    function closeLightboxOnBg(e) {
+        if (e.target === lb) closeLightbox();
+    }
+
+    function lightboxNav(dir) {
+        current = (current + dir + images.length) % images.length;
+        lbImg.style.opacity = '0';
+        setTimeout(() => {
+            lbImg.src = images[current];
+            lbImg.alt = 'Newcastle HHDL Birthday — Photo ' + (current + 1);
+            lbImg.style.opacity = '1';
+            updateLightbox();
+        }, 150);
+    }
+
+    function updateLightbox() {
+        lbCount.textContent = (current + 1) + ' / ' + images.length;
+        lbCaption.textContent = 'His Eminence Kundeling Tatsak Rinpoche at the 91st Birthday celebrations of His Holiness the Dalai Lama, Newcastle, July 2026.';
+        lbPrev.classList.toggle('hidden', current === 0);
+        lbNext.classList.toggle('hidden', current === images.length - 1);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft' && current > 0) lightboxNav(-1);
+        if (e.key === 'ArrowRight' && current < images.length - 1) lightboxNav(1);
+    });
+</script>
+
+</body>
+</html>
