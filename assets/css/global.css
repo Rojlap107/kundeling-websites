@@ -378,7 +378,7 @@ body {
 
 /* ── ARTICLE CONTENT (about pages) ── */
 .article {
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 48px 100px;
 }
@@ -455,7 +455,7 @@ body {
 
 /* ── ABOUT PAGE NAV (prev/next) ── */
 .about-nav {
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 48px 64px;
 }
