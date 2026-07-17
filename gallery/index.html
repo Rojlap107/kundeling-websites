@@ -14,6 +14,38 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/global.css">
     <style>
+        /* ── Gallery Tab Switcher ── */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 0 0 8px;
+        }
+
+        .gallery-tab-pill {
+            display: inline-flex;
+            background: var(--stone-100);
+            border-radius: 999px;
+            padding: 5px;
+            gap: 2px;
+        }
+
+        .gallery-tab-pill a {
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 999px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--stone-500);
+            transition: all 0.22s ease;
+        }
+
+        .gallery-tab-pill a.active {
+            background: var(--stone-800);
+            color: #fff;
+        }
+
         /* ── PAGE-SPECIFIC: Portrait horizontal strip ── */
         .portrait-strip {
             margin: 40px 0 72px;
@@ -301,6 +333,14 @@
     <p class="subtitle">Moments from the life and travels of His Eminence Kundeling Tatsak Rinpoche</p>
     <div class="header-rule"></div>
 </header>
+
+<!-- ── GALLERY TAB SWITCHER ── -->
+<div class="gallery-tabs">
+    <div class="gallery-tab-pill">
+        <a href="index.html" class="active">Photo Gallery</a>
+        <a href="videos.html">Video Gallery</a>
+    </div>
+</div>
 
 <!-- ── PORTRAIT STRIP (horizontal scroll, no heading) ── -->
 <section class="portrait-strip fade-in">

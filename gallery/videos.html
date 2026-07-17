@@ -16,38 +16,34 @@
     <style>
         /* ── PAGE-SPECIFIC: Gallery Tabs ── */
         .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 0 0 8px;
+        }
+
+        .gallery-tab-pill {
             display: inline-flex;
-            gap: 4px;
             background: var(--stone-100);
-            border-radius: 100px;
-            padding: 4px;
-            margin: 0 auto 56px;
+            border-radius: 999px;
+            padding: 5px;
+            gap: 2px;
         }
 
-        .gallery-tabs-wrapper {
-            text-align: center;
-        }
-
-        .gallery-tabs a {
+        .gallery-tab-pill a {
             display: inline-block;
-            padding: 8px 20px;
-            border-radius: 100px;
+            padding: 10px 28px;
+            border-radius: 999px;
             font-family: 'DM Sans', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 400;
-            color: var(--stone-500);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-tabs a:hover {
-            color: var(--stone-800);
-        }
-
-        .gallery-tabs a.active {
-            background: var(--stone-800);
-            color: var(--stone-50);
+            font-size: 0.88rem;
             font-weight: 500;
+            text-decoration: none;
+            color: var(--stone-500);
+            transition: all 0.22s ease;
+        }
+
+        .gallery-tab-pill a.active {
+            background: var(--stone-800);
+            color: #fff;
         }
 
         /* ── PAGE-SPECIFIC: Video Grid ── */
@@ -211,8 +207,8 @@
 <section class="video-gallery-content">
 
     <!-- Sub-navigation tabs -->
-    <div class="gallery-tabs-wrapper">
-        <div class="gallery-tabs">
+    <div class="gallery-tabs">
+        <div class="gallery-tab-pill">
             <a href="index.html">Photo Gallery</a>
             <a href="videos.html" class="active">Video Gallery</a>
         </div>
