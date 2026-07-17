@@ -16,29 +16,42 @@
     <style>
         /* ── PAGE-SPECIFIC: Contact ── */
         .contact-layout {
-            max-width: 1080px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 0 48px 100px;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 72px;
         }
 
-        /* ── Contact Info Column ── */
-        .contact-info-group {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
         }
 
         .contact-block {
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--stone-200);
+            background: var(--stone-50);
+            border: 1px solid var(--stone-200);
+            border-radius: 16px;
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: box-shadow 0.3s ease;
         }
 
-        .contact-block:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .contact-block:hover {
+            box-shadow: 0 12px 40px rgba(28,25,23,0.07);
+        }
+
+        .contact-block-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(139,109,71,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: var(--warm);
         }
 
         .contact-block-label {
@@ -47,22 +60,21 @@
             letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--warm);
-            margin-bottom: 16px;
             opacity: 0.8;
         }
 
         .contact-block h3 {
             font-family: 'Fraunces', serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 400;
             color: var(--stone-800);
             line-height: 1.4;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .contact-block p,
         .contact-block address {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-style: normal;
             color: var(--stone-500);
             line-height: 1.8;
@@ -82,28 +94,22 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            margin-top: 4px;
         }
 
         .contact-phones a {
-            font-size: 0.95rem;
-            color: var(--stone-600);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.92rem;
+            color: var(--stone-500);
         }
 
-        .contact-phones a:hover {
-            color: var(--warm);
-        }
+        .contact-phones a:hover { color: var(--warm); }
 
         .map-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 12px;
-            font-size: 0.78rem;
-            font-weight: 400;
+            margin-top: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: var(--warm);
@@ -112,164 +118,21 @@
             transition: border-color 0.3s;
         }
 
-        .map-link:hover {
-            border-bottom-color: var(--warm);
-        }
-
-        /* ── Contact Form Column ── */
-        .contact-form-wrapper {
-            background: var(--stone-100);
-            border-radius: 16px;
-            padding: 40px;
-        }
-
-        .contact-form-wrapper .form-title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: var(--stone-800);
-            margin-bottom: 8px;
-        }
-
-        .contact-form-wrapper .form-subtitle {
-            font-size: 0.88rem;
-            color: var(--stone-400);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--stone-500);
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 300;
-            color: var(--stone-800);
-            background: var(--stone-50);
-            border: 1px solid var(--stone-200);
-            border-radius: 8px;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--warm);
-            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--stone-300);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 140px;
-            line-height: 1.7;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .form-submit {
-            margin-top: 28px;
-        }
-
-        .form-submit button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--stone-50);
-            background: var(--stone-800);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .form-submit button:hover {
-            background: var(--warm);
-        }
-
-        .form-submit button svg {
-            transition: transform 0.3s;
-        }
-
-        .form-submit button:hover svg {
-            transform: translateX(3px);
-        }
-
-        /* ── Success/Error Messages ── */
-        .form-status {
-            margin-top: 16px;
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            line-height: 1.5;
-            display: none;
-        }
-
-        .form-status.success {
-            display: block;
-            background: rgba(92,122,101,0.08);
-            color: var(--sage);
-            border: 1px solid rgba(92,122,101,0.15);
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(180,80,60,0.06);
-            color: #9B4332;
-            border: 1px solid rgba(180,80,60,0.12);
-        }
+        .map-link:hover { border-bottom-color: var(--warm); }
 
         /* ── Responsive ── */
-        @media (max-width: 1024px) {
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 56px;
-                padding: 0 32px 80px;
+        @media (max-width: 900px) {
+            .contact-cards {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .contact-layout {
                 padding: 0 24px 64px;
-                gap: 48px;
             }
 
-            .contact-form-wrapper {
-                padding: 28px;
-            }
-
-            .form-row {
+            .contact-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -318,20 +181,24 @@
 
 <!-- ── CONTACT CONTENT ── -->
 <section class="contact-layout">
-
-    <!-- Left: Contact Information -->
-    <div class="contact-info-group">
+    <div class="contact-cards">
 
         <div class="contact-block fade-in">
+            <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
             <p class="contact-block-label">Email</p>
             <h3>Kundeling Ladrang</h3>
             <p><a href="mailto:kundelingladrang@gmail.com">kundelingladrang@gmail.com</a></p>
         </div>
 
         <div class="contact-block fade-in">
+            <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
             <p class="contact-block-label">Address</p>
+            <h3>Kundeling Ladrang</h3>
             <address>
-                Kundeling Ladrang<br>
                 Dre Gomang Lama Camp No. 2<br>
                 P.O. Tibetan Colony, 581411<br>
                 Mundgod, Karnataka State<br>
@@ -339,12 +206,16 @@
             </address>
             <a href="https://www.google.com/maps/search/Drepung+Gomang+Monastery+Mundgod+Karnataka+India" target="_blank" rel="noopener noreferrer" class="map-link">
                 View on Google Maps
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
         </div>
 
         <div class="contact-block fade-in">
+            <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l1.08-1.08a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
             <p class="contact-block-label">Phone</p>
+            <h3>Ladrang Office</h3>
             <div class="contact-phones">
                 <a href="tel:+919882430529">+91 98824 30529</a>
                 <a href="tel:+919972817750">+91 99728 17750</a>
@@ -352,49 +223,6 @@
         </div>
 
     </div>
-
-    <!-- Right: Contact Form -->
-    <div class="contact-form-wrapper fade-in">
-        <h2 class="form-title">Send a Message</h2>
-        <p class="form-subtitle">Fill out the form below and we will respond as soon as possible.</p>
-
-        <form id="contactForm" action="https://formsubmit.co/kundelingladrang@gmail.com" method="POST">
-            <!-- FormSubmit configuration -->
-            <input type="hidden" name="_subject" value="New message from Kundeling website">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your full name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-            </div>
-
-            <div class="form-submit">
-                <button type="submit">
-                    Send Message
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-        </form>
-    </div>
-
 </section>
 
 <!-- ── FOOTER ── -->
