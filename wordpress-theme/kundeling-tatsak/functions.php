@@ -105,6 +105,76 @@ function kundeling_assets() {
 add_action( 'wp_enqueue_scripts', 'kundeling_assets' );
 
 /**
+ * Split rendered post HTML into (a) body text with the images removed and
+ * (b) an ordered list of the images, so single.php can show the article text
+ * followed by an "In Pictures" gallery strip. The featured (cover) image is
+ * excluded from the gallery by filename so it isn't repeated.
+ *
+ * @param string $html          Rendered post content.
+ * @param string $featured_url  Full-size URL of the featured image, if any.
+ * @return array{content:string,images:array<int,array{src:string,alt:string}>}
+ */
+function kundeling_split_gallery( $html, $featured_url = '' ) {
+	$images = array();
+
+	if ( preg_match_all( '/<img[^>]+>/i', $html, $matches ) ) {
+		foreach ( $matches[0] as $tag ) {
+			$src = '';
+			$alt = '';
+			if ( preg_match( '/src=["\']([^"\']+)["\']/i', $tag, $s ) ) {
+				$src = $s[1];
+			}
+			if ( preg_match( '/alt=["\']([^"\']*)["\']/i', $tag, $a ) ) {
+				$alt = $a[1];
+			}
+			if ( $src ) {
+				$images[] = array(
+					'src' => $src,
+					'alt' => $alt,
+				);
+			}
+		}
+	}
+
+	// Remove featured image (compare on a size-suffix-stripped filename stem).
+	$featured_stem = $featured_url ? kundeling_image_stem( $featured_url ) : '';
+	if ( $featured_stem ) {
+		$images = array_values(
+			array_filter(
+				$images,
+				function ( $img ) use ( $featured_stem ) {
+					return kundeling_image_stem( $img['src'] ) !== $featured_stem;
+				}
+			)
+		);
+	}
+
+	// Strip images (and their figure / link wrappers) out of the body text.
+	$content = $html;
+	$content = preg_replace( '/<figure[^>]*>\s*(<a[^>]*>)?\s*<img[^>]+>\s*(<\/a>)?\s*(<figcaption[^>]*>.*?<\/figcaption>)?\s*<\/figure>/is', '', $content );
+	$content = preg_replace( '/<a[^>]*>\s*<img[^>]+>\s*<\/a>/is', '', $content );
+	$content = preg_replace( '/<img[^>]+>/i', '', $content );
+	$content = preg_replace( '/<p>(\s|&nbsp;)*<\/p>/i', '', $content );
+
+	return array(
+		'content' => $content,
+		'images'  => $images,
+	);
+}
+
+/**
+ * Reduce an image URL to a comparable filename stem: drop the path, the
+ * extension, WordPress size suffixes (-1024x768) and the -scaled marker.
+ */
+function kundeling_image_stem( $url ) {
+	$name = wp_basename( wp_parse_url( $url, PHP_URL_PATH ) );
+	$name = preg_replace( '/\.(jpe?g|png|gif|webp)$/i', '', $name );
+	$name = preg_replace( '/-\d+x\d+$/', '', $name );
+	$name = preg_replace( '/-scaled$/', '', $name );
+	return strtolower( $name );
+}
+
+/**
  * Compatibility shims for the legacy Impreza / WPBakery shortcodes embedded in
  * the imported news posts. Without these the shortcodes print as raw text
  * (e.g. "[us_image image="2146" ...]"). These render them sensibly under our
