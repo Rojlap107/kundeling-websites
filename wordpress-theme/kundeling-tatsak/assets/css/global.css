@@ -193,6 +193,15 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Desktop: also reveal on hover (click-to-open still works everywhere). */
+@media (min-width: 769px) {
+    .has-dropdown:hover .dropdown {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
 .dropdown li {
     margin: 0;
 }
