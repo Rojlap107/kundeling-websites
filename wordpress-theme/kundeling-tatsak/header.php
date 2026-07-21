@@ -27,15 +27,14 @@ $kundeling_nav_class = is_front_page() ? 'nav-hero' : '';
 <nav id="mainNav"<?php echo $kundeling_nav_class ? ' class="' . esc_attr( $kundeling_nav_class ) . '"' : ''; ?>>
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-name">
 		<?php
-		if ( has_custom_logo() ) {
-			the_custom_logo();
-		} else {
-			printf(
-				'<img src="%s" alt="%s" class="nav-logo">',
-				esc_url( get_theme_file_uri( 'assets/images/Kundeling Tatsak Rinpoche Logo.png' ) ),
-				esc_attr( get_bloginfo( 'name' ) )
-			);
-		}
+		// The nav always uses our circular emblem at a fixed size (with the
+		// scroll-spin behaviour). A WordPress Custom Logo, if set, is a wide
+		// seal meant for other placements — it must not drive the nav.
+		printf(
+			'<img src="%s" alt="%s" class="nav-logo">',
+			esc_url( get_theme_file_uri( 'assets/images/Kundeling Tatsak Rinpoche Logo.png' ) ),
+			esc_attr( get_bloginfo( 'name' ) )
+		);
 		?>
 	</a>
 	<button class="nav-toggle" onclick="toggleMenu()" aria-label="<?php esc_attr_e( 'Menu', 'kundeling-tatsak' ); ?>">
