@@ -82,6 +82,25 @@ function kundeling_assets() {
 		KUNDELING_VERSION,
 		true
 	);
+
+	// Page-specific stylesheets (mirrors the static site's per-page inline CSS).
+	$page_css = '';
+	if ( is_front_page() ) {
+		$page_css = 'home';
+	} elseif ( is_singular( 'post' ) ) {
+		$page_css = 'news-single';
+	} elseif ( is_home() || is_archive() || is_search() ) {
+		$page_css = 'news';
+	}
+
+	if ( $page_css && file_exists( get_theme_file_path( "assets/css/{$page_css}.css" ) ) ) {
+		wp_enqueue_style(
+			"kundeling-{$page_css}",
+			get_theme_file_uri( "assets/css/{$page_css}.css" ),
+			array( 'kundeling-global' ),
+			KUNDELING_VERSION
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'kundeling_assets' );
 
