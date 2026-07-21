@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Biography of Baso Chokyi Gyaltsen — the First Kundeling Tatsak Jedrung, direct disciple of Je Tsongkhapa and sole holder of the Gaden Ear-Whispered Lineage.">
+    <meta name="description" content="Introduction to the Kundeling Tatsak Rinpoche lineage — one of the oldest and most distinguished lineages of the Gelug tradition, and to His Eminence the 13th Kundeling Tatsak Rinpoche, Jetsun Tenzin Choekyi Gyaltsen Palzangpo.">
     <title>About Kundeling Tatsak Rinpoche — Official Website</title>
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon/favicon-96x96.png">
@@ -28,95 +28,54 @@
             pointer-events: none;
         }
 
-        /* ── PAGE-SPECIFIC: Lineage flow ── */
-        .lineage-flow {
-            margin: 36px 0 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .lineage-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px 0;
-            position: relative;
-        }
-
-        .lineage-step:not(:last-child) {
-            border-bottom: 1px solid var(--stone-150);
-        }
-
-        .lineage-marker {
-            flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--stone-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Fraunces', serif;
-            font-size: 0.82rem;
-            font-weight: 400;
-            color: var(--warm);
-            margin-top: 2px;
-        }
-
-        .lineage-content h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: var(--stone-800);
-            line-height: 1.3;
-            margin-bottom: 4px;
-        }
-
-        .lineage-content p {
-            font-size: 0.85rem;
-            color: var(--stone-500);
-            line-height: 1.6;
-        }
-
-        /* ── PAGE-SPECIFIC: Disciples grid ── */
-        .disciples-grid {
+        /* ── PAGE-SPECIFIC: Connections grid ── */
+        .connections-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin: 36px 0 0;
         }
 
-        .disciple-card {
+        .connection-card {
             background: var(--stone-100);
             border-radius: 12px;
-            padding: 20px;
+            padding: 22px;
             transition: all 0.35s ease;
         }
 
-        .disciple-card:hover {
+        .connection-card:hover {
             background: var(--stone-150);
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(28,25,23,0.06);
         }
 
-        .disciple-card h3 {
+        .connection-card .conn-role {
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--warm);
+            margin-bottom: 8px;
+            opacity: 0.85;
+        }
+
+        .connection-card h3 {
             font-family: 'Fraunces', serif;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             font-weight: 400;
             color: var(--stone-800);
-            line-height: 1.3;
+            line-height: 1.35;
             margin-bottom: 4px;
         }
 
-        .disciple-card p {
+        .connection-card p {
             font-size: 0.82rem;
             color: var(--stone-500);
             line-height: 1.55;
         }
 
         @media (max-width: 768px) {
-            .disciples-grid {
+            .connections-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -160,203 +119,97 @@
         <span>/</span>
         About Rinpoche
     </div>
-    <h1>Baso Chokyi Gyaltsen</h1>
-    <p class="subtitle">The First Kundeling Tatsak Jedrung, Hotoktu Nomun Han — direct disciple of Je Tsongkhapa and master of the Gaden Ear-Whispered Lineage</p>
+    <h1>Kundeling Tatsak Rinpoche</h1>
+    <p class="subtitle">One of the oldest and most distinguished lineages of the Gelug tradition of Tibetan Buddhism — six centuries of profound scholarship, spiritual realisation, and compassionate service</p>
     <div class="header-rule"></div>
 </header>
 
 <!-- ── ARTICLE CONTENT ── -->
 <article class="article">
 
-    <!-- Section 1: Birth and Early Life -->
+    <!-- Section 1: An Enduring Lineage -->
     <section class="article-section fade-in">
-        <h2>Birth &amp; Early Life</h2>
+        <h2>An Enduring Lineage</h2>
         <div class="section-rule"></div>
-        <p>His Holiness Trichen Baso Chokyi Gyaltsen — The First Kundeling Tatsak Jedrung, Hotoktu Nomun Han — was born in 1402 as the younger brother of Khedrup Je. He was a direct disciple of Je Tsongkhapa and the fifth in the lineage of the Seven Jamyang Tsangpa Masters.</p>
-        <p>From a very young age, he entered the path of the Buddha's precious teachings. Studying at the feet of Je Tsongkhapa and his foremost disciples, he attained exceptional mastery of the Buddha's teachings and their commentaries.</p>
-        <figure style="margin: 40px auto; max-width: 480px; text-align: center;">
-            <img src="../assets/images/gallery/previous Tatsak Rinpoche/1. Baso Choekyi Gyaltsen.jpg" alt="Baso Chokyi Gyaltsen — the First Kundeling Tatsak Jedrung" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(28,25,23,0.1);">
-            <figcaption style="margin-top: 14px; font-family: 'Cormorant', serif; font-style: italic; font-size: 0.9rem; color: var(--stone-400);">Baso Chokyi Gyaltsen — the First Kundeling Tatsak Jedrung (b. 1402)</figcaption>
-        </figure>
-    </section>
-
-    <!-- Section 2: The Ear-Whispered Lineage -->
-    <section class="article-section fade-in">
-        <h2>The Ear-Whispered Lineage</h2>
-        <div class="section-rule"></div>
-        <p>From Lord Manjushri, the complete instructions of the extremely secret Ear-Whispered Lineage along with Great Emanated Scripture — a method for swiftly attaining Buddhahood through the profound path of Guru Yoga within a single lifetime, even in this degenerate age — were transmitted to the great Je Tsongkhapa.</p>
-        <p>Je Rinpoche then passed on the Ear-Whispered Pith Instructions and Great Emanated Scripture to Tokden Jamphel Gyatso, and entrusted the instructions to Khedrup Je.</p>
+        <p>The Kyabje Kundeling Tatsak Rinpoche lineage is one of the oldest, most distinguished, and historically influential lineages in the Gelug tradition of Tibetan Buddhism. Originating with the great Buddhist master Trichen Baso Choekyi Gyaltsen (1402&ndash;1473) &mdash; one of the principal disciples of Je Tsongkhapa and the younger brother of the First Panchen Lama, Khedrup Je &mdash; this lineage has, for over six centuries, made extraordinary contributions to the preservation and flourishing of the Buddha Dharma, the spiritual and temporal affairs of Tibet, and the welfare of countless sentient beings.</p>
+        <p>Throughout its successive reincarnations, the Kundeling Tatsak lineage has consistently embodied the inseparable union of profound scholarship, spiritual realisation, compassionate leadership, and dedicated public service. It has produced eminent scholars, accomplished meditators, renowned teachers, abbots, tutors to Dalai Lamas, Regents of Tibet, diplomats, and spiritual advisors whose influence extended far beyond Tibet to Mongolia, China, and the broader Himalayan region.</p>
     </section>
 
     <!-- Pull Quote -->
     <div class="pull-quote fade-in">
-        <blockquote>In accordance with the prophecy given by Lord Manjushri, the Emanated Scripture was transmitted solely to Je Baso Chokyi Gyaltsen — sealed as a strictly one-to-one lineage, preserving its utmost secrecy.</blockquote>
+        <blockquote>For over six centuries, the lineage has embodied the inseparable union of profound scholarship, spiritual realisation, compassionate leadership, and dedicated public service.</blockquote>
     </div>
 
-    <!-- Section 3: Master of the Gaden Ear-Whispered Lineage -->
+    <!-- Section 2: A Close Bond with the Dalai Lamas -->
     <section class="article-section fade-in">
-        <h2>Master of the Gaden Ear-Whispered Lineage</h2>
+        <h2>A Close Bond with the Dalai Lamas</h2>
         <div class="section-rule"></div>
-        <p>In accordance with the prophecy given by Lord Manjushri to Tokden Jamphel Gyatso, the "Emanated Scripture" of the teaching lineage, together with its instructions, was transmitted solely to Je Baso Chokyi Gyaltsen. This transmission was sealed as a strictly one-to-one lineage, preserving its utmost secrecy.</p>
-        <p>Khedrup Je likewise entrusted the Ear-Whispered instructions exclusively to Baso Chokyi Gyaltsen, making him the sole holder of these secret teachings.</p>
-        <p>As prophesied by Manjushri, Baso Chokyi Gyaltsen later bestowed the "Great Emanated Scripture" and the instructions of the Geden Whispered Lineage as a "hidden teaching" to his disciple, Drupchen Ch&ouml; Dorje.</p>
-    </section>
+        <p>One of the most remarkable features of the Kyabje Kundeling Tatsak lineage is its exceptionally close and enduring association with the successive Dalai Lamas throughout Tibetan history. This special relationship can be traced back to the founder of the lineage, Trichen Baso Choekyi Gyaltsen, who was the younger brother and disciple of Khedrup Je, one of the foremost disciples of Je Tsongkhapa and later recognised as the First Panchen Lama.</p>
+        <p>Having received many profound teachings and transmissions from Je Tsongkhapa and Khedrup Je, Baso Choekyi Gyaltsen became one of the principal holders of Je Tsongkhapa's lineage. When the position of the Sixth Ganden Tripa became vacant, His Holiness the First Dalai Lama, Gendun Drup, respectfully declined the appointment and instead personally recommended Baso Choekyi Gyaltsen, praising his unparalleled scholarship, realisation, wisdom, and service to the Buddha Dharma. Consequently, Baso Choekyi Gyaltsen became the Sixth Ganden Tripa, the supreme holder of Je Tsongkhapa's throne, and one of the principal custodians of the rare secret oral transmissions originating from Manjushri.</p>
+        <p>In the centuries that followed, the Kundeling Tatsak Rinpoches maintained a close spiritual relationship with the Dalai Lamas. Successive incarnations received ordinations, teachings, and transmissions from Dalai Lamas, while several served as tutors to the Dalai Lamas, trusted spiritual advisors, and Regents of Tibet.</p>
 
-    <!-- Section 4: Transmission of the Lineage -->
-    <section class="article-section fade-in">
-        <h2>Transmission of the Lineage</h2>
-        <div class="section-rule"></div>
-        <p>Drupchen Ch&ouml; Dorje transmitted these teachings to Gyalwa Ensapa Lobsang Dhondup, who in turn passed them to Khedrup Sangye Yeshe. From him, they were handed down to Panchen Lobsang Chokyi Gyaltsen.</p>
-        <p>Recognizing that such unsurpassed instructions must not decline, Panchen Lobsang Chokyi Gyaltsen composed the <em>Lama Chopa: Union of Bliss and Emptiness</em>, drawing on their essential meaning. He also composed the root text and commentary on the Geden Mahamudra.</p>
-        <p>In addition, the profound instructions of the Ch&ouml;d path — transmitted from Lord Manjushri to Je Tsongkhapa and then to Tokden Jamphel Gyatso — were fully entrusted by Tokden Pa to Baso Chokyi Gyaltsen. In this way, Je Baso became a key figure in the lineage of the Gaden Ear-Whispered and Ch&ouml;d teachings, as well as the Stages of the Path to Enlightenment (Lamrim) and other traditions.</p>
-
-        <div class="lineage-flow">
-            <div class="lineage-step">
-                <div class="lineage-marker">1</div>
-                <div class="lineage-content">
-                    <h3>Lord Manjushri</h3>
-                    <p>Origin of the Ear-Whispered instructions and Great Emanated Scripture</p>
-                </div>
+        <div class="connections-grid">
+            <div class="connection-card">
+                <p class="conn-role">Sixth Ganden Tripa</p>
+                <h3>Baso Choekyi Gyaltsen</h3>
+                <p>Supreme holder of Je Tsongkhapa's golden throne</p>
             </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">2</div>
-                <div class="lineage-content">
-                    <h3>Je Tsongkhapa</h3>
-                    <p>Received the complete secret instructions and Ear-Whispered Pith Instructions</p>
-                </div>
+            <div class="connection-card">
+                <p class="conn-role">Fourth Rinpoche</p>
+                <h3>Tutor to the Fourth Dalai Lama</h3>
+                <p>Selected as tutor before his untimely passing</p>
             </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">3</div>
-                <div class="lineage-content">
-                    <h3>Tokden Jamphel Gyatso &amp; Khedrup Je</h3>
-                    <p>Entrusted with the Emanated Scripture and instructions respectively</p>
-                </div>
+            <div class="connection-card">
+                <p class="conn-role">Ninth Rinpoche</p>
+                <h3>Tutor to the Eleventh Dalai Lama</h3>
+                <p>Entrusted with the education of the Dalai Lama</p>
             </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">4</div>
-                <div class="lineage-content">
-                    <h3>Baso Chokyi Gyaltsen</h3>
-                    <p>Sole holder of the Ear-Whispered Lineage — the one-to-one transmission sealed in secrecy</p>
-                </div>
+            <div class="connection-card">
+                <p class="conn-role">Tenth Rinpoche</p>
+                <h3>Tutor to the Thirteenth Dalai Lama</h3>
+                <p>A principal tutor who bestowed the novice ordination</p>
             </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">5</div>
-                <div class="lineage-content">
-                    <h3>Drupchen Ch&ouml; Dorje</h3>
-                    <p>Received the Great Emanated Scripture as a hidden teaching</p>
-                </div>
+            <div class="connection-card">
+                <p class="conn-role">Eighth &amp; Tenth Rinpoches</p>
+                <h3>Regents of Tibet</h3>
+                <p>Providing stable leadership after the passing of the Eighth and Twelfth Dalai Lamas</p>
             </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">6</div>
-                <div class="lineage-content">
-                    <h3>Gyalwa Ensapa Lobsang Dhondup</h3>
-                    <p>Carried the lineage forward to Khedrup Sangye Yeshe</p>
-                </div>
-            </div>
-            <div class="lineage-step">
-                <div class="lineage-marker">7</div>
-                <div class="lineage-content">
-                    <h3>Panchen Lobsang Chokyi Gyaltsen</h3>
-                    <p>Composed the Lama Chopa and Geden Mahamudra from these instructions</p>
-                </div>
+            <div class="connection-card">
+                <p class="conn-role">Without the Golden Urn</p>
+                <h3>Recognised the Ninth &amp; Thirteenth Dalai Lamas</h3>
+                <p>Reflecting the extraordinary confidence placed in the lineage</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: Renown and Spiritual Realisation -->
+    <!-- Section 3: Contributions Across Tibet, Mongolia & China -->
     <section class="article-section fade-in">
-        <h2>Renown &amp; Spiritual Realisation</h2>
+        <h2>Contributions Across Tibet, Mongolia &amp; China</h2>
         <div class="section-rule"></div>
-        <p>Through deep and unwavering practice at Baso in Tsang, he attained profound realizations of bliss and emptiness, and was thereafter widely known as Baso Choje.</p>
+        <p>Throughout its history, the Kundeling Tatsak lineage has made enduring contributions not only to the preservation of the Buddha Dharma but also to the religious, cultural, and political life of Tibet. Successive incarnations founded monasteries, restored ancient temples and sacred monuments, composed important philosophical treatises, safeguarded rare oral transmission lineages, promoted monastic education, and nurtured generations of scholars and practitioners.</p>
+        <p>Beyond Tibet, several Kundeling Tatsak Rinpoches strengthened the spiritual and diplomatic ties between Tibet, Mongolia, and China. His Eminence the Sixth Kundeling Tatsak Rinpoche travelled to Mongolia as the representative of His Holiness the Great Fifth Dalai Lama, helped reconcile regional conflicts, and later became the spiritual advisor to the Kangxi Emperor of the Qing Dynasty.</p>
+        <p>The Seventh Kundeling Tatsak Rinpoche was invited by Emperor Qianlong, appointed Abbot of the imperial Yonghe Monastery in Beijing, and became one of the emperor's principal Buddhist teachers. His Eminence the Eighth Kundeling Tatsak Rinpoche likewise maintained close relations with the Qing court while faithfully safeguarding the interests of Tibetan Buddhism. Their lives exemplify the Mahayana ideal of combining profound wisdom with boundless compassion in service of all sentient beings.</p>
     </section>
 
-    <!-- Section 6: Ascension to the Gaden Golden Throne -->
+    <!-- Section 4: The Thirteenth Kundeling Tatsak Rinpoche -->
     <section class="article-section fade-in">
-        <h2>Ascension to the Gaden Golden Throne</h2>
+        <h2>The Thirteenth Kundeling Tatsak Rinpoche</h2>
         <div class="section-rule"></div>
-        <p>Later, when the Fifth Ganden Tripa, Je Lodr&ouml; Chokyong, wished to enter retreat, he invited Gyalwa Gendun Drup to assume the Ganden Golden Throne. However, Gendun Drup declined.</p>
+        <p>Today, the noble lineage continues by His Eminence the 13th Kundeling Tatsak Rinpoche, Jetsun Tenzin Choekyi Gyaltsen Palzangpo, who was born in Lhasa, Central Tibet, in 1983 to Mr. Lobsang Dhodup and Mrs. Chime Youdon amidst many auspicious signs.</p>
+        <figure style="margin: 40px auto; max-width: 480px; text-align: center;">
+            <img src="../assets/images/gallery/portrait/mmexport1587457493084-scaled.jpg" alt="His Eminence the 13th Kundeling Tatsak Rinpoche, Jetsun Tenzin Choekyi Gyaltsen Palzangpo" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(28,25,23,0.1);">
+            <figcaption style="margin-top: 14px; font-family: 'Cormorant', serif; font-style: italic; font-size: 0.9rem; color: var(--stone-400);">His Eminence the 13th Kundeling Tatsak Rinpoche, Jetsun Tenzin Choekyi Gyaltsen Palzangpo (b. 1983)</figcaption>
+        </figure>
+        <p>Following the converging indications of the State Oracle Nechung Choegyal Chenpo, Lamo Tsangpa, and a series of examinations personally conducted by His Holiness the Fourteenth Dalai Lama, he was officially recognised as the authentic reincarnation of the Twelfth Kundeling Tatsak Rinpoche. After safely arriving in India, His Holiness graciously performed the hair-cutting ceremony, bestowed novice ordination, conferred upon him the name Tenzin Choekyi Gyaltsen Palzangpo, and composed a Long Life Prayer for him.</p>
+        <p>Under the guidance of His Holiness and his principal tutor, the Venerable Jetsun Lobsang Tsultrim Palzangpo, His Eminence pursued the complete traditional curriculum at Drepung Gomang Monastic University, distinguishing himself through his humility, exemplary monastic discipline, and dedication to study, debate, and meditation. Following the advice of His Holiness, he completed his Geshe studies and continued higher tantric training at Gyumed Tantric Monastery. He has since received extensive teachings, empowerments, transmissions, and profound instructions from His Holiness the Dalai Lama and many eminent masters from all traditions of Tibetan Buddhism.</p>
+        <p>Acting upon the guidance of His Holiness, he actively promotes universal human values, interreligious and non-sectarian harmony, dialogue between Buddhism and modern science, and the Middle Way Approach, while encouraging unity among Tibetans beyond regional and sectarian differences. He has also restored the rare lineage of <em>The Rosary of Gems of Hundred Empowerments</em> (Wangya Norbu Trengwa), after receiving its complete transmission from His Holiness the Sakya Trizin, thereby contributing to the preservation of an important spiritual heritage. While continuing his own studies and retreat practice, His Eminence travels extensively to teach the Buddha Dharma and work for the benefit of all sentient beings.</p>
     </section>
 
-    <!-- Pull Quote: Gendun Drup -->
-    <div class="pull-quote fade-in">
-        <blockquote>"Invite Baso Chokyi Gyaltsen, the younger brother of Khedrup Ch&ouml;je, to the Ganden Golden Throne. His scholarship and realization are unsurpassed, and the radiance of his enlightened activities pervades everywhere."</blockquote>
-        <cite>Gyalwa Gendun Drup</cite>
-    </div>
-
-    <!-- Section 7: Prophecy and Enthronement -->
+    <!-- Section 5: A Living Legacy -->
     <section class="article-section fade-in">
-        <h2>Prophecy &amp; Enthronement</h2>
+        <h2>A Living Legacy</h2>
         <div class="section-rule"></div>
-        <p>When Je Baso resolved to devote himself single-pointedly to the practice based on the Pith-instructions of the Ear-Whispered Lineage, a prophecy arose from Je Tsongkhapa and Vajrayogini, declaring that if he were to ascend the Ganden Golden Throne, it would greatly benefit the teachings.</p>
-        <p>Urged insistently by Choje Lodro Chokyong, and in accordance with the wishes of Gyalwa Gendun Drup and others, he accepted the invitation to take the Ganden Throne.</p>
-        <p>He was then invited to Tashi Lhunpo, where Gyalwa Gendun Drup said: "Now that you are going to the seat of Je Tsongkhapa, when I offer prostrations to you, please do not return the prostration." With these words, the omniscient Gendun Drup, together with his retinue, offered prostrations to him.</p>
-        <p>In 1463, he ascended the Ganden Golden Throne.</p>
-    </section>
-
-    <!-- Section 8: Activities as Gaden Tripa -->
-    <section class="article-section fade-in">
-        <h2>Activities as Gaden Tripa</h2>
-        <div class="section-rule"></div>
-        <p>For eleven years, he upheld the throne, conferring countless teachings and ordinations upon innumerable disciples.</p>
-        <p>In particular, he gave extensive and far-reaching teachings on Lamrim (the Stages of the Path to Enlightenment) and became renowned as Panchen Chokyi Gyalpo — the Great Scholar, the King of Dharma.</p>
-        <p>On one occasion, Dolma Bum, who was pregnant with Jetsun Ch&ouml;kyi Gyaltsen — the future author of the Sera Je monastic textbooks — came to meet him. At that time, he established a special auspicious connection, saying: "The son you are about to bear will become a great holder of the teachings and bring immense benefit to the Dharma. Name him Chokyi Gyaltsen. As soon as he is born, clothe him in this garment." With these words, he offered her an auspicious ceremonial scarf.</p>
-    </section>
-
-    <!-- Section 9: Passing and Relics -->
-    <section class="article-section fade-in">
-        <h2>Passing &amp; Relics</h2>
-        <div class="section-rule"></div>
-        <p>In 1473, amid many wondrous signs, he demonstrated the manner of passing into parinirvana. When his body was cremated, numerous images of Arya Lokeshvara, sacred syllables, and relics emerged from his remains.</p>
-    </section>
-
-    <!-- Section 10: Writings -->
-    <section class="article-section fade-in">
-        <h2>Writings</h2>
-        <div class="section-rule"></div>
-        <p>His writings include Generation and Completion Stages of Kalachakra, as well as profound instructions on the view of the Middle Way in both extensive and concise forms.</p>
-    </section>
-
-    <!-- Section 11: Principal Disciples -->
-    <section class="article-section fade-in">
-        <h2>Principal Disciples</h2>
-        <div class="section-rule"></div>
-        <p>His disciples included the "Three Vajra Brothers," who attained the State of Union in a single lifetime, as well as many other exalted masters who went on to lead major monasteries and institutions.</p>
-
-        <div class="disciples-grid">
-            <div class="disciple-card">
-                <h3>Kunga Deleg</h3>
-                <p>Of Nenying</p>
-            </div>
-            <div class="disciple-card">
-                <h3>Gyuchen Kunga Dhondup</h3>
-                <p>Founder of Gyuto Tantric Monastery</p>
-            </div>
-            <div class="disciple-card">
-                <h3>Darton Lobsang Dragpa</h3>
-                <p>Ganden Tripa</p>
-            </div>
-            <div class="disciple-card">
-                <h3>Jamyang Galo</h3>
-                <p>Drepung Tripa</p>
-            </div>
-            <div class="disciple-card">
-                <h3>Nyalton Paljor Lhundrup</h3>
-                <p>Sera Tripa</p>
-            </div>
-            <div class="disciple-card">
-                <h3>Panchen Yeshe Tsemo</h3>
-                <p>Tashi Lhunpo Tripa</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 12: Legacy of Successive Incarnations -->
-    <section class="article-section fade-in">
-        <h2>Legacy of Successive Incarnations</h2>
-        <div class="section-rule"></div>
-        <p>In his successive incarnations, two served — on separate occasions — as the peerless Regents of Tibet. Without recourse to the Golden Urn, they recognized and enthroned both the Ninth and Thirteenth Dalai Lamas.</p>
-        <p>Across different incarnations, they also served as tutors to the Eleventh and Thirteenth Dalai Lamas, as Chief Lama to the emperor of China and the king of Mongolia, and as the first abbot of Yonghegong in Beijing.</p>
-        <p>In this way, they carried out vast enlightened activities for the benefit of the teachings and sentient beings across Tibet, China, and Mongolia.</p>
+        <p>For more than six centuries, the Kundeling Tatsak Rinpoche lineage has remained a distinguished source of spiritual guidance, scholarship, compassionate leadership, and selfless service. Through its unwavering dedication to the teachings of the Buddha, its close association with the successive Dalai Lamas and renowned Tibetan Buddhist masters, its invaluable contributions to the religious and temporal life of Tibet, and its tireless efforts to benefit sentient beings, the lineage continues to uphold the noble legacy established by its founder and carried forward by each successive incarnation.</p>
     </section>
 
 </article>
