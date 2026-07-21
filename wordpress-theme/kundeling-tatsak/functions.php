@@ -105,6 +105,28 @@ function kundeling_assets() {
 add_action( 'wp_enqueue_scripts', 'kundeling_assets' );
 
 /**
+ * Bridge WordPress's default menu markup onto the theme's dropdown design.
+ * Parent items get `.has-dropdown`; their sub-menus get `.dropdown`, so the
+ * existing global.css hover-dropdown styling applies to a WP-managed menu.
+ */
+function kundeling_nav_parent_class( $classes, $item, $args ) {
+	if ( isset( $args->theme_location ) && 'primary' === $args->theme_location
+		&& in_array( 'menu-item-has-children', (array) $classes, true ) ) {
+		$classes[] = 'has-dropdown';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'kundeling_nav_parent_class', 10, 3 );
+
+function kundeling_nav_submenu_class( $classes, $args, $depth ) {
+	if ( isset( $args->theme_location ) && 'primary' === $args->theme_location ) {
+		$classes[] = 'dropdown';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_submenu_css_class', 'kundeling_nav_submenu_class', 10, 3 );
+
+/**
  * Fallback for the primary menu when none is assigned yet — mirrors the
  * static site's nav so the theme is usable immediately after activation.
  */
