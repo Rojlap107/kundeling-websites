@@ -1,0 +1,326 @@
+/* ── Filter bar ── */
+        .schedule-filters {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 48px 36px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-search {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .filter-search svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--stone-400);
+            pointer-events: none;
+        }
+
+        .filter-search input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-search input::placeholder { color: var(--stone-400); }
+        .filter-search input:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-select {
+            padding: 11px 36px 11px 14px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+            backdrop-filter: blur(8px);
+            -webkit-appearance: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--stone-700);
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-select:focus {
+            border-color: var(--warm);
+            box-shadow: 0 0 0 3px rgba(139,109,71,0.08);
+        }
+
+        .filter-clear {
+            padding: 11px 18px;
+            border: 1px solid var(--stone-200);
+            border-radius: 10px;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            color: var(--stone-500);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .filter-clear.visible { display: block; }
+        .filter-clear:hover { background: var(--stone-100); color: var(--stone-700); }
+
+        .schedule-count {
+            font-size: 0.78rem;
+            color: var(--stone-400);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 0 4px;
+        }
+
+        .schedule-empty {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--stone-400);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .schedule-empty.visible { display: block; }
+
+        @media (max-width: 768px) {
+            .schedule-filters {
+                padding: 0 24px 28px;
+            }
+            .filter-search { min-width: 100%; }
+        }
+
+/* ── PAGE-SPECIFIC: Schedule Layout ── */
+        .schedule-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 80px 48px 100px;
+        }
+
+        .schedule-year-heading {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            margin-bottom: 8px;
+        }
+
+        .schedule-year-sub {
+            font-size: 0.85rem;
+            color: var(--stone-500);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .schedule-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .schedule-entry {
+            display: flex;
+            gap: 32px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--stone-200);
+            align-items: flex-start;
+            transition: background 0.3s ease;
+        }
+
+        .schedule-entry:first-child {
+            border-top: 1px solid var(--stone-200);
+        }
+
+        .schedule-entry:hover {
+            background: var(--stone-50);
+        }
+
+        .schedule-entry-date {
+            flex-shrink: 0;
+            width: 64px;
+            text-align: center;
+            padding-top: 2px;
+        }
+
+        .schedule-entry-date .month {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--warm);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .schedule-entry-date .day {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--stone-900);
+            line-height: 1.1;
+            display: block;
+        }
+
+        .schedule-entry-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .schedule-entry-content h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .schedule-entry-content .location {
+            font-size: 0.82rem;
+            color: var(--stone-500);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .schedule-entry-content .location::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--stone-400);
+            flex-shrink: 0;
+        }
+
+        .schedule-entry-content .description {
+            font-size: 0.85rem;
+            color: var(--stone-500);
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+
+        .schedule-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .tag-teaching { color: var(--warm); background: rgba(139,109,71,0.08); }
+        .tag-ceremony { color: var(--sage); background: rgba(92,122,101,0.08); }
+        .tag-retreat { color: var(--stone-600); background: rgba(87,83,78,0.06); }
+
+        /* ── Past Schedules Section ── */
+        .past-schedules {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 48px 100px;
+        }
+
+        .past-schedules-divider {
+            border: none;
+            height: 1px;
+            background: var(--stone-200);
+            margin-bottom: 48px;
+        }
+
+        .past-schedules h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--stone-800);
+            margin-bottom: 20px;
+        }
+
+        .past-schedules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .past-schedules-list li a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--stone-100);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--stone-700);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .past-schedules-list li a:hover {
+            background: var(--stone-150);
+            color: var(--warm);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(28,25,23,0.06);
+        }
+
+        /* ── RESPONSIVE — PAGE SPECIFIC ── */
+        @media (max-width: 768px) {
+            .schedule-container {
+                padding: 64px 24px 80px;
+            }
+
+            .schedule-entry {
+                flex-direction: column;
+                gap: 12px;
+                padding: 24px 0;
+            }
+
+            .schedule-entry-date {
+                width: auto;
+                text-align: left;
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+            }
+
+            .schedule-entry-date .month {
+                margin-bottom: 0;
+            }
+
+            .schedule-entry-date .day {
+                font-size: 1.4rem;
+            }
+
+            .past-schedules {
+                padding: 0 24px 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-container {
+                padding: 48px 20px 64px;
+            }
+
+            .past-schedules {
+                padding: 0 20px 64px;
+            }
+        }

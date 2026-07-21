@@ -91,6 +91,12 @@ function kundeling_assets() {
 		$page_css = 'news-single';
 	} elseif ( is_home() || is_archive() || is_search() ) {
 		$page_css = 'news';
+	} elseif ( is_page() && get_page_template_slug() ) {
+		// Page templates named "template-<slug>.php" load "<slug>.css".
+		$slug = str_replace( 'template-', '', basename( get_page_template_slug(), '.php' ) );
+		if ( file_exists( get_theme_file_path( "assets/css/{$slug}.css" ) ) ) {
+			$page_css = $slug;
+		}
 	}
 
 	if ( $page_css && file_exists( get_theme_file_path( "assets/css/{$page_css}.css" ) ) ) {
