@@ -105,6 +105,54 @@ function kundeling_assets() {
 add_action( 'wp_enqueue_scripts', 'kundeling_assets' );
 
 /**
+ * Compatibility shims for the legacy Impreza / WPBakery shortcodes embedded in
+ * the imported news posts. Without these the shortcodes print as raw text
+ * (e.g. "[us_image image="2146" ...]"). These render them sensibly under our
+ * theme so the 51 existing posts read cleanly without editing each one.
+ */
+function kundeling_sc_us_image( $atts ) {
+	$atts = shortcode_atts( array( 'image' => 0 ), $atts, 'us_image' );
+	$id   = absint( $atts['image'] );
+	if ( ! $id ) {
+		return '';
+	}
+	$img = wp_get_attachment_image( $id, 'large', false, array( 'loading' => 'lazy' ) );
+	return $img ? '<figure>' . $img . '</figure>' : '';
+}
+
+function kundeling_sc_us_separator( $atts ) {
+	$atts = shortcode_atts( array( 'size' => 'medium' ), $atts, 'us_separator' );
+	$map  = array(
+		'small'  => '16px',
+		'medium' => '28px',
+		'large'  => '44px',
+		'huge'   => '64px',
+	);
+	$h = isset( $map[ $atts['size'] ] ) ? $map[ $atts['size'] ] : '28px';
+	return '<div style="height:' . esc_attr( $h ) . '"></div>';
+}
+
+/**
+ * Register the shims, plus strip any other stray legacy wrapper shortcodes
+ * (vc_row, vc_column, etc.) so their bracket text never leaks into content.
+ */
+function kundeling_register_legacy_shortcodes() {
+	add_shortcode( 'us_image', 'kundeling_sc_us_image' );
+	add_shortcode( 'us_separator', 'kundeling_sc_us_separator' );
+
+	// Wrapper shortcodes: output their inner content, drop the wrapper tag.
+	foreach ( array( 'vc_row', 'vc_column', 'vc_column_text', 'vc_row_inner', 'vc_column_inner', 'us_single_image', 'us_text' ) as $tag ) {
+		add_shortcode(
+			$tag,
+			function ( $atts, $content = '' ) {
+				return do_shortcode( $content );
+			}
+		);
+	}
+}
+add_action( 'init', 'kundeling_register_legacy_shortcodes' );
+
+/**
  * Bridge WordPress's default menu markup onto the theme's dropdown design.
  * Parent items get `.has-dropdown`; their sub-menus get `.dropdown`, so the
  * existing global.css hover-dropdown styling applies to a WP-managed menu.
@@ -125,6 +173,12 @@ function kundeling_nav_submenu_class( $classes, $args, $depth ) {
 	return $classes;
 }
 add_filter( 'nav_menu_submenu_css_class', 'kundeling_nav_submenu_class', 10, 3 );
+
+/**
+ * Disable Jetpack's auto-appended Related Posts — the theme renders its own
+ * styled Related section (with cover images) at the end of single.php.
+ */
+add_filter( 'jetpack_relatedposts_filter_enabled_for_request', '__return_false' );
 
 /**
  * Fallback for the primary menu when none is assigned yet — mirrors the
