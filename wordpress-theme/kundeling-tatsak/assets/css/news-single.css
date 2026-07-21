@@ -244,6 +244,12 @@
             .related-grid { grid-template-columns: 1fr; gap: 20px; }
         }
 
+        .news-back-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 48px 100px;
+        }
+
         .news-back {
             display: inline-flex;
             align-items: center;

@@ -50,7 +50,6 @@ while ( have_posts() ) :
 
 			echo $kundeling_split['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered post content.
 			?>
-			<a href="<?php echo esc_url( home_url( '/news/' ) ); ?>" class="news-back"><span class="arrow">&larr;</span> <?php esc_html_e( 'Back to News', 'kundeling-tatsak' ); ?></a>
 		</div>
 	</article>
 
@@ -189,6 +188,10 @@ while ( have_posts() ) :
 		<?php
 	endif;
 	?>
+
+	<div class="news-back-wrap">
+		<a href="<?php echo esc_url( home_url( '/news/' ) ); ?>" class="news-back"><span class="arrow">&larr;</span> <?php esc_html_e( 'Back to News', 'kundeling-tatsak' ); ?></a>
+	</div>
 
 	<?php
 endwhile;
