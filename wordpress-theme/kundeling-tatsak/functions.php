@@ -111,6 +111,97 @@ function kundeling_assets() {
 add_action( 'wp_enqueue_scripts', 'kundeling_assets' );
 
 /**
+ * Build a one-time filename → attachment-ID map from the media library so the
+ * gallery can reuse images already uploaded (no re-uploading). Keyed by exact
+ * lowercased basename and by a normalised stem (minus -scaled / size / -e
+ * suffixes) so slightly-renamed variants still resolve.
+ *
+ * @return array<string,int>
+ */
+function kundeling_media_map() {
+	static $map = null;
+	if ( null !== $map ) {
+		return $map;
+	}
+	$cached = get_transient( 'kundeling_media_map' );
+	if ( is_array( $cached ) ) {
+		$map = $cached;
+		return $map;
+	}
+
+	global $wpdb;
+	$rows = $wpdb->get_results( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_wp_attached_file'" ); // phpcs:ignore WordPress.DB
+	$map  = array();
+	foreach ( $rows as $row ) {
+		$fn = strtolower( wp_basename( $row->meta_value ) );
+		if ( ! isset( $map[ $fn ] ) ) {
+			$map[ $fn ] = (int) $row->post_id;
+		}
+		$stem = kundeling_image_stem( $fn );
+		if ( $stem && ! isset( $map[ '#' . $stem ] ) ) {
+			$map[ '#' . $stem ] = (int) $row->post_id;
+		}
+	}
+	set_transient( 'kundeling_media_map', $map, HOUR_IN_SECONDS );
+	return $map;
+}
+
+/**
+ * Resolve a gallery image filename to a media-library URL (large size), or ''.
+ */
+function kundeling_media_url_by_filename( $filename, $size = 'large' ) {
+	$map = kundeling_media_map();
+	$fn  = strtolower( $filename );
+	$id  = 0;
+	if ( isset( $map[ $fn ] ) ) {
+		$id = $map[ $fn ];
+	} else {
+		$stem = kundeling_image_stem( $fn );
+		if ( isset( $map[ '#' . $stem ] ) ) {
+			$id = $map[ '#' . $stem ];
+		}
+	}
+	if ( ! $id ) {
+		return '';
+	}
+	$img = wp_get_attachment_image_url( $id, $size );
+	return $img ? $img : '';
+}
+
+/**
+ * Load the bundled gallery collections manifest (slug, title, images).
+ *
+ * @return array<int,array>
+ */
+function kundeling_gallery_data() {
+	static $data = null;
+	if ( null !== $data ) {
+		return $data;
+	}
+	$file = get_theme_file_path( 'assets/data/gallery-data.json' );
+	$data = array();
+	if ( file_exists( $file ) ) {
+		$decoded = json_decode( file_get_contents( $file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		if ( is_array( $decoded ) ) {
+			$data = $decoded;
+		}
+	}
+	return $data;
+}
+
+/**
+ * Find a single gallery collection by slug.
+ */
+function kundeling_gallery_collection( $slug ) {
+	foreach ( kundeling_gallery_data() as $collection ) {
+		if ( isset( $collection['slug'] ) && $collection['slug'] === $slug ) {
+			return $collection;
+		}
+	}
+	return null;
+}
+
+/**
  * Split rendered post HTML into (a) body text with the images removed and
  * (b) an ordered list of the images, so single.php can show the article text
  * followed by an "In Pictures" gallery strip. The featured (cover) image is
