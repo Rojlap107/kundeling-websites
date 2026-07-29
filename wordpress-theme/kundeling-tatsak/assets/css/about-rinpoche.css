@@ -1,0 +1,64 @@
+/* ── About Rinpoche: page background + connections grid ── */
+.page-header::before { display: none; }
+.page-header { background: transparent; }
+.page-header .subtitle { color: var(--stone-600); }
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: center / cover no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.connections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 36px 0 0;
+}
+
+.connection-card {
+    background: var(--stone-100);
+    border-radius: 12px;
+    padding: 22px;
+    transition: all 0.35s ease;
+}
+
+.connection-card:hover {
+    background: var(--stone-150);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28,25,23,0.06);
+}
+
+.connection-card .conn-role {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 8px;
+    opacity: 0.85;
+}
+
+.connection-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.98rem;
+    font-weight: 400;
+    color: var(--stone-800);
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+
+.connection-card p {
+    font-size: 0.82rem;
+    color: var(--stone-500);
+    line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+    .connections-grid {
+        grid-template-columns: 1fr;
+    }
+}

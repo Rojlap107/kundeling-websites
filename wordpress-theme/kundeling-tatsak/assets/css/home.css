@@ -306,6 +306,29 @@
         .tag-teaching { color: var(--warm); background: rgba(139,109,71,0.08); }
         .tag-ceremony { color: var(--sage); background: rgba(92,122,101,0.08); }
         .tag-retreat { color: var(--stone-600); background: rgba(87,83,78,0.06); }
+        .tag-event { color: var(--stone-600); background: rgba(87,83,78,0.07); }
+
+        .sched-none {
+            font-size: 0.85rem;
+            color: var(--stone-400);
+            padding: 8px 0 4px;
+        }
+
+        .schedule-viewall {
+            display: inline-block;
+            margin-top: 24px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--warm);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .schedule-viewall:hover {
+            border-bottom-color: var(--warm);
+        }
 
         /* ── DIVIDER ── */
         .full-divider {

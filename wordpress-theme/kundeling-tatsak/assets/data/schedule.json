@@ -1,66 +1,82 @@
 [
     {
-        "month": "Apr",
-        "day": "12",
-        "title": "Lamrim Weekend Teaching",
-        "location": "Kundeling Monastery",
-        "tag": "teaching",
-        "description": "A comprehensive two-day teaching on the Stages of the Path to Enlightenment, covering the practices of the three scopes."
-    },
-    {
-        "month": "Apr",
-        "day": "28",
-        "title": "Vesak Celebration & Blessing",
-        "location": "Kundeling Monastery",
-        "tag": "ceremony",
-        "description": "Annual celebration commemorating the birth, enlightenment, and parinirvana of Lord Buddha, with special prayers and blessings."
-    },
-    {
-        "month": "May",
-        "day": "10",
-        "title": "Seven-Day Meditation Retreat",
-        "location": "Dharma Retreat Centre",
-        "tag": "retreat",
-        "description": "An immersive week-long retreat combining shamatha and vipashyana meditation practices under the guidance of His Eminence."
-    },
-    {
-        "month": "Jun",
-        "day": "5",
-        "title": "Avalokiteshvara Empowerment",
-        "location": "European Dharma Centre",
-        "tag": "ceremony",
-        "description": "Initiation into the practice of Avalokiteshvara, the Buddha of Compassion, including transmission of the six-syllable mantra."
-    },
-    {
-        "month": "Jul",
-        "day": "20",
-        "title": "Summer Philosophy Intensive",
-        "location": "Kundeling Monastery",
-        "tag": "teaching",
-        "description": "An intensive study program covering Madhyamaka philosophy and the Middle Way view, suitable for intermediate and advanced students."
-    },
-    {
-        "month": "Aug",
-        "day": "15",
-        "title": "Nagarjuna's Fundamental Wisdom Teaching",
-        "location": "Kundeling Monastery",
-        "tag": "teaching",
-        "description": "A detailed commentary on Nagarjuna's Mulamadhyamakakarika, exploring the profound view of emptiness and dependent origination."
-    },
-    {
+        "weekday": "Thu",
+        "day": "25",
         "month": "Sep",
-        "day": "1-7",
-        "title": "Autumn Retreat & Silent Meditation",
-        "location": "Dharma Retreat Centre",
-        "tag": "retreat",
-        "description": "A silent retreat combining structured meditation sessions, contemplation, and personal practice in a supportive environment."
+        "year": "2025",
+        "tag": "event",
+        "tagLabel": "Conference",
+        "title": "III International Buddhist Forum — “The Buddhist World in the New Millennium”",
+        "venue": "Kalmykia, Russia"
     },
     {
+        "weekday": "Mon",
+        "day": "29",
+        "month": "Sep",
+        "year": "2025",
+        "tag": "event",
+        "tagLabel": "Address",
+        "title": "19th Tibetan Youth Congress General Body Meeting",
+        "venue": "Tibetan Youth Congress"
+    },
+    {
+        "weekday": "Oct",
+        "day": "1–18",
         "month": "Oct",
-        "day": "15",
-        "title": "Lama Chopa Ceremony",
-        "location": "Kundeling Monastery",
+        "year": "2025",
+        "tag": "teaching",
+        "tagLabel": "Visit",
+        "title": "Three-Week Visit to the Mon Regions",
+        "venue": "Arunachal Pradesh, India"
+    },
+    {
+        "weekday": "Sat",
+        "day": "25",
+        "month": "Oct",
+        "year": "2025",
         "tag": "ceremony",
-        "description": "The Guru Puja offering ceremony, a profound practice of devotion and accumulation of merit within the Gelugpa tradition."
+        "tagLabel": "Empowerment",
+        "title": "Longevity Empowerment of Buddha Amitayus & Teaching on the Four Principal Commitments",
+        "venue": "Switzerland"
+    },
+    {
+        "weekday": "Wed",
+        "day": "12–13",
+        "month": "Nov",
+        "year": "2025",
+        "tag": "event",
+        "tagLabel": "Conference",
+        "title": "2025 Ministerial Conference of IRFBA — The Article 18 Alliance",
+        "venue": "Prague, Czech Republic"
+    },
+    {
+        "weekday": "Thu",
+        "day": "18–21",
+        "month": "Jan",
+        "year": "2018",
+        "tag": "teaching",
+        "tagLabel": "Teaching",
+        "title": "Teaching & Inauguration of the New Debating Courtyard, Sera Mey Monastery",
+        "venue": "Bylakuppe, Karnataka, India"
+    },
+    {
+        "weekday": "Wed",
+        "day": "17",
+        "month": "Jan",
+        "year": "2018",
+        "tag": "event",
+        "tagLabel": "Prayers",
+        "title": "Participating in Prayers by the Bodhi Tree",
+        "venue": "Bodhgaya, Bihar, India"
+    },
+    {
+        "weekday": "Tue",
+        "day": "16",
+        "month": "Jan",
+        "year": "2018",
+        "tag": "ceremony",
+        "tagLabel": "Empowerment",
+        "title": "Avalokiteshvara Empowerment & Long-Life Offering",
+        "venue": "Bodhgaya, Bihar, India"
     }
 ]

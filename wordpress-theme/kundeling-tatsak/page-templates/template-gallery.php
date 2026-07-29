@@ -35,6 +35,47 @@ get_header();
 	</div>
 </div>
 
+<!-- ── PORTRAIT STRIP (horizontal scroll, no heading) ── -->
+<?php
+$portrait_files = array(
+	'13-scaled.jpg',
+	'DSC01108-scaled.jpg',
+	'2025-08-16-Leh12_SR57814.jpg',
+	'IMG_9484-scaled-e1759744601670.jpg',
+	'bf3c971d-d1f9-40c2-9211-456b0e094d7a-scaled-e1758350572300.jpg',
+	'bcabe649-b26b-4cbf-9e8d-18bfb6b6ee9f-scaled-e1757916556891.jpg',
+	'mmexport1587457493084-scaled.jpg',
+	'image00011-scaled.jpeg',
+	'13th-kunling.jpg',
+);
+$portrait_urls = array();
+foreach ( $portrait_files as $pf ) {
+	$url = kundeling_media_url_by_filename( $pf );
+	if ( $url ) {
+		$portrait_urls[] = $url;
+	}
+}
+if ( $portrait_urls ) : ?>
+<section class="portrait-strip fade-in">
+	<button class="strip-arrow strip-arrow-left hidden" aria-label="<?php esc_attr_e( 'Scroll left', 'kundeling-tatsak' ); ?>" onclick="kundelingGalleryScroll(-1)">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+	</button>
+	<button class="strip-arrow strip-arrow-right" aria-label="<?php esc_attr_e( 'Scroll right', 'kundeling-tatsak' ); ?>" onclick="kundelingGalleryScroll(1)">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+	</button>
+	<div class="photo-row" id="galleryStrip">
+		<?php foreach ( $portrait_urls as $pu ) : ?>
+			<a class="photo-item" href="<?php echo esc_url( $pu ); ?>" target="_blank"><img src="<?php echo esc_url( $pu ); ?>" alt="<?php esc_attr_e( 'Portrait of His Eminence Kundeling Tatsak Rinpoche', 'kundeling-tatsak' ); ?>" loading="lazy"></a>
+		<?php endforeach; ?>
+	</div>
+</section>
+<script>
+function kundelingGalleryScroll(dir){var r=document.getElementById('galleryStrip');if(r){r.scrollBy({left:dir*500,behavior:'smooth'});}}
+</script>
+<?php endif; ?>
+
+<section class="gallery-section">
+
 <div class="gallery-category fade-in">
         <h2 class="category-title">Travels &amp; Teachings</h2>
         <div class="category-rule"></div>
@@ -234,7 +275,7 @@ get_header();
         </div>
     </div>
 
-</section>
+</section><!-- .gallery-section -->
 
 <?php
 get_footer();

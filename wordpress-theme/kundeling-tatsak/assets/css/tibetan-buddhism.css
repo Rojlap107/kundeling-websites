@@ -1,0 +1,69 @@
+/* ── Tibetan Buddhism: page background + aspects grid ── */
+.page-header::before { display: none; }
+.page-header { background: transparent; }
+.page-header .subtitle { color: var(--stone-600); }
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: center / cover no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.aspects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 36px 0 0;
+}
+
+.aspect-card {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 12px;
+    padding: 28px 20px;
+    transition: all 0.35s ease;
+}
+
+.aspect-card:hover {
+    background: rgba(255,255,255,0.72);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28,25,23,0.06);
+}
+
+.aspect-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--stone-800);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.aspect-card .aspect-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.aspect-card p {
+    font-size: 0.85rem;
+    color: var(--stone-500);
+    line-height: 1.65;
+}
+
+.about-nav-link { color: var(--stone-700); font-weight: 500; }
+.about-nav-inner { border-top-color: var(--stone-400); }
+
+@media (max-width: 768px) {
+    .aspects-grid {
+        grid-template-columns: 1fr;
+    }
+}

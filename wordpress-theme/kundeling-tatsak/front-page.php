@@ -72,35 +72,78 @@ get_header();
 		<h2 class="sec-title"><?php esc_html_e( 'Schedule', 'kundeling-tatsak' ); ?></h2>
 		<div class="sec-rule"></div>
 		<div id="home-schedule">
-			<?php
-			// Schedule entries are read from the bundled JSON for now; a later
-			// phase wires these to editable content on the Schedule page.
-			$schedule_file = get_theme_file_path( 'assets/data/schedule.json' );
-			if ( file_exists( $schedule_file ) ) {
-				$entries = json_decode( file_get_contents( $schedule_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-				if ( is_array( $entries ) ) {
-					foreach ( array_slice( $entries, 0, 5 ) as $entry ) {
-						$tag = isset( $entry['tag'] ) ? $entry['tag'] : '';
+				<?php
+				// Upcoming events: posts in the "Schedule" category dated today or
+				// later, soonest first. Fully editable from the Posts screen.
+				$type_labels = array(
+					'teaching' => __( 'Teaching', 'kundeling-tatsak' ),
+					'ceremony' => __( 'Ceremony', 'kundeling-tatsak' ),
+					'event'    => __( 'Event', 'kundeling-tatsak' ),
+				);
+				$sched_cats  = kundeling_schedule_cat_ids();
+				$home_events = array();
+				if ( ! empty( $sched_cats ) ) {
+					$hq = new WP_Query(
+						array(
+							'post_type'           => 'post',
+							'post_status'         => 'publish',
+							'posts_per_page'      => 5,
+							'category__in'        => $sched_cats,
+							'ignore_sticky_posts' => true,
+							'meta_key'            => 'kt_event_date',
+							'orderby'             => 'meta_value',
+							'order'               => 'ASC',
+							'meta_query'          => array(
+								array(
+									'key'     => 'kt_event_date',
+									'value'   => gmdate( 'Y-m-d' ),
+									'compare' => '>=',
+									'type'    => 'DATE',
+								),
+							),
+						)
+					);
+					if ( $hq->have_posts() ) {
+						while ( $hq->have_posts() ) {
+							$hq->the_post();
+							$home_events[] = array(
+								'parts' => kundeling_event_date_parts( get_the_ID() ),
+								'type'  => get_post_meta( get_the_ID(), 'kt_event_type', true ),
+								'venue' => get_post_meta( get_the_ID(), 'kt_event_venue', true ),
+								'title' => get_the_title(),
+							);
+						}
+						wp_reset_postdata();
+					}
+				}
+
+				if ( ! empty( $home_events ) ) {
+					foreach ( $home_events as $ev ) {
+						$p         = $ev['parts'];
+						$type      = $ev['type'] ? $ev['type'] : 'event';
+						$tag_label = isset( $type_labels[ $type ] ) ? $type_labels[ $type ] : ucfirst( $type );
 						?>
 						<div class="sched-entry">
 							<div class="sched-date">
-								<span class="month"><?php echo esc_html( isset( $entry['month'] ) ? $entry['month'] : '' ); ?></span>
-								<span class="day"><?php echo esc_html( isset( $entry['day'] ) ? $entry['day'] : '' ); ?></span>
+								<span class="month"><?php echo esc_html( $p['month'] ); ?></span>
+								<span class="day"><?php echo esc_html( $p['day'] ); ?></span>
 							</div>
 							<div class="sched-info">
-								<h4><?php echo esc_html( isset( $entry['title'] ) ? $entry['title'] : '' ); ?></h4>
-								<p class="location"><?php echo esc_html( isset( $entry['location'] ) ? $entry['location'] : '' ); ?></p>
-								<?php if ( $tag ) : ?>
-									<span class="sched-tag tag-<?php echo esc_attr( $tag ); ?>"><?php echo esc_html( ucfirst( $tag ) ); ?></span>
+								<h4><?php echo esc_html( $ev['title'] ); ?></h4>
+								<?php if ( $ev['venue'] ) : ?>
+									<p class="location"><?php echo esc_html( $ev['venue'] ); ?></p>
 								<?php endif; ?>
+								<span class="sched-tag tag-<?php echo esc_attr( $type ); ?>"><?php echo esc_html( $tag_label ); ?></span>
 							</div>
 						</div>
 						<?php
 					}
+				} else {
+					echo '<p class="sched-none">' . esc_html__( 'No upcoming events at this time.', 'kundeling-tatsak' ) . '</p>';
 				}
-			}
-			?>
-		</div>
+				?>
+			</div>
+			<a href="<?php echo esc_url( home_url( '/schedule/' ) ); ?>" class="schedule-viewall"><?php esc_html_e( 'View full schedule', 'kundeling-tatsak' ); ?> &rarr;</a>
 	</div>
 </section>
 

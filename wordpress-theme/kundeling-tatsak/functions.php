@@ -123,7 +123,7 @@ function kundeling_media_map() {
 	if ( null !== $map ) {
 		return $map;
 	}
-	$cached = get_transient( 'kundeling_media_map' );
+	$cached = get_transient( 'kundeling_media_map_v2' );
 	if ( is_array( $cached ) ) {
 		$map = $cached;
 		return $map;
@@ -142,9 +142,19 @@ function kundeling_media_map() {
 			$map[ '#' . $stem ] = (int) $row->post_id;
 		}
 	}
-	set_transient( 'kundeling_media_map', $map, HOUR_IN_SECONDS );
+	set_transient( 'kundeling_media_map_v2', $map, HOUR_IN_SECONDS );
 	return $map;
 }
+
+/**
+ * Flush the cached media map when the library changes, so newly uploaded
+ * images resolve immediately instead of after the transient expires.
+ */
+function kundeling_flush_media_map() {
+	delete_transient( 'kundeling_media_map_v2' );
+}
+add_action( 'add_attachment', 'kundeling_flush_media_map' );
+add_action( 'delete_attachment', 'kundeling_flush_media_map' );
 
 /**
  * Resolve a gallery image filename to a media-library URL (large size), or ''.
@@ -152,9 +162,13 @@ function kundeling_media_map() {
 function kundeling_media_url_by_filename( $filename, $size = 'large' ) {
 	$map = kundeling_media_map();
 	$fn  = strtolower( $filename );
+	// WordPress replaces whitespace with hyphens on upload; try that form too.
+	$fn_hyphen = preg_replace( '/\s+/', '-', $fn );
 	$id  = 0;
 	if ( isset( $map[ $fn ] ) ) {
 		$id = $map[ $fn ];
+	} elseif ( isset( $map[ $fn_hyphen ] ) ) {
+		$id = $map[ $fn_hyphen ];
 	} else {
 		$stem = kundeling_image_stem( $fn );
 		if ( isset( $map[ '#' . $stem ] ) ) {
@@ -268,6 +282,9 @@ function kundeling_image_stem( $url ) {
 	$name = preg_replace( '/\.(jpe?g|png|gif|webp)$/i', '', $name );
 	$name = preg_replace( '/-\d+x\d+$/', '', $name );
 	$name = preg_replace( '/-scaled$/', '', $name );
+	// WordPress converts whitespace runs to a single hyphen on upload; mirror
+	// that here so a reference name with spaces matches the stored filename.
+	$name = preg_replace( '/\s+/', '-', $name );
 	return strtolower( $name );
 }
 
@@ -352,15 +369,215 @@ add_filter( 'jetpack_relatedposts_filter_enabled_for_request', '__return_false' 
  * static site's nav so the theme is usable immediately after activation.
  */
 function kundeling_default_menu() {
-	echo '<ul class="nav-links">';
-	echo '<li class="nav-close"><button onclick="closeMenu()" aria-label="' . esc_attr__( 'Close menu', 'kundeling-tatsak' ) . '">&times;</button></li>';
-	echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/about-rinpoche/' ) ) . '">' . esc_html__( 'About', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/lineage/' ) ) . '">' . esc_html__( 'Lineage', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/teaching/' ) ) . '">' . esc_html__( 'Teachings', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/schedule/' ) ) . '">' . esc_html__( 'Schedule', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/gallery/' ) ) . '">' . esc_html__( 'Gallery', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/news/' ) ) . '">' . esc_html__( 'News', 'kundeling-tatsak' ) . '</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">' . esc_html__( 'Contact', 'kundeling-tatsak' ) . '</a></li>';
-	echo '</ul>';
+	?>
+	<ul class="nav-links">
+		<li class="nav-close"><button onclick="closeMenu()" aria-label="<?php esc_attr_e( 'Close menu', 'kundeling-tatsak' ); ?>">&times;</button></li>
+		<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'kundeling-tatsak' ); ?></a></li>
+		<li class="has-dropdown">
+			<a href="#"><?php esc_html_e( 'About', 'kundeling-tatsak' ); ?></a>
+			<ul class="dropdown">
+				<li><a href="<?php echo esc_url( home_url( '/about-rinpoche/' ) ); ?>"><?php esc_html_e( 'About Kundeling Tatsak Rinpoche', 'kundeling-tatsak' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/buddhism/' ) ); ?>"><?php esc_html_e( 'Buddhism', 'kundeling-tatsak' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tibetan-buddhism/' ) ); ?>"><?php esc_html_e( 'Tibetan Buddhism', 'kundeling-tatsak' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/gelugpa/' ) ); ?>"><?php esc_html_e( 'Gelugpa Sect', 'kundeling-tatsak' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/lineage/' ) ); ?>"><?php esc_html_e( 'Lineage', 'kundeling-tatsak' ); ?></a></li>
+			</ul>
+		</li>
+		<li><a href="<?php echo esc_url( home_url( '/teaching/' ) ); ?>"><?php esc_html_e( 'Teachings', 'kundeling-tatsak' ); ?></a></li>
+		<li><a href="<?php echo esc_url( home_url( '/schedule/' ) ); ?>"><?php esc_html_e( 'Schedule', 'kundeling-tatsak' ); ?></a></li>
+		<li class="has-dropdown">
+			<a href="#"><?php esc_html_e( 'Gallery', 'kundeling-tatsak' ); ?></a>
+			<ul class="dropdown">
+				<li><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"><?php esc_html_e( 'Photo Gallery', 'kundeling-tatsak' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/gallery/videos/' ) ); ?>"><?php esc_html_e( 'Video Gallery', 'kundeling-tatsak' ); ?></a></li>
+			</ul>
+		</li>
+		<li><a href="<?php echo esc_url( home_url( '/news/' ) ); ?>"><?php esc_html_e( 'News', 'kundeling-tatsak' ); ?></a></li>
+		<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'kundeling-tatsak' ); ?></a></li>
+	</ul>
+	<?php
 }
+
+/**
+ * ── Schedule events ──
+ * Schedule entries are ordinary posts placed in the "Schedule" category, with
+ * a few extra fields (event date, venue, type). This keeps them fully editable
+ * from the normal Posts screen — no code or file editing required.
+ */
+
+/**
+ * Register the event fields as post meta (exposed to the REST API so they can
+ * also be set programmatically).
+ */
+function kundeling_register_event_meta() {
+	$fields = array( 'kt_event_date', 'kt_event_end', 'kt_event_venue', 'kt_event_type' );
+	foreach ( $fields as $key ) {
+		register_post_meta(
+			'post',
+			$key,
+			array(
+				'single'            => true,
+				'type'              => 'string',
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => function () {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+	}
+}
+add_action( 'init', 'kundeling_register_event_meta' );
+
+/**
+ * Add the "Event Details" panel to the block-editor sidebar (posts only). A
+ * classic meta box does not render reliably on WordPress.com's block editor, so
+ * this registers a proper editor panel bound to the registered post meta.
+ */
+function kundeling_event_editor_assets() {
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	if ( $screen && 'post' !== $screen->post_type ) {
+		return;
+	}
+	wp_enqueue_script(
+		'kundeling-event-fields',
+		get_theme_file_uri( 'assets/js/event-fields.js' ),
+		array( 'wp-plugins', 'wp-editor', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n' ),
+		KUNDELING_VERSION,
+		true
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'kundeling_event_editor_assets' );
+
+/**
+ * Return the "Schedule" category term IDs (parent + children), or array().
+ */
+function kundeling_schedule_cat_ids() {
+	static $ids = null;
+	if ( null !== $ids ) {
+		return $ids;
+	}
+	$ids  = array();
+	$term = get_category_by_slug( 'schedule' );
+	if ( $term ) {
+		$ids   = array( (int) $term->term_id );
+		$kids  = get_categories(
+			array(
+				'parent'     => $term->term_id,
+				'hide_empty' => false,
+			)
+		);
+		foreach ( $kids as $k ) {
+			$ids[] = (int) $k->term_id;
+		}
+	}
+	return $ids;
+}
+
+/**
+ * Build the display parts for an event post's date tile from its meta.
+ *
+ * @return array{weekday:string,day:string,month:string,year:string,ts:int}
+ */
+function kundeling_event_date_parts( $post_id ) {
+	$date = get_post_meta( $post_id, 'kt_event_date', true );
+	$end  = get_post_meta( $post_id, 'kt_event_end', true );
+	if ( ! $date ) {
+		return array(
+			'weekday' => '',
+			'day'     => '',
+			'month'   => '',
+			'year'    => '',
+			'ts'      => 0,
+		);
+	}
+	$ts  = strtotime( $date );
+	$day = date_i18n( 'j', $ts );
+	if ( $end ) {
+		$ets = strtotime( $end );
+		// Only treat it as a range when the end date is a different, later day.
+		if ( $ets && $ets > $ts ) {
+			if ( date_i18n( 'n Y', $ets ) === date_i18n( 'n Y', $ts ) ) {
+				$day = date_i18n( 'j', $ts ) . '–' . date_i18n( 'j', $ets );
+			} else {
+				$day = date_i18n( 'j M', $ts ) . ' – ' . date_i18n( 'j M', $ets );
+			}
+		}
+	}
+	return array(
+		'weekday' => date_i18n( 'D', $ts ),
+		'day'     => $day,
+		'month'   => date_i18n( 'M', $ts ),
+		'year'    => date_i18n( 'Y', $ts ),
+		'ts'      => $ts,
+	);
+}
+
+/**
+ * ── Coming Soon mode ──
+ * When enabled (Settings → Reading → "Coming Soon page"), visitors see the
+ * standalone comingsoon.php page while logged-in editors/admins still see the
+ * full site. Toggle it off to reveal the site again.
+ */
+
+/**
+ * Register the toggle and add it to Settings → Reading.
+ */
+function kundeling_coming_soon_settings() {
+	register_setting(
+		'reading',
+		'kundeling_coming_soon',
+		array(
+			'type'              => 'boolean',
+			'sanitize_callback' => function ( $v ) {
+				return $v ? 1 : 0;
+			},
+			'default'           => 0,
+			'show_in_rest'      => true,
+		)
+	);
+	add_settings_field(
+		'kundeling_coming_soon',
+		__( 'Coming Soon page', 'kundeling-tatsak' ),
+		'kundeling_coming_soon_field',
+		'reading'
+	);
+}
+add_action( 'admin_init', 'kundeling_coming_soon_settings' );
+
+/**
+ * Render the checkbox on Settings → Reading.
+ */
+function kundeling_coming_soon_field() {
+	$on = (int) get_option( 'kundeling_coming_soon', 0 );
+	?>
+	<label for="kundeling_coming_soon">
+		<input type="checkbox" id="kundeling_coming_soon" name="kundeling_coming_soon" value="1" <?php checked( 1, $on ); ?>>
+		<?php esc_html_e( 'Show a “Coming Soon” page to visitors. You and other logged-in editors still see the full site.', 'kundeling-tatsak' ); ?>
+	</label>
+	<?php
+}
+
+/**
+ * Gate the front end: serve the Coming Soon page to visitors when enabled.
+ */
+function kundeling_maybe_coming_soon() {
+	if ( ! get_option( 'kundeling_coming_soon', 0 ) ) {
+		return;
+	}
+	// Logged-in editors/admins keep seeing the real site.
+	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+		return;
+	}
+	// Never gate wp-admin, login, REST, cron, or feeds.
+	if ( is_admin() || is_feed() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+		return;
+	}
+	$template = get_theme_file_path( 'comingsoon.php' );
+	if ( file_exists( $template ) ) {
+		status_header( 200 );
+		require $template;
+		exit;
+	}
+}
+add_action( 'template_redirect', 'kundeling_maybe_coming_soon', 0 );
